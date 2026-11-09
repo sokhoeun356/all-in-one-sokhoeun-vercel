@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All In One SOKHOEUN 🇰🇭</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700;900&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#22c55e; --accent-dark:#16a34a; --accent-soft:#dcfce7; --accent-light:#86efac;
+  --bg1:#e8f7ee; --bg2:#f4f6f5; --card:#ffffff; --text:#111827; --muted:#6b7280;
+  --gold:#f59e0b; --shadow:0 6px 24px rgba(0,0,0,.08);
+}
+body[data-theme="blue"]{ --accent:#3b82f6; --accent-dark:#2563eb; --accent-soft:#dbeafe; --accent-light:#93c5fd; --bg1:#e8f0fd; }
+body[data-theme="orange"]{ --accent:#f97316; --accent-dark:#ea580c; --accent-soft:#ffedd5; --accent-light:#fdba74; --bg1:#fdf0e3; }
+body[data-theme="night"]{ --accent:#22c55e; --accent-dark:#16a34a; --accent-soft:#14532d; --accent-light:#86efac; --bg1:#0f172a; --bg2:#111827; --card:#1e293b; --text:#f1f5f9; --muted:#94a3b8; --shadow:0 6px 24px rgba(0,0,0,.4); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Kantumruy Pro","Nunito",sans-serif;background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 320px,var(--bg2) 100%);color:var(--text);min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+/* ===== Header ===== */
+header{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;padding:12px 16px;background:color-mix(in srgb, var(--bg2) 88%, transparent);backdrop-filter:blur(8px)}
+.burger{width:46px;height:46px;border:none;border-radius:14px;background:var(--card);box-shadow:var(--shadow);font-size:24px;line-height:1;color:var(--text)}
+.brand{flex:1;display:flex;align-items:center;gap:10px;min-width:0}
+.logo-mark{width:44px;height:44px;flex:0 0 44px}
+.logo-img{object-fit:cover;border-radius:12px;display:block}
+.logo-mark.big{width:64px;height:64px;margin:0 0 4px;display:block}
+.wordmark{min-width:0}
+.wordmark b{display:block;font-size:17px;font-weight:900;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wordmark small{display:block;font-size:11px;color:var(--muted);font-weight:700}
+@media (max-width:480px){ .wordmark small{display:none} .dot{width:22px;height:22px} }
+.theme-dots{display:flex;gap:6px}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);padding:0}
+.dot.green{background:#22c55e}.dot.blue{background:#3b82f6}.dot.orange{background:#f97316}.dot.night{background:#0f172a}
+.dot.active{outline:3px solid var(--accent);outline-offset:1px}
+
+/* ===== Drawer menu ===== */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:290px;max-width:85vw;background:var(--card);z-index:60;transform:translateX(-105%);transition:transform .28s ease;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:20px 18px 14px;border-bottom:1px solid rgba(0,0,0,.07)}
+.drawer-head h2{font-size:20px;font-weight:900}
+.drawer-head p{font-size:13px;color:var(--muted);margin-top:2px}
+.drawer nav{padding:12px}
+.menu-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:none;background:transparent;padding:14px 12px;border-radius:14px;font-size:17px;font-weight:700;color:var(--text)}
+.menu-item:hover{background:var(--accent-soft)}
+.menu-item .ic{font-size:22px;width:30px;text-align:center}
+.menu-item.active{background:var(--accent-soft);color:var(--accent-dark)}
+.drawer-foot{margin-top:auto;padding:16px 18px;font-size:13px;color:var(--muted);border-top:1px solid rgba(0,0,0,.07)}
+.drawer-foot a{color:var(--accent-dark);font-weight:700}
+
+.house{max-width:720px;margin:0 auto;padding:0 16px 40px}
+.wall{background:linear-gradient(135deg,var(--accent-dark) 0%,var(--accent) 55%,var(--accent-light) 130%);border-radius:28px;box-shadow:0 14px 34px rgba(22,163,74,.35);padding:34px 20px 30px;margin-top:14px;text-align:center;color:#fff}
+.wall h1{font-size:28px;font-weight:900;line-height:1.25;text-align:left}
+.wall h1 span{color:#fff}
+.wall .tag{font-size:16px;color:rgba(255,255,255,.88);margin-top:8px}
+
+
+.acct{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.45);border-radius:20px;padding:16px 18px;margin-top:20px;text-align:left}
+.acct-top{display:flex;align-items:center;gap:12px}
+.acct-ic{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;color:#fff}
+.acct-ic svg{width:26px;height:26px}
+.acct-tx{flex:1;min-width:0}
+.acct-tx b{display:block;font-size:17px;font-weight:900;color:#fff}
+.acct-tx small{display:block;font-size:13px;color:rgba(255,255,255,.85)}
+.acct-bal{font-size:28px;font-weight:900;color:#fff;font-family:"Nunito",sans-serif}
+.acct-add{margin-top:12px;width:100%;border:none;border-radius:14px;padding:12px;font-size:16px;font-weight:900;background:#fff;color:var(--accent-dark);font-family:inherit;cursor:pointer}
+
+/* ===== Function list — each function in its OWN separate frame ===== */
+.funclist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.func-row{display:flex;flex-direction:column;align-items:flex-start;gap:12px;width:100%;text-align:left;background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:20px 18px;color:var(--text);cursor:pointer;font-family:inherit;box-shadow:var(--shadow)}
+.func-tile{width:56px;height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:center;background:#dcfce7;border-radius:16px}
+.func-tile svg{width:40px;height:40px}
+.func-tx{flex:1;min-width:0}
+.func-tx b{display:block;font-size:17px;font-weight:900}
+.func-tx small{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
+/* ===== What this website can do ===== */
+.cando{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:20px 22px}
+.cando p{font-size:16px;font-weight:700;padding:9px 0;color:var(--text)}
+.wall .btn-green{background:#fff;color:var(--accent-dark);box-shadow:0 10px 26px rgba(0,0,0,.28)}
+
+/* ===== Buttons ===== */
+.btn{display:inline-block;border:none;border-radius:16px;padding:15px 34px;font-size:19px;font-weight:900}
+.btn-green{background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:#fff;box-shadow:0 10px 26px rgba(22,163,74,.45)}
+.btn-green:active{transform:scale(.97)}
+.btn-ghost{background:var(--card);color:var(--accent-dark);box-shadow:var(--shadow)}
+.btn-block{display:block;width:100%;text-align:center}
+.mt{margin-top:16px}
+
+/* ===== Cards ===== */
+.sec-title{font-size:22px;font-weight:900;margin:30px 4px 12px}
+.sec-title::after{content:"";display:block;width:52px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light));margin-top:6px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--card);border:2px solid var(--accent);border-radius:20px;box-shadow:var(--shadow);padding:20px 16px;text-align:left}
+.card .ic{display:inline-flex;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 16px rgba(22,163,74,.35)}
+.card h3{font-size:18px;font-weight:900;margin-top:8px;line-height:1.3}
+.card p{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.45}
+.card.wide{grid-column:1 / -1}
+.badge{display:inline-block;font-size:12px;font-weight:900;padding:4px 10px;border-radius:20px;background:var(--gold);color:#fff;margin-top:10px}
+.badge.green{background:var(--accent)}
+.badge.grey{background:#9ca3af}
+
+/* ===== Pages ===== */
+.page{display:none}
+.page.active{display:block}
+.page-head{background:linear-gradient(135deg,var(--accent-dark),var(--accent) 55%,var(--accent-light));border-radius:24px;box-shadow:var(--shadow);padding:22px 20px;margin-top:14px;color:#fff}
+.page-head h2{font-size:25px;font-weight:900}
+.page-head p{font-size:15px;color:rgba(255,255,255,.92);margin-top:6px;line-height:1.5}
+.steps{margin-top:14px;display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:14px;background:var(--card);border:2px solid var(--accent);border-radius:20px;box-shadow:var(--shadow);padding:18px 16px}
+.step .n{flex:0 0 56px;width:56px;height:56px;border-radius:16px;background:#dcfce7;color:var(--accent-dark);font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;font-family:"Nunito",sans-serif}
+.step h3{font-size:17px;font-weight:900}
+.step p{font-size:14px;color:var(--muted);margin-top:3px;line-height:1.5}
+.input{width:100%;border:2px solid var(--accent-soft);border-radius:14px;padding:14px;font-size:16px;font-family:inherit;background:var(--card);color:var(--text);outline:none}
+.input:focus{border-color:var(--accent)}
+.qr-box{background:#fff;border:2px solid var(--accent);border-radius:16px;padding:14px;text-align:center}
+.qr-box img{width:200px;height:200px;max-width:100%}
+.addr{font-family:"Nunito",monospace;font-size:13px;word-break:break-all;background:var(--accent-soft);border-radius:10px;padding:10px;margin-top:10px;color:var(--text)}
+.khqr-ph{border:2px dashed var(--accent);border-radius:16px;padding:34px 16px;text-align:center;color:var(--muted);font-size:15px;line-height:1.5}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:26px 16px 34px;line-height:1.7}
+footer a{color:var(--accent-dark);font-weight:700}
+/* ===== AI Tools pipeline ===== */
+.ai-chip{border:2px solid var(--accent-soft);background:var(--card);color:var(--text);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
+.ai-chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.ai-status{font-size:14px;font-weight:700;margin-top:10px;min-height:20px;line-height:1.5}
+.ai-st-wait{color:var(--muted)}
+.ai-st-work{color:#b45309}
+.ai-st-done{color:var(--accent-dark)}
+.ai-st-err{color:#dc2626}
+.ai-prog{height:12px;border-radius:999px;background:var(--accent-soft);overflow:hidden;margin-top:12px}
+.ai-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-dark),var(--accent));width:0%;transition:width .3s}
+.ai-note{border:2px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:16px;padding:14px 16px;font-size:14px;font-weight:700;line-height:1.6;margin-top:14px}
+.player-box{position:relative;border-radius:20px;overflow:hidden;background:#000;margin-top:14px;box-shadow:var(--shadow)}
+.player-box video{width:100%;display:block;max-height:62vh;background:#000}
+.sub-overlay{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;pointer-events:none;padding:0 14px}
+.sub-overlay span{background:rgba(0,0,0,.72);color:#fff;font-weight:700;font-size:16px;line-height:1.45;padding:6px 14px;border-radius:10px;text-align:center}
+.sub-overlay span:empty{display:none}
+.seg-list{margin-top:10px}
+.seg{display:flex;gap:10px;padding:11px 12px;border:2px solid var(--accent-soft);border-radius:14px;background:var(--card);margin-top:8px;align-items:flex-start}
+.seg.active{border-color:var(--accent);background:var(--accent-soft)}
+.seg .time{font-family:"Nunito",sans-serif;font-weight:800;font-size:11.5px;color:var(--muted);white-space:nowrap;padding-top:2px}
+.seg .body{flex:1;min-width:0;cursor:pointer}
+.seg .orig{color:var(--muted);font-size:13px;font-weight:600;line-height:1.45}
+.seg .kh{font-size:15px;font-weight:700;line-height:1.5;margin-top:2px}
+.seg .copy-btn{border:1px solid var(--accent-soft);background:var(--card);color:var(--accent-dark);border-radius:10px;padding:7px 10px;font-size:13px;font-weight:900;font-family:inherit;cursor:pointer;flex:0 0 auto}
+.seg .copy-btn.ok{color:#fff;background:var(--accent)}
+@media (max-width:380px){ .wall h1{font-size:23px} .grid{grid-template-columns:1fr} }
+
+  .pay-choice{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:18px 10px;cursor:pointer;font-size:17px;color:var(--text);font-family:inherit}
+  .pay-choice small{font-size:13px;color:var(--muted)}
+  .pay-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:90;padding:16px}
+  .pay-modal.open{display:flex}
+  .pay-modal-card{position:relative;background:var(--card);border-radius:20px;padding:22px 18px;max-width:420px;width:100%;text-align:center;max-height:90vh;overflow:auto}
+  .pay-modal-x{position:absolute;top:10px;right:12px;border:none;background:transparent;font-size:18px;cursor:pointer;color:var(--muted)}
+
+  .pkg{background:var(--card);border:2px solid var(--accent-soft);border-radius:14px;padding:12px}
+  .pkg.free{border-color:var(--accent);background:var(--accent-soft)}
+  .pkg b{font-size:16px}
+  .pkg-price{font-size:18px;font-weight:900;color:var(--accent-dark);margin:6px 0 2px}
+  .pkg p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+
+/* ===== Auto Device — វេបសាយផ្លាស់ប្ដូរទម្រង់តាមឧបករណ៍ដោយស្វ័យប្រវត្តិ (អត់បង្ហាញអ្វីទាំងអស់) ===== */
+@media (min-width:768px){
+  .house{max-width:820px}
+  .funclist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .func-row{flex-direction:column;align-items:flex-start;gap:12px;padding:20px}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+}
+@media (min-width:1024px){
+  .house{max-width:1040px}
+  header{max-width:1040px;margin:0 auto;width:100%}
+  .wall{padding:48px 44px 42px}
+  .wall h1{font-size:52px}
+  .logo-mark.big{width:96px;height:96px}
+  .funclist{grid-template-columns:repeat(4,1fr)}
+  .cando{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px}
+  .cando p{padding:12px 0}
+  .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  footer{max-width:1040px;margin:0 auto}
+}
+</style>
+</head>
+<body data-theme="green">
+<input type="file" id="logoInput" accept="image/*" hidden onchange="logoPicked(event)">
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head" style="text-align:center">
+    <div id="logoDrawer" onclick="go('home')" title="ចុចដើម្បីទៅទំព័រដើម" style="margin:0 auto 8px;width:fit-content;cursor:pointer">
+    <img class="logo-img" style="height:56px;width:auto" src="assets/logo.png" alt="Logo"></div>
+    <h2 style="font-size:18px">All In One SOKHOEUN 🇰🇭</h2>
+    <p>អ្វីៗទាំងអស់ នៅទីនេះតែមួយកន្លែង</p>
+    <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;align-items:center"><button onclick="pickLogo()" style="border:1px solid var(--line);background:#fff;color:var(--ink);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;border-radius:999px;padding:6px 12px">ដូរ Logo</button><button onclick="resetLogo()" style="border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer">↺ Logo ដើម</button></div>
+  </div>
+  <nav>
+    <button class="menu-item active" data-page="home" onclick="go('home')">✨ <span>ទំព័រដើម</span></button>
+    <button class="menu-item" data-page="tools" onclick="go('tools')"><span>AI Tools · បកប្រែវីដេអូ</span></button>
+    <button class="menu-item" data-page="web2app" onclick="go('web2app')"><span>Web2App Builder · APK</span></button>
+    <button class="menu-item" data-page="payments" onclick="go('payments')"><span>របៀបបង់ប្រាក់</span></button>
+    <button class="menu-item" data-page="settings" onclick="go('settings')"><span>Settings</span></button>
+  </nav>
+  <div class="drawer-foot">
+    ពណ៌វេបសាយ៖
+    <div class="theme-dots" style="margin-top:8px">
+      <button class="dot green active" onclick="setTheme('green',this)" title="ថ្ងៃ · បៃតង"></button>
+      <button class="dot blue" onclick="setTheme('blue',this)" title="ថ្ងៃ · ខៀវ"></button>
+      <button class="dot orange" onclick="setTheme('orange',this)" title="ថ្ងៃ · ទឹកក្រូច"></button>
+      <button class="dot night" onclick="setTheme('night',this)" title="យប់"></button>
+    </div>
+    <div style="margin-top:12px">ទំនាក់ទំនង៖ <a href="https://t.me/yemsokhoeun_9999" target="_blank">@yemsokhoeun_9999</a></div>
+  </div>
+</aside>
+
+<header>
+  <button class="burger" onclick="openMenu()" aria-label="Menu">☰</button>
+  <div class="brand" id="logoHead" onclick="go('home')" title="ចុចដើម្បីទៅទំព័រដើម" style="cursor:pointer">
+    <img class="logo-img" style="height:44px;width:auto" src="assets/logo.png" alt="Logo">
+  </div>
+</header>
+
+<main class="house">
+
+  <!-- ============ HOME ============ -->
+  <section class="page active" id="page-home">
+    <div class="wall">
+      <h1>All In One SOKHOEUN 🇰🇭</h1>
+      <p class="tag">សូមស្វាគមន៍ — អ្វីៗទាំងអស់ នៅទីនេះតែមួយកន្លែង</p>
+
+      <div class="acct">
+        <div class="acct-top">
+          <span class="acct-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c1-4 4.5-6 8-6s7 2 8 6z" fill="currentColor"/></svg></span>
+          <span class="acct-tx"><b>គណនីរបស់ខ្ញុំ</b><small>សមតុល្យ · Balance</small></span>
+          <span class="acct-bal" id="acctBal">$0.00</span>
+        </div>
+        <button class="acct-add" onclick="go('payments')">+ បញ្ចូលលុយ · Add Money</button>
+      </div>
+    </div>
+
+    <div class="mt">
+      <button class="btn btn-green btn-block" onclick="openMenu()">ចាប់ផ្ដើម · Get Started</button>
+    </div>
+
+    <h2 class="sec-title">✨ មុខងាររបស់វេបសាយ</h2>
+    <div class="funclist">
+      <button class="func-row" onclick="go('tools')"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M20 14 L48 32 L20 50 Z" fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round"/><text x="31" y="37" font-size="13" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">AI</text><path d="M50 6 L51.8 11.2 L57 13 L51.8 14.8 L50 20 L48.2 14.8 L43 13 L48.2 11.2 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>AI បកប្រែវីដេអូ</b><small>ស្ដាប់ → បកប្រែ → សម្លេងខ្មែរ គ្រប់ភាសា ទាំង 99 ភាសា</small></span></button>
+      <button class="func-row" onclick="go('web2app')"><span class="func-tile"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="36" rx="6" fill="none" stroke="#16a34a" stroke-width="3"/><line x1="10" y1="24" x2="54" y2="24" stroke="#16a34a" stroke-width="3"/><circle cx="16" cy="19" r="1.8" fill="#16a34a"/><circle cx="22" cy="19" r="1.8" fill="#16a34a"/><rect x="16" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="28" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="16" y="42" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><path d="M48 40 v10 M43 45 h10" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/></svg></span><span class="func-tx"><b>Web2App Builder</b><small>បម្លែងវេបសាយរបស់អ្នក ទៅជា App APK ដំឡើងលើទូរសព្ទបាន</small></span></button>
+      <button class="func-row" onclick="go('payments')"><span class="func-tile"><svg viewBox="0 0 64 64"><rect x="18" y="12" width="34" height="24" rx="5" fill="none" stroke="#16a34a" stroke-width="3"/><line x1="24" y1="20" x2="46" y2="20" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><rect x="10" y="28" width="34" height="24" rx="5" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/><text x="27" y="45" font-size="17" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">$</text></svg></span><span class="func-tx"><b>បង់ប្រាក់ 2 ប្រភេទ</b><small>KHQR សម្រាប់អ្នកខ្មែរ · USDT សម្រាប់អ្នកបរទេស</small></span></button>
+      <div class="func-row" style="cursor:default"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M32 8 L38 26 L56 32 L38 38 L32 56 L26 38 L8 32 L26 26 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>ទៅកន្លែងតែមួយ</b><small>អ្វីៗផ្សេងៗទៀត នឹងមកបន្ថែមនៅទីនេះជាបន្តបន្ទាប់</small></span></div>
+    </div>
+
+    <h2 class="sec-title">✨ វេបសាយនេះអាចធ្វើអ្វីបាន</h2>
+    <div class="cando">
+      <p>• បកប្រែវីដេអូទៅជាភាសាណាក៏បាន</p>
+      <p>• បម្លែងវេបសាយណាក៏បានទៅជា App APK</p>
+      <p>• បង់ប្រាក់ងាយៗដោយ KHQR ឬ USDT</p>
+    </div>
+  </section>
+
+  <!-- ============ AI TOOLS ============ -->
+  <section class="page" id="page-tools">
+    <div class="page-head">
+      <h2>AI Tools · Translate Video Voice</h2>
+      <p>បកប្រែវីដេអូ និងបង្កើតសម្លេង គ្រប់ភាសា — ភាពយន្តបរទេស និយាយជាភាសារបស់អ្នក។</p>
+      <span class="badge green">✓ ដំណើរការបាន</span>
+    </div>
+    <div class="ai-note" id="aiServerNote" style="display:none">⚠️ មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
+    <h2 class="sec-title">⚙️ វាដំណើរការយ៉ាងម៉េច</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div style="flex:1;min-width:0">
+        <h3>ស្ដាប់ · Listen</h3>
+        <p>ជ្រើសវីដេអូរបស់អ្នក (MP4, អតិបរមា 25 MB) — AI នឹងស្ដាប់សំឡេងនិយាយពីដើមដល់ចប់។</p>
+        <div style="margin-top:10px">
+          <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
+          <button class="btn btn-green" id="aiPickBtn" onclick="aiPickFile()" style="padding:11px 18px;font-size:15px">📁 ជ្រើសវីដេអូ</button>
+          <div id="aiFileInfo" style="font-size:14px;margin-top:8px;color:var(--muted);word-break:break-word"></div>
+        </div>
+        <div class="ai-status ai-st-wait" id="aiStep1Status">រង់ចាំ — មិនទាន់មានវីដេអូទេ</div>
+      </div></div>
+      <div class="step"><div class="n">2</div><div style="flex:1;min-width:0">
+        <h3>បកប្រែ · Translate <span style="display:inline-block;font-size:12px;font-weight:900;background:var(--accent-soft);color:var(--accent-dark);border-radius:999px;padding:3px 10px;vertical-align:middle">Microsoft</span></h3>
+        <p>បកប្រែអត្ថបទដែលស្ដាប់បាន ទៅជាភាសាខ្មែរ។</p>
+        <div class="ai-status ai-st-wait" id="aiStep2Status">រង់ចាំ</div>
+      </div></div>
+      <div class="step"><div class="n">3</div><div style="flex:1;min-width:0">
+        <h3>បង្កើតសំឡេង · Voice</h3>
+        <p>បង្កើតសម្លេងនិយាយជាភាសាខ្មែរ ត្រូវនឹងពេលដែលតួនិយាយ។</p>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap" id="aiVoiceChips">
+          <button type="button" class="ai-chip on" data-voice="auto" onclick="aiSetVoice('auto',this)">ស្វ័យប្រវត្តិ</button>
+          <button type="button" class="ai-chip" data-voice="male" onclick="aiSetVoice('male',this)">Piseth · ប្រុស</button>
+          <button type="button" class="ai-chip" data-voice="female" onclick="aiSetVoice('female',this)">Sreymom · ស្រី</button>
+        </div>
+        <div class="ai-status ai-st-wait" id="aiStep3Status">រង់ចាំ</div>
+      </div></div>
+      <div class="step"><div class="n">4</div><div style="flex:1;min-width:0">
+        <h3>ទាញយកវីដេអូ · Download</h3>
+        <p>ទទួលបានវីដេអូដែលបកប្រែរួច ព្រមទាំងអត្ថបទ .srt និងអត្ថបទជាភាសាខ្មែរ។</p>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn btn-green" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:11px 16px;font-size:15px">🎬 វីដេអូ (មានសំឡេងខ្មែរ)</button>
+          <a class="btn btn-ghost" id="aiDlSrt" style="padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5">.SRT</a>
+          <a class="btn btn-ghost" id="aiDlTxt" style="padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5">.TXT</a>
+        </div>
+        <div class="ai-status ai-st-wait" id="aiStep4Status">រង់ចាំ — ដំណើរការចប់សិន</div>
+        <div id="aiDlVideoLink" style="margin-top:10px"></div>
+      </div></div>
+    </div>
+    <div class="mt">
+      <button class="btn btn-green btn-block" id="aiRunBtn" onclick="aiRun()">✦ AI Generate KH</button>
+      <div class="ai-prog" id="aiProgWrap" style="display:none"><i id="aiProgBar"></i></div>
+      <p id="aiMsg" style="font-size:14px;font-weight:700;margin-top:10px;min-height:20px;line-height:1.5"></p>
+    </div>
+    <div id="aiPlayerWrap" style="display:none">
+      <div class="player-box">
+        <video id="aiPlayer" controls playsinline></video>
+        <div class="sub-overlay"><span id="aiSubLine"></span></div>
+      </div>
+      <div class="seg-list" id="aiSegList"></div>
+    </div>
+    <div class="mt">
+      <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank">📩 សួរព័ត៌មានបន្ថែម</a>
+    </div>
+  </section>
+
+  <!-- ============ WEB2APP ============ -->
+  <section class="page" id="page-web2app">
+    <div class="page-head">
+      <h2>Website Web2App Builder APK</h2>
+      <p>អ្នកមានវេបសាយហើយ ចង់ឱ្យវាក្លាយជា App APK ដំឡើងលើទូរសព្ទបានមែនទេ? ដាក់ Link វេបសាយរបស់អ្នកមកទីនេះ។</p>
+      <span class="badge">កំពុងរៀបចំ · មកដល់ឆាប់ៗ</span>
+    </div>
+    <h2 class="sec-title">⚙️ វាដំណើរការយ៉ាងម៉េច</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>ដាក់ Link វេបសាយ</h3><p>ចម្លង Link វេបសាយរបស់អ្នក មកដាក់ក្នុងប្រអប់ខាងក្រោម។</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>ដាក់ឈ្មោះ និង Logo App</h3><p>ជ្រើសឈ្មោះ App និងរូប Logo ដែលអ្នកចង់ឱ្យបង្ហាញលើទូរសព្ទ។</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>បង្កើត APK</h3><p>ប្រព័ន្ធបម្លែងវេបសាយរបស់អ្នក ទៅជា File APK សម្រាប់ Android។</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>ទាញយក និងដំឡើង</h3><p>ទាញយក File APK ហើយដំឡើងលើទូរសព្ទរបស់អ្នក — វេបសាយរបស់អ្នកក្លាយជា App ហើយ។</p></div></div>
+    </div>
+    <div class="mt">
+      <input class="input" id="siteUrl" type="url" placeholder="https://example.com — ដាក់ Link វេបសាយរបស់អ្នក">
+    </div>
+    <div class="mt">
+      <button class="btn btn-green btn-block" onclick="sendRequest()">📩 ផ្ញើសំណើបម្លែងទៅជា APK</button>
+      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:10px">សំណើរបស់អ្នកនឹងផ្ញើទៅ Telegram របស់ម្ចាស់វេបសាយដោយផ្ទាល់</p>
+    </div>
+  </section>
+
+  <!-- ============ PAYMENTS ============ -->
+  <section class="page" id="page-payments">
+    <div class="page-head">
+      <h2>របៀបបង់ប្រាក់</h2>
+      <p>បញ្ចូលលុយ (Top-up) $5 – $500 — សម្រាប់ទិញកញ្ចប់សេវាកម្ម។ ជ្រើសរើសវិធីបង់ប្រាក់មួយ រួចស្កេន QR ដើម្បីបង់។</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div style="flex:1;min-width:0">
+          <h3>Top-up · បញ្ចូលលុយ</h3>
+          <p>បញ្ចូលចំនួនទឹកប្រាក់ ($5 – $500)</p>
+          <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+            <span style="font-size:22px;font-weight:900;color:var(--accent-dark)">$</span>
+            <input class="input" id="topupAmt" type="number" min="5" max="500" value="5" style="flex:1;min-width:0" oninput="document.querySelectorAll('#topupChips .ai-chip').forEach(c=>c.classList.remove('on'))">
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px" id="topupChips">
+            <button type="button" class="ai-chip on" onclick="setTopup(5,this)">$5</button>
+            <button type="button" class="ai-chip" onclick="setTopup(10,this)">$10</button>
+            <button type="button" class="ai-chip" onclick="setTopup(25,this)">$25</button>
+            <button type="button" class="ai-chip" onclick="setTopup(50,this)">$50</button>
+            <button type="button" class="ai-chip" onclick="setTopup(100,this)">$100</button>
+            <button type="button" class="ai-chip" onclick="setTopup(500,this)">$500</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div style="flex:1;min-width:0">
+          <h3>ជ្រើសរើសវិធីបង់ប្រាក់</h3>
+          <p>ចុចជ្រើសរើសវិធីមួយ — QR នឹងលោតឡើងឱ្យស្កេនតែម្ដង។</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+            <button type="button" class="pay-choice" onclick="showPayQR('khqr')"><span style="font-size:26px">🇰🇭</span><b>KHQR</b><small>សម្រាប់អ្នកនៅកម្ពុជា</small></button>
+            <button type="button" class="pay-choice" onclick="showPayQR('usdt')"><span style="font-size:26px">🌍</span><b>Binance USDT</b><small>សម្រាប់អ្នកបរទេស</small></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="payModal" class="pay-modal">
+      <div class="pay-modal-card">
+        <button type="button" class="pay-modal-x" onclick="closePayQR()">✕</button>
+        <h3 id="payModalTitle">ស្កេនដើម្បីបង់</h3>
+        <p id="payAmt" style="font-size:30px;font-weight:900;color:var(--accent-dark);margin:4px 0 12px">$5.00</p>
+        <div id="payKhqr">
+          <img id="payKhqrImg" src="assets/khqr.png" alt="KHQR" style="width:200px;height:200px;max-width:100%;border-radius:16px;display:block;margin:0 auto" onerror="this.style.display='none';document.getElementById('payKhqrPh').style.display='block'">
+          <div class="khqr-ph" id="payKhqrPh" style="display:none">📷 រូប QR Code KHQR នឹងដាក់នៅទីនេះ<br><small>(ម្ចាស់វេបសាយនឹងអាប់ឡូតរូប KHQR របស់ខ្លួន)</small></div>
+          <p style="font-size:14px;line-height:1.6;margin-top:12px">បង់តាម <b>KHQR</b> — ABA / Canadia / Wing</p>
+        </div>
+        <div id="payUsdt" style="display:none">
+          <div class="qr-box"><img src="assets/usdt-qr.png" alt="USDT QR Code"></div>
+          <div class="addr">TPHu2Z45PZ9xUB7AzqMehWKv72HysE9Vzd</div>
+          <div class="mt"><button class="btn btn-ghost btn-block" onclick="copyAddr()">📋 ចម្លងអាសយដ្ឋាន USDT</button></div>
+          <p style="font-size:14px;line-height:1.6;margin-top:12px">បង់តាម <b>USDT (TRC20)</b></p>
+        </div>
+        <p style="font-size:14px;line-height:1.6;margin-top:12px">បន្ទាប់ពីបង់ហើយ ផ្ញើរូបបញ្ជាក់មក Telegram — ម្ចាស់នឹងបញ្ចូលលុយទៅក្នុងគណនីរបស់អ្នក។</p>
+        <div class="mt"><a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank">📩 ផ្ញើបញ្ជាក់ការបង់ប្រាក់</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+  <section class="page" id="page-settings">
+    <div class="page-head">
+      <h2>Settings</h2>
+      <p>កំណត់ API Key សម្រាប់ប្រើមុខងារ AI — បន្ថែមបានច្រើន Key។</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div style="flex:1;min-width:0">
+          <h3>Groq API Key</h3>
+          <p>បន្ថែម Key របស់អ្នក — អាចបន្ថែមបានច្រើន Key ទាំងអស់នឹងប្រើរួមគ្នា។</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <textarea class="input" id="groqKeyInput" rows="3" placeholder="gsk_... (អាចបិទភ្ជាប់ច្រើន Key ក្នុងពេលតែម្ដង — មួយ Key មួយជួរ)" style="flex:1;min-width:0;resize:vertical"></textarea>
+            <button class="btn btn-green" onclick="addGroqKey()" style="padding:12px 18px;font-size:16px;flex:0 0 auto">Add</button>
+          </div>
+          <p id="groqKeyMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
+          <div id="groqKeyList"></div>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div style="flex:1;min-width:0">
+          <h3>កញ្ចប់សេវាកម្ម · Service Packages</h3>
+          <p>សំឡេង Microsoft Edge — ឥតគិតថ្លៃសម្រាប់ម្ចាស់ តែដាក់លក់ជាសេវាកម្ម។ អ្នកចុះឈ្មោះបាន Free 1000 Credit សម្រាប់តេសសំឡេង/បកប្រែ។</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+            <div class="pkg free">
+              <b>Free</b>
+              <p class="pkg-price">1000 Credit</p>
+              <p>សម្រាប់តេសសំឡេង/បកប្រែ · Microsoft Edge</p>
+            </div>
+            <div class="pkg">
+              <b>កញ្ចប់ 1</b>
+              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+              <p>Credit៖ នឹងកំណត់</p>
+            </div>
+            <div class="pkg">
+              <b>កញ្ចប់ 2</b>
+              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+              <p>Credit៖ នឹងកំណត់</p>
+            </div>
+            <div class="pkg">
+              <b>កញ្ចប់ 3</b>
+              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+              <p>Credit៖ នឹងកំណត់</p>
+            </div>
+            <div class="pkg">
+              <b>កញ្ចប់ 4</b>
+              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+              <p>Credit៖ នឹងកំណត់</p>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--muted);margin-top:10px">Credit អស់ → Upgrade កញ្ចប់។</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <div style="flex:1;min-width:0">
+          <h3>Create API Key</h3>
+          <p>បង្កើត API Key សម្រាប់ Khmer Voice ឬគ្រប់សំឡេង 99 សំឡេង — ភ្ជាប់ server ទៅ server។ Key ថ្មីបាន Free 1000 Credit សម្រាប់តេស។</p>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap" id="apiVoiceChips">
+            <button type="button" class="ai-chip on" onclick="apiSetVoice('khmer',this)">Khmer Voice</button>
+            <button type="button" class="ai-chip" onclick="apiSetVoice('all',this)">គ្រប់សំឡេង 99</button>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input class="input" id="apiKeyName" placeholder="ឈ្មោះ Key (ឧ. My App)" style="flex:1;min-width:0">
+            <button class="btn btn-green" onclick="createApiKey()" style="padding:12px 18px;font-size:16px;flex:0 0 auto">Create</button>
+          </div>
+          <p id="apiKeyMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
+          <div id="apiKeyList"></div>
+          <div id="apiConn" style="display:none;background:var(--accent-soft);border-radius:12px;padding:12px;margin-top:10px;font-size:14px;line-height:1.7">
+            <b>តំណភ្ជាប់ · Connection (server-to-server)</b><br>
+            Endpoint: <code style="word-break:break-all">https://all-in-one-sokhoeun.onrender.com/api/voice</code><br>
+            Voice: <span id="apiConnVoice">Khmer Voice</span><br>
+            Key: <code id="apiConnKey" style="word-break:break-all"></code><br>
+            <small>ផ្ញើ Key នេះពេលហៅ server — server នឹងដំណើរការពេល deploy លើ Render។</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  ✨ All In One SOKHOEUN 🇰🇭<br>
+  ទំនាក់ទំនង៖ <a href="https://t.me/yemsokhoeun_9999" target="_blank">Telegram @yemsokhoeun_9999</a><br>
+  © 2026 All In One SOKHOEUN
+</footer>
+
+<script>
+var _origHead=null,_origDrawer=null;
+function applyLogo(src){
+  var h=document.getElementById('logoHead'),d=document.getElementById('logoDrawer');
+  if(src){
+    if(h)h.innerHTML='<img class="logo-img" style="height:44px;width:auto" src="'+src+'" alt="Logo">';
+    if(d)d.innerHTML='<img class="logo-img" style="height:56px;width:auto" src="'+src+'" alt="Logo">';
+  }else{
+    if(h&&_origHead)h.innerHTML=_origHead;
+    if(d&&_origDrawer)d.innerHTML=_origDrawer;
+  }
+}
+function pickLogo(){document.getElementById('logoInput').click()}
+function logoPicked(ev){
+  var f=ev.target.files&&ev.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    var img=new Image();
+    img.onload=function(){
+      var m=Math.min(1,512/Math.max(img.width,img.height));
+      var c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*m));c.height=Math.max(1,Math.round(img.height*m));
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      var url=c.toDataURL('image/png');
+      try{localStorage.setItem('aio-logo',url)}catch(e){}
+      applyLogo(url);
+    };
+    img.onerror=function(){};
+    img.src=r.result;
+  };
+  r.readAsDataURL(f);
+  ev.target.value='';
+}
+function resetLogo(){try{localStorage.removeItem('aio-logo')}catch(e){}applyLogo(null)}
+function getGroqKeys(){try{return JSON.parse(localStorage.getItem('aio-groq-keys')||'[]')}catch(e){return[]}}
+function saveGroqKeys(k){try{localStorage.setItem('aio-groq-keys',JSON.stringify(k))}catch(e){}}
+function maskKey(k){return k.length>10?k.slice(0,4)+'…'+k.slice(-4):'••••'}
+function renderGroqKeys(){
+  var list=document.getElementById('groqKeyList');if(!list)return;
+  var keys=getGroqKeys();
+  if(!keys.length){list.innerHTML='<p style="font-size:14px;color:var(--muted);margin-top:4px">មិនទាន់មាន Key ទេ — បន្ថែម Key ដំបូងរបស់អ្នក</p>';return}
+  list.innerHTML=keys.map(function(k,i){return '<div style="display:flex;align-items:center;gap:8px;background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><span style="flex:1;font-family:monospace;font-size:14px;word-break:break-all">'+maskKey(k)+'</span><button onclick="delGroqKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div>'}).join('');
+}
+function addGroqKey(){
+  var inp=document.getElementById('groqKeyInput'),msg=document.getElementById('groqKeyMsg');
+  var parts=(inp.value||'').split(/[\n,; ]+/).map(function(x){return x.trim()}).filter(Boolean);
+  if(!parts.length){msg.style.color='#dc2626';msg.innerText='សូមបញ្ចូល Key ជាមុន';return}
+  var keys=getGroqKeys(),added=0,bad=0,dup=0;
+  parts.forEach(function(k){
+    if(k.indexOf('gsk_')!==0){bad++;return}
+    if(keys.indexOf(k)>=0){dup++;return}
+    keys.push(k);added++;
+  });
+  saveGroqKeys(keys);inp.value='';
+  if(added>0){msg.style.color='#16a34a';msg.innerText='✓ បានបន្ថែម '+added+' Key (សរុប '+keys.length+' Key)'+(bad?' · '+bad+' មិនត្រឹមត្រូវ':'')+(dup?' · '+dup+' មានរួចហើយ':'')}
+  else{msg.style.color='#dc2626';msg.innerText=bad?'Key មិនត្រឹមត្រូវ (ត្រូវចាប់ផ្ដើមដោយ gsk_)':'Key ទាំងនេះមានរួចហើយ'}
+  renderGroqKeys();
+}
+function delGroqKey(i){var keys=getGroqKeys();keys.splice(i,1);saveGroqKeys(keys);renderGroqKeys()}
+function genApiKey(){var c='abcdef0123456789',s='sk-';for(var i=0;i<32;i++)s+=c[Math.floor(Math.random()*16)];return s}
+function getApiKeys(){try{return JSON.parse(localStorage.getItem('aio-api-keys')||'[]')}catch(e){return[]}}
+function saveApiKeys(k){try{localStorage.setItem('aio-api-keys',JSON.stringify(k))}catch(e){}}
+var apiVoice='khmer';
+function apiSetVoice(v,el){apiVoice=v;document.querySelectorAll('#apiVoiceChips .ai-chip').forEach(function(c){c.classList.toggle('on',c===el)})}
+function createApiKey(){
+  var nm=document.getElementById('apiKeyName').value.trim()||'My Key';
+  var keys=getApiKeys();
+  keys.push({name:nm,voice:apiVoice,key:genApiKey(),credits:1000});
+  saveApiKeys(keys);document.getElementById('apiKeyName').value='';
+  var m=document.getElementById('apiKeyMsg');m.style.color='#16a34a';m.innerText='✓ បានបង្កើត Key «'+nm+'» — Free 1000 Credit';
+  renderApiKeys();
+}
+function renderApiKeys(){
+  var list=document.getElementById('apiKeyList');if(!list)return;
+  var keys=getApiKeys();
+  if(!keys.length){list.innerHTML='';return}
+  list.innerHTML=keys.map(function(k,i){return '<div style="background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-weight:700">'+k.name+' · '+(k.voice==='khmer'?'Khmer Voice':'99 សំឡេង')+'</span><span style="font-size:13px;color:var(--muted)">'+k.credits+' Credit</span><button onclick="copyApiKey('+i+')" style="border:none;background:transparent;font-size:15px;cursor:pointer">📋</button><button onclick="delApiKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div><div style="font-family:monospace;font-size:13px;word-break:break-all;margin-top:6px">'+k.key.slice(0,7)+'…'+k.key.slice(-4)+'</div><div style="margin-top:6px"><button class="btn btn-ghost" style="padding:8px 12px;font-size:13px" onclick="showApiConn('+i+')">តំណភ្ជាប់ · Connection</button></div></div>'}).join('');
+}
+function copyApiKey(i){var k=getApiKeys()[i];if(!k)return;if(navigator.clipboard)navigator.clipboard.writeText(k.key)}
+function delApiKey(i){var keys=getApiKeys();keys.splice(i,1);saveApiKeys(keys);renderApiKeys();document.getElementById('apiConn').style.display='none'}
+function showApiConn(i){
+  var k=getApiKeys()[i];if(!k)return;
+  document.getElementById('apiConnKey').innerText=k.key;
+  document.getElementById('apiConnVoice').innerText=k.voice==='khmer'?'Khmer Voice':'គ្រប់សំឡេង 99';
+  document.getElementById('apiConn').style.display='block';
+}
+function openMenu(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')}
+function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')}
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.menu-item').forEach(m=>m.classList.toggle('active',m.dataset.page===page));
+  location.hash=page; closeMenu(); window.scrollTo({top:0,behavior:'smooth'});
+  if(page==='tools'&&typeof aiCheckServer==='function'){aiCheckServer()}
+}
+function setTheme(name,el){
+  document.body.dataset.theme=name;
+  document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.dot.'+(name==='night'?'night':name)).forEach(d=>d.classList.add('active'));
+  try{localStorage.setItem('aio-theme',name)}catch(e){}
+}
+function copyAddr(){
+  var t=document.getElementById('usdtAddr').innerText.trim();
+  function done(btn){btn.innerText='✓ បានចម្លងហើយ';setTimeout(()=>btn.innerText='📋 ចម្លងអាសយដ្ឋាន USDT',2000)}
+  var btn=event.currentTarget;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>done(btn)).catch(()=>{fallback()})}else{fallback()}
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done(btn)}catch(e){}document.body.removeChild(ta)}
+}
+function setTopup(n,el){document.getElementById('topupAmt').value=n;document.querySelectorAll('#topupChips .ai-chip').forEach(function(c){c.classList.toggle('on',c===el)})}
+function topupAmount(){var v=parseFloat(document.getElementById('topupAmt').value)||0;if(v<5)v=5;if(v>500)v=500;document.getElementById('topupAmt').value=v;return v}
+function showPayQR(m){
+  var amt=topupAmount();
+  document.getElementById('payAmt').innerText='$'+amt.toFixed(2);
+  document.getElementById('payModalTitle').innerText=m==='khqr'?'🇰🇭 ស្កេន KHQR ដើម្បីបង់':'🌍 ស្កេន USDT ដើម្បីបង់';
+  document.getElementById('payKhqr').style.display=m==='khqr'?'block':'none';
+  document.getElementById('payUsdt').style.display=m==='usdt'?'block':'none';
+  document.getElementById('payModal').classList.add('open');
+}
+function closePayQR(){document.getElementById('payModal').classList.remove('open')}
+function sendRequest(){
+  var u=document.getElementById('siteUrl').value.trim();
+  var msg=u?('ខ្ញុំចង់បម្លែងវេបសាយទៅជា App APK៖ '+u):'ខ្ញុំចង់បម្លែងវេបសាយទៅជា App APK';
+  window.open('https://t.me/yemsokhoeun_9999?text='+encodeURIComponent(msg),'_blank');
+}
+(function(){
+  try{_origHead=document.getElementById('logoHead').innerHTML;_origDrawer=document.getElementById('logoDrawer').innerHTML;var L=localStorage.getItem('aio-logo');if(L)applyLogo(L)}catch(e){}
+  try{renderGroqKeys()}catch(e){}
+  try{renderApiKeys()}catch(e){}
+  try{var b=localStorage.getItem('aio-balance');if(b){document.getElementById('acctBal').innerText='$'+parseFloat(b).toFixed(2)}}catch(e){}
+  try{var s=localStorage.getItem('aio-theme');if(s){document.body.dataset.theme=s;document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));document.querySelectorAll('.dot.'+(s==='night'?'night':s)).forEach(d=>d.classList.add('active'))}}catch(e){}
+  var h=(location.hash||'').replace('#','');
+  if(['home','tools','web2app','payments'].indexOf(h)>=0&&h!=='home'){go(h)}
+  if(new URLSearchParams(location.search).get('menu')==='1'){openMenu()}
+})();
+
+/* ================= AI Tools · Khmer-voice video pipeline =================
+   Keys live in the visitor's own browser (Settings → localStorage
+   'aio-groq-keys') and are sent with each run request only. The server
+   never stores them. */
+var ai = { project:null, pollTimer:null, voice:'auto', activeSeg:-1, serverOk:false, exporting:false };
+var aiSegAudio = new Audio(); aiSegAudio.preload = 'auto';
+var aiExp = { rec:null, chunks:[], canvas:null, ctx:null, raf:0, actx:null, vGain:null, aSrc:null, vSrc:null, url:null };
+
+function aiSetStatus(id, text, cls){
+  var el = document.getElementById(id); if(!el) return;
+  el.textContent = text;
+  el.className = 'ai-status ' + (cls || 'ai-st-wait');
+}
+function aiMsg(text, ok){
+  var el = document.getElementById('aiMsg'); if(!el) return;
+  el.textContent = text || '';
+  el.style.color = ok === true ? '#16a34a' : ok === false ? '#dc2626' : 'var(--muted)';
+}
+function aiSetVoice(v, btn){
+  ai.voice = v;
+  document.querySelectorAll('#aiVoiceChips .ai-chip').forEach(c => c.classList.toggle('on', c === btn));
+}
+async function aiCheckServer(){
+  var note = document.getElementById('aiServerNote');
+  try{
+    var r = await fetch('/api/ai/projects');
+    if(!r.ok) throw new Error('no-server');
+    var j = await r.json();
+    ai.serverOk = true;
+    if(note) note.style.display = 'none';
+    if(j.projects && j.projects.length && !ai.project){ aiOpenProject(j.projects[0], false); }
+  }catch(e){
+    ai.serverOk = false;
+    if(note) note.style.display = 'block';
+  }
+}
+function aiPickFile(){ document.getElementById('aiFile').click(); }
+function aiFmtMB(n){ return (n / 1048576).toFixed(1) + ' MB'; }
+async function aiFileChosen(ev){
+  var f = ev.target.files && ev.target.files[0];
+  ev.target.value = '';
+  if(!f) return;
+  if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
+  if(f.size > 25 * 1024 * 1024){ aiMsg('ឯកសារធំពេក — អតិបរមា 25 MB', false); return; }
+  aiMsg('កំពុងផ្ទុកឡើង… ' + aiFmtMB(f.size));
+  document.getElementById('aiFileInfo').textContent = f.name + ' · ' + aiFmtMB(f.size);
+  try{
+    var r = await fetch('/api/ai/upload?name=' + encodeURIComponent(f.name) + '&title=' + encodeURIComponent(f.name.replace(/\.[^.]+$/, '')), { method:'POST', body:f });
+    var j = await r.json().catch(() => ({}));
+    if(!r.ok) throw new Error((j.message && j.message.km) || 'ផ្ទុកឡើងមិនបានទេ');
+    aiMsg('✓ បានផ្ទុកឡើងហើយ — ចុច AI Generate KH ដើម្បីចាប់ផ្ដើម', true);
+    aiOpenProject(j.project, true);
+  }catch(e){ aiMsg(e.message || 'ផ្ទុកឡើងមិនបានទេ', false); }
+}
+function aiOpenProject(p, show){
+  ai.project = p;
+  ai.activeSeg = -1;
+  var v = document.getElementById('aiPlayer');
+  if(v){ v.src = p.videoUrl; }
+  document.getElementById('aiPlayerWrap').style.display = 'block';
+  document.getElementById('aiFileInfo').textContent = p.originalName || p.title;
+  aiRenderProject();
+  if(p.status === 'running') aiStartPolling();
+  if(show) document.getElementById('aiPlayerWrap').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+function aiStepText(p){
+  var total = (p.segments || []).length;
+  var voiced = (p.segments || []).filter(s => s.audio).length;
+  var translated = (p.segments || []).filter(s => s.khmer).length;
+  return { total: total, voiced: voiced, translated: translated };
+}
+function aiRenderProject(){
+  var p = ai.project; if(!p) return;
+  var c = aiStepText(p);
+  var prog = p.progress || '';
+  var running = p.status === 'running';
+  // Step 1 · Listen
+  if(p.status === 'done' || prog === 'step2' || prog.indexOf('step3') === 0 || c.total > 0)
+    aiSetStatus('aiStep1Status', '✓ ស្ដាប់រួច · ' + c.total + ' ជួរ', 'ai-st-done');
+  else if(prog === 'step1')
+    aiSetStatus('aiStep1Status', '⏳ កំពុងស្ដាប់…', 'ai-st-work');
+  else if(p.status === 'error')
+    aiSetStatus('aiStep1Status', '✕ មានបញ្ហា — មើលសារខាងក្រោម', 'ai-st-err');
+  else
+    aiSetStatus('aiStep1Status', p.status === 'idle' ? 'រង់ចាំ — ចុច AI Generate KH' : 'រង់ចាំ', 'ai-st-wait');
+  // Step 2 · Translate
+  if(c.translated > 0 && (p.status === 'done' || prog.indexOf('step3') === 0))
+    aiSetStatus('aiStep2Status', '✓ បកប្រែរួច · ' + c.translated + '/' + c.total + ' ជួរ', 'ai-st-done');
+  else if(prog === 'step2')
+    aiSetStatus('aiStep2Status', '⏳ កំពុងបកប្រែ… ' + c.translated + '/' + c.total + ' ជួរ', 'ai-st-work');
+  else if(p.status === 'error' && (prog === 'step2' || c.total > 0))
+    aiSetStatus('aiStep2Status', '✕ បកប្រែមិនបានទេ — មើលសារខាងក្រោម', 'ai-st-err');
+  else
+    aiSetStatus('aiStep2Status', 'រង់ចាំ', 'ai-st-wait');
+  // Step 3 · Voice
+  if(p.status === 'done')
+    aiSetStatus('aiStep3Status', '✓ បង្កើតសំឡេងរួច · ' + c.voiced + '/' + c.total + ' ជួរ' + (p.voiceFailed ? ' · ' + p.voiceFailed + ' ជួរបង្កើតមិនបាន' : ''), 'ai-st-done');
+  else if(prog.indexOf('step3') === 0)
+    aiSetStatus('aiStep3Status', '⏳ កំពុងបង្កើតសំឡេង… (' + prog.split(':')[1] + ')', 'ai-st-work');
+  else if(p.status === 'error' && prog.indexOf('step3') === 0)
+    aiSetStatus('aiStep3Status', '✕ បង្កើតសំឡេងមិនបានទេ', 'ai-st-err');
+  else
+    aiSetStatus('aiStep3Status', 'រង់ចាំ', 'ai-st-wait');
+  // Step 4 · Download
+  var srt = document.getElementById('aiDlSrt'), txt = document.getElementById('aiDlTxt'), vid = document.getElementById('aiDlVideoBtn');
+  if(p.status === 'done' && c.total > 0){
+    srt.href = '/api/ai/' + p.id + '/subtitles.srt'; srt.style.pointerEvents = 'auto'; srt.style.opacity = '1';
+    txt.href = '/api/ai/' + p.id + '/script.txt'; txt.style.pointerEvents = 'auto'; txt.style.opacity = '1';
+    vid.disabled = false;
+    aiSetStatus('aiStep4Status', '✓ រួចរាល់ — ទាញយកបានហើយ', 'ai-st-done');
+  }else{
+    srt.removeAttribute('href'); srt.style.pointerEvents = 'none'; srt.style.opacity = '.5';
+    txt.removeAttribute('href'); txt.style.pointerEvents = 'none'; txt.style.opacity = '.5';
+    vid.disabled = true;
+    aiSetStatus('aiStep4Status', running ? 'រង់ចាំ — កំពុងដំណើរការ' : 'រង់ចាំ — ដំណើរការចប់សិន', 'ai-st-wait');
+  }
+  // Progress bar
+  var wrap = document.getElementById('aiProgWrap'), bar = document.getElementById('aiProgBar');
+  var pct = 0;
+  if(p.status === 'done') pct = 100;
+  else if(prog === 'step1') pct = 15;
+  else if(prog === 'step2') pct = 45;
+  else if(prog.indexOf('step3') === 0){
+    var parts = prog.split(':')[1] ? prog.split(':')[1].split('/') : [];
+    var done = parts[0] ? parseInt(parts[0], 10) : 0, tot = parts[1] ? parseInt(parts[1], 10) : (c.total || 1);
+    pct = 66 + Math.round(34 * (done / Math.max(1, tot)));
+  }
+  if(running || p.status === 'done'){ wrap.style.display = 'block'; bar.style.width = pct + '%'; }
+  else { wrap.style.display = 'none'; }
+  // Run button + error message
+  var runBtn = document.getElementById('aiRunBtn');
+  runBtn.disabled = running;
+  runBtn.textContent = running ? '⏳ កំពុងដំណើរការ…' : '✦ AI Generate KH';
+  if(p.status === 'error' && p.error) aiMsg(p.error.km || p.error.en || 'មានបញ្ហា', false);
+  else if(p.status === 'done') aiMsg('✓ រួចរាល់ហើយ — ចុចចាក់វីដេអូដើម្បីស្ដាប់សំឡេងខ្មែរ', true);
+  aiRenderSegList();
+}
+function aiFmtTime(sec){
+  sec = Math.max(0, Math.floor(Number(sec) || 0));
+  return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+}
+function aiRenderSegList(){
+  var p = ai.project, list = document.getElementById('aiSegList');
+  if(!p || !p.segments || !p.segments.length){ list.innerHTML = ''; return; }
+  list.innerHTML = '';
+  p.segments.forEach(function(sg, i){
+    var row = document.createElement('div');
+    row.className = 'seg' + (i === ai.activeSeg ? ' active' : '');
+    row.id = 'ai-seg-' + i;
+    var tm = document.createElement('div'); tm.className = 'time'; tm.textContent = aiFmtTime(sg.start) + ' - ' + aiFmtTime(sg.end);
+    var body = document.createElement('div'); body.className = 'body';
+    var orig = document.createElement('div'); orig.className = 'orig'; orig.textContent = sg.text || '';
+    var kh = document.createElement('div'); kh.className = 'kh'; kh.textContent = sg.khmer || '';
+    body.appendChild(orig); body.appendChild(kh);
+    body.onclick = function(){ var v = document.getElementById('aiPlayer'); v.currentTime = sg.start + 0.01; v.play().catch(function(){}); };
+    var cp = document.createElement('button'); cp.className = 'copy-btn'; cp.type = 'button'; cp.textContent = '⧉ Copy';
+    cp.onclick = function(){
+      var done = function(){ cp.textContent = '✓ បានចម្លង'; cp.classList.add('ok'); setTimeout(function(){ cp.textContent = '⧉ Copy'; cp.classList.remove('ok'); }, 1500); };
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(sg.khmer || '').then(done).catch(done); }
+      else { var ta = document.createElement('textarea'); ta.value = sg.khmer || ''; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done(); }
+    };
+    row.appendChild(tm); row.appendChild(body); row.appendChild(cp);
+    list.appendChild(row);
+  });
+}
+async function aiRun(){
+  if(!ai.project){ aiMsg('សូមជ្រើសវីដេអូជាមុនសិន', false); return; }
+  if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
+  var keys = getGroqKeys();
+  if(!keys.length){
+    aiMsg('មិនទាន់មាន API Key ទេ — សូមទៅ Settings បន្ថែម Key ជាមុនសិន', false);
+    return;
+  }
+  aiMsg('កំពុងចាប់ផ្ដើម…');
+  try{
+    var r = await fetch('/api/ai/' + ai.project.id + '/run', {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ keys: keys, voice: ai.voice })
+    });
+    var j = await r.json().catch(() => ({}));
+    if(!r.ok) throw new Error((j.message && j.message.km) || 'ចាប់ផ្ដើមមិនបានទេ');
+    ai.project.status = 'running'; ai.project.progress = 'step1';
+    aiRenderProject();
+    aiStartPolling();
+  }catch(e){ aiMsg(e.message || 'ចាប់ផ្ដើមមិនបានទេ', false); }
+}
+function aiStartPolling(){
+  aiStopPolling();
+  ai.pollTimer = setInterval(async function(){
+    if(!ai.project){ aiStopPolling(); return; }
+    try{
+      var r = await fetch('/api/ai/' + ai.project.id);
+      if(!r.ok) throw new Error('gone');
+      var j = await r.json();
+      ai.project = j.project;
+      aiRenderProject();
+      if(j.project.status !== 'running') aiStopPolling();
+    }catch(e){ aiStopPolling(); }
+  }, 2000);
+}
+function aiStopPolling(){ if(ai.pollTimer){ clearInterval(ai.pollTimer); ai.pollTimer = null; } }
+
+/* ---- player: timed Khmer voice + subtitles (duck original to 0 while a line speaks) ---- */
+function aiCurrentSeg(time){
+  var p = ai.project;
+  if(!p || !p.segments) return -1;
+  return p.segments.findIndex(function(sg){ return time >= sg.start && time < sg.end; });
+}
+(function(){
+  var v = document.getElementById('aiPlayer');
+  if(!v) return;
+  v.addEventListener('timeupdate', function(){
+    var idx = aiCurrentSeg(v.currentTime);
+    if(idx === ai.activeSeg){
+      if(ai.exporting && aiExp.vGain){ aiExp.vGain.gain.value = (idx >= 0 && ai.project.segments[idx].audio) ? 0 : 1; }
+      return;
+    }
+    ai.activeSeg = idx;
+    var p = ai.project;
+    document.querySelectorAll('#aiSegList .seg').forEach(function(el){ el.classList.remove('active'); });
+    if(idx >= 0 && p && p.segments[idx]){
+      var sg = p.segments[idx];
+      document.getElementById('aiSubLine').textContent = sg.khmer || '';
+      var el = document.getElementById('ai-seg-' + idx);
+      if(el) el.classList.add('active');
+      if(sg.audio && !v.paused){
+        aiSegAudio.src = sg.audio;
+        aiSegAudio.currentTime = Math.max(0, v.currentTime - sg.start);
+        aiSegAudio.play().catch(function(){});
+      } else { aiSegAudio.pause(); }
+      if(ai.exporting && aiExp.vGain){ aiExp.vGain.gain.value = sg.audio ? 0 : 1; }
+    } else {
+      document.getElementById('aiSubLine').textContent = '';
+      aiSegAudio.pause();
+      if(ai.exporting && aiExp.vGain){ aiExp.vGain.gain.value = 1; }
+    }
+    if(ai.exporting){
+      var dur = v.duration || 0;
+      if(dur) aiMsg('🎬 កំពុងថតវីដេអូ… ' + aiFmtTime(v.currentTime) + ' / ' + aiFmtTime(dur));
+    }
+  });
+  v.addEventListener('pause', function(){ aiSegAudio.pause(); });
+  v.addEventListener('play', function(){
+    var idx = aiCurrentSeg(v.currentTime);
+    var p = ai.project;
+    if(idx >= 0 && p && p.segments[idx] && p.segments[idx].audio){
+      aiSegAudio.src = p.segments[idx].audio;
+      aiSegAudio.currentTime = Math.max(0, v.currentTime - p.segments[idx].start);
+      aiSegAudio.play().catch(function(){});
+    }
+  });
+  v.addEventListener('seeked', function(){ ai.activeSeg = -2; });
+  v.addEventListener('ended', function(){ if(ai.exporting) aiExportStop(); });
+})();
+
+/* ---- dubbed video export: record the playback (video + Khmer voice) on the device ---- */
+function aiExportStop(){
+  if(!ai.exporting) return;
+  ai.exporting = false;
+  var v = document.getElementById('aiPlayer');
+  try{ v.pause(); }catch(e){}
+  if(aiExp.raf) cancelAnimationFrame(aiExp.raf);
+  if(aiExp.rec && aiExp.rec.state !== 'inactive'){
+    try{ aiExp.rec.stop(); }catch(e){ aiExportFinish(); }
+  } else aiExportFinish();
+}
+function aiExportFinish(){
+  var btn = document.getElementById('aiDlVideoBtn');
+  btn.disabled = false; btn.textContent = '🎬 វីដេអូ (មានសំឡេងខ្មែរ)';
+  if(aiExp.chunks.length){
+    var blob = new Blob(aiExp.chunks, { type:'video/webm' });
+    var url = URL.createObjectURL(blob);
+    var box = document.getElementById('aiDlVideoLink');
+    var a = document.createElement('a');
+    a.href = url; a.download = (ai.project.title || 'sokhoeun') + ' - SOKHOEUN.webm';
+    a.className = 'btn btn-green btn-block'; a.style.marginTop = '8px';
+    a.textContent = '⬇ ទាញយកវីដេអូដែលបានថត (' + (blob.size / 1048576).toFixed(1) + ' MB)';
+    box.innerHTML = ''; box.appendChild(a);
+    aiMsg('✓ ថតវីដេអូរួចហើយ — ចុចប៊ូតុងខាងលើដើម្បីទាញយក', true);
+  } else {
+    aiMsg('ថតវីដេអូមិនបានទេ — សូមព្យាយាមម្ដងទៀត', false);
+  }
+  aiExp.chunks = [];
+}
+async function aiExportVideo(){
+  var p = ai.project;
+  if(!p || p.status !== 'done'){ aiMsg('សូមដំណើរការវីដេអូឱ្យរួចសិន', false); return; }
+  if(ai.exporting){ aiExportStop(); return; }
+  var v = document.getElementById('aiPlayer');
+  if(!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream){
+    aiMsg('ទូរសព្ទនេះមិនគាំទ្រការថតវីដេអូទេ — សូមប្រើ .SRT / .TXT', false);
+    return;
+  }
+  try{
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!aiExp.actx) aiExp.actx = new AC();
+    if(aiExp.actx.state === 'suspended') await aiExp.actx.resume();
+    if(!aiExp.vSrc){
+      aiExp.vSrc = aiExp.actx.createMediaElementSource(v);
+      aiExp.vGain = aiExp.actx.createGain(); aiExp.vGain.gain.value = 1;
+      aiExp.dest = aiExp.actx.createMediaStreamDestination();
+      aiExp.vSrc.connect(aiExp.vGain); aiExp.vGain.connect(aiExp.actx.destination); aiExp.vGain.connect(aiExp.dest);
+    }
+    if(!aiExp.aSrc){
+      aiExp.aSrc = aiExp.actx.createMediaElementSource(aiSegAudio);
+      aiExp.aSrc.connect(aiExp.actx.destination); aiExp.aSrc.connect(aiExp.dest);
+    }
+    if(!aiExp.canvas){
+      aiExp.canvas = document.createElement('canvas');
+      aiExp.ctx = aiExp.canvas.getContext('2d');
+    }
+    aiExp.canvas.width = v.videoWidth || 640;
+    aiExp.canvas.height = v.videoHeight || 360;
+    var vStream = aiExp.canvas.captureStream(30);
+    var combined = new MediaStream(vStream.getVideoTracks().concat(aiExp.dest.stream.getAudioTracks()));
+    var mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus') ? 'video/webm;codecs=vp9,opus' : 'video/webm';
+    var rec = new MediaRecorder(combined, { mimeType: mime, videoBitsPerSecond: 2500000 });
+    aiExp.chunks = [];
+    rec.ondataavailable = function(ev){ if(ev.data && ev.data.size) aiExp.chunks.push(ev.data); };
+    rec.onstop = function(){ aiExportFinish(); };
+    aiExp.rec = rec;
+    ai.exporting = true;
+    var btn = document.getElementById('aiDlVideoBtn');
+    btn.textContent = '■ បញ្ឈប់ការថត';
+    document.getElementById('aiDlVideoLink').innerHTML = '';
+    aiMsg('🎬 កំពុងថតវីដេអូ… សូមកុំបិទទំព័រនេះ');
+    v.currentTime = 0;
+    ai.activeSeg = -2;
+    rec.start(500);
+    var draw = function(){
+      if(!ai.exporting) return;
+      try{ aiExp.ctx.drawImage(v, 0, 0, aiExp.canvas.width, aiExp.canvas.height); }catch(e){}
+      aiExp.raf = requestAnimationFrame(draw);
+    };
+    draw();
+    await v.play();
+  }catch(e){
+    ai.exporting = false;
+    document.getElementById('aiDlVideoBtn').textContent = '🎬 វីដេអូ (មានសំឡេងខ្មែរ)';
+    aiMsg('ថតវីដេអូមិនបានទេ៖ ' + (e && e.message ? e.message : 'មានបញ្ហា'), false);
+  }
+}
+
+</script>
+</body>
+</html>
