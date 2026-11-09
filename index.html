@@ -162,6 +162,9 @@ footer a{color:var(--accent-dark);font-weight:700}
   .pkg-price{font-size:18px;font-weight:900;color:var(--accent-dark);margin:6px 0 2px}
   .pkg p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
 
+.spin{width:36px;height:36px;border:4px solid var(--accent-soft);border-top-color:var(--accent);border-radius:50%;margin:0 auto;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.codebox{background:#0f172a;color:#d1fae5;border-radius:12px;padding:12px;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre;margin:6px 0 0;font-family:monospace}
 /* ===== Auto Device — វេបសាយផ្លាស់ប្ដូរទម្រង់តាមឧបករណ៍ដោយស្វ័យប្រវត្តិ (អត់បង្ហាញអ្វីទាំងអស់) ===== */
 @media (min-width:768px){
   .house{max-width:820px}
@@ -201,6 +204,8 @@ footer a{color:var(--accent-dark);font-weight:700}
     <button class="menu-item" data-page="web2app" onclick="go('web2app')"><span>Web2App Builder · APK</span></button>
     <button class="menu-item" data-page="payments" onclick="go('payments')"><span>របៀបបង់ប្រាក់</span></button>
     <button class="menu-item" data-page="settings" onclick="go('settings')"><span>Settings</span></button>
+    <button class="menu-item" data-page="packages" onclick="go('packages')"><span>កញ្ចប់សេវាកម្ម</span></button>
+    <button class="menu-item" data-page="apikey" onclick="go('apikey')"><span>Create API Key</span></button>
   </nav>
   <div class="drawer-foot">
     ពណ៌វេបសាយ៖
@@ -426,65 +431,100 @@ footer a{color:var(--accent-dark);font-weight:700}
           <div id="groqKeyList"></div>
         </div>
       </div>
-      <div class="step">
-        <span class="n">2</span>
-        <div style="flex:1;min-width:0">
-          <h3>កញ្ចប់សេវាកម្ម · Service Packages</h3>
-          <p>សំឡេង Microsoft Edge — ឥតគិតថ្លៃសម្រាប់ម្ចាស់ តែដាក់លក់ជាសេវាកម្ម។ អ្នកចុះឈ្មោះបាន Free 1000 Credit សម្រាប់តេសសំឡេង/បកប្រែ។</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
-            <div class="pkg free">
-              <b>Free</b>
-              <p class="pkg-price">1000 Credit</p>
-              <p>សម្រាប់តេសសំឡេង/បកប្រែ · Microsoft Edge</p>
-            </div>
-            <div class="pkg">
-              <b>កញ្ចប់ 1</b>
-              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-              <p>Credit៖ នឹងកំណត់</p>
-            </div>
-            <div class="pkg">
-              <b>កញ្ចប់ 2</b>
-              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-              <p>Credit៖ នឹងកំណត់</p>
-            </div>
-            <div class="pkg">
-              <b>កញ្ចប់ 3</b>
-              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-              <p>Credit៖ នឹងកំណត់</p>
-            </div>
-            <div class="pkg">
-              <b>កញ្ចប់ 4</b>
-              <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-              <p>Credit៖ នឹងកំណត់</p>
-            </div>
-          </div>
-          <p style="font-size:13px;color:var(--muted);margin-top:10px">Credit អស់ → Upgrade កញ្ចប់។</p>
+    </div>
+  </section>
+  <!-- ============ PACKAGES ============ -->
+  <section class="page" id="page-packages">
+    <div class="page-head">
+      <h2>កញ្ចប់សេវាកម្ម</h2>
+      <p>សំឡេង Microsoft Edge — ឥតគិតថ្លៃសម្រាប់ម្ចាស់ តែដាក់លក់ជាសេវាកម្ម។ អ្នកចុះឈ្មោះបាន Free 1000 Credit សម្រាប់តេសសំឡេង/បកប្រែ។</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="pkg free">
+        <b>Free</b>
+        <p class="pkg-price">1000 Credit</p>
+        <p>សម្រាប់តេសសំឡេង/បកប្រែ · Microsoft Edge</p>
+      </div>
+      <div class="pkg">
+        <b>កញ្ចប់ 1</b>
+        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+        <p>Credit៖ នឹងកំណត់</p>
+      </div>
+      <div class="pkg">
+        <b>កញ្ចប់ 2</b>
+        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+        <p>Credit៖ នឹងកំណត់</p>
+      </div>
+      <div class="pkg">
+        <b>កញ្ចប់ 3</b>
+        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+        <p>Credit៖ នឹងកំណត់</p>
+      </div>
+      <div class="pkg">
+        <b>កញ្ចប់ 4</b>
+        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
+        <p>Credit៖ នឹងកំណត់</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Credit អស់ → Upgrade កញ្ចប់។</p>
+  </section>
+
+  <!-- ============ API KEY ============ -->
+  <section class="page" id="page-apikey">
+    <div class="page-head">
+      <h2>Create API Key</h2>
+      <p>បង្កើត API Key សម្រាប់ Khmer Voice ឬគ្រប់សំឡេង 99 សំឡេង — ភ្ជាប់ server ទៅ server។ Key ថ្មីបាន Free 1000 Credit សម្រាប់តេស។</p>
+    </div>
+    <div class="card wide">
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="apiVoiceChips">
+        <button type="button" class="ai-chip on" onclick="apiSetVoice('khmer',this)">Khmer Voice</button>
+        <button type="button" class="ai-chip" onclick="apiSetVoice('all',this)">គ្រប់សំឡេង 99</button>
+      </div>
+      <div style="margin-top:12px">
+        <input class="input" id="apiKeyName" placeholder="ឈ្មោះ Key (ឧ. My App)" style="width:100%">
+      </div>
+      <p style="font-size:14px;font-weight:700;margin-top:14px">ថ្ងៃផត់កំណត់ · Expiry</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px" id="apiExpChips">
+        <button type="button" class="ai-chip on" onclick="apiSetExp(30,this)">30 ថ្ងៃ</button>
+        <button type="button" class="ai-chip" onclick="apiSetExp(90,this)">90 ថ្ងៃ</button>
+        <button type="button" class="ai-chip" onclick="apiSetExp(365,this)">365 ថ្ងៃ</button>
+      </div>
+      <div style="margin-top:14px">
+        <button class="btn btn-green btn-block" id="apiCreateBtn" onclick="createApiKey()">Create API Key</button>
+      </div>
+      <p id="apiKeyMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
+      <div id="apiCreating" style="display:none;text-align:center;padding:16px 0">
+        <div class="spin"></div>
+        <p style="font-size:14px;margin-top:10px">កំពុងបង្កើត API Key…</p>
+      </div>
+      <div id="apiCreated" style="display:none;background:var(--accent-soft);border-radius:12px;padding:12px;margin-top:10px">
+        <b>✅ API Key របស់អ្នក — ចម្លងទុកឥឡូវ (បង្ហាញតែម្ដងប៉ុណ្ណោះ)</b>
+        <code id="apiNewKey" style="display:block;word-break:break-all;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px;font-size:14px"></code>
+        <p id="apiNewExp" style="font-size:13px;margin-top:8px"></p>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn btn-green" id="apiCopyNewBtn" style="flex:1" onclick="copyNewKey()">📋 Copy Key</button>
+          <button class="btn btn-ghost" style="flex:1" onclick="closeCreated()">Done</button>
         </div>
       </div>
-      <div class="step">
-        <span class="n">3</span>
-        <div style="flex:1;min-width:0">
-          <h3>Create API Key</h3>
-          <p>បង្កើត API Key សម្រាប់ Khmer Voice ឬគ្រប់សំឡេង 99 សំឡេង — ភ្ជាប់ server ទៅ server។ Key ថ្មីបាន Free 1000 Credit សម្រាប់តេស។</p>
-          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap" id="apiVoiceChips">
-            <button type="button" class="ai-chip on" onclick="apiSetVoice('khmer',this)">Khmer Voice</button>
-            <button type="button" class="ai-chip" onclick="apiSetVoice('all',this)">គ្រប់សំឡេង 99</button>
-          </div>
-          <div style="display:flex;gap:8px;margin-top:12px">
-            <input class="input" id="apiKeyName" placeholder="ឈ្មោះ Key (ឧ. My App)" style="flex:1;min-width:0">
-            <button class="btn btn-green" onclick="createApiKey()" style="padding:12px 18px;font-size:16px;flex:0 0 auto">Create</button>
-          </div>
-          <p id="apiKeyMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
-          <div id="apiKeyList"></div>
-          <div id="apiConn" style="display:none;background:var(--accent-soft);border-radius:12px;padding:12px;margin-top:10px;font-size:14px;line-height:1.7">
-            <b>តំណភ្ជាប់ · Connection (server-to-server)</b><br>
-            Endpoint: <code style="word-break:break-all">https://all-in-one-sokhoeun.onrender.com/api/voice</code><br>
-            Voice: <span id="apiConnVoice">Khmer Voice</span><br>
-            Key: <code id="apiConnKey" style="word-break:break-all"></code><br>
-            <small>ផ្ញើ Key នេះពេលហៅ server — server នឹងដំណើរការពេល deploy លើ Render។</small>
-          </div>
-        </div>
+      <div id="apiKeyList"></div>
+      <div id="apiConn" style="display:none;background:var(--accent-soft);border-radius:12px;padding:12px;margin-top:10px;font-size:14px;line-height:1.7">
+        <b>តំណភ្ជាប់ · Connection (server-to-server)</b><br>
+        Endpoint: <code style="word-break:break-all">https://all-in-one-sokhoeun.onrender.com/api/voice</code><br>
+        Voice: <span id="apiConnVoice">Khmer Voice</span><br>
+        <span id="apiConnExp"></span><br>
+        Key: <code id="apiConnKey" style="word-break:break-all"></code><br>
+        <small>ផ្ញើ Key នេះពេលហៅ server — server នឹងដំណើរការពេល deploy លើ Render។</small>
       </div>
+    </div>
+    <div class="card wide" style="margin-top:14px">
+      <h3 style="font-size:17px">របៀបប្រើ API Key · How to use</h3>
+      <p style="font-size:14px;line-height:1.9;margin-top:6px">1. ចម្លង Key របស់អ្នកពីខាងលើ (ប៊ូតុង 📋 Copy Key)។<br>2. យក Key នេះទៅដាក់ក្នុង Website / កម្មវិធីរបស់អ្នក — ក្នុងកន្លែង API Key របស់វា។<br>3. ដាក់ Endpoint ខាងក្រោមក្នុង Website របស់អ្នកដែរ — ដើម្បីឱ្យ Website របស់អ្នកហៅមក server របស់ All In One SOKHOEUN។<br>4. ជ្រើសរើសសំឡេងដែលអ្នកចង់បាន៖ Khmer Voice ឬគ្រប់សំឡេង 99។<br>5. ពេលដាក់រួច Website របស់អ្នកនឹងបង្កើតសំឡេងបានភ្លាម។</p>
+      <p style="font-size:14px;font-weight:700;margin-top:12px">Endpoint — អាសយដ្ឋាន server</p>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+        <code style="flex:1;word-break:break-all;background:var(--accent-soft);border-radius:8px;padding:10px;font-size:13px">https://all-in-one-sokhoeun.onrender.com/api/voice</code>
+        <button class="btn btn-ghost" style="padding:10px 14px;font-size:13px;flex:0 0 auto" onclick="copyText('https://all-in-one-sokhoeun.onrender.com/api/voice',this)">📋 Copy</button>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6">⚠️ Server នឹងដំណើរការពេល deploy លើ Render — បើមិនទាន់ deploy, API នឹងហៅអត់បានទេ។</p>
     </div>
   </section>
 
@@ -557,21 +597,47 @@ function delGroqKey(i){var keys=getGroqKeys();keys.splice(i,1);saveGroqKeys(keys
 function genApiKey(){var c='abcdef0123456789',s='sk-';for(var i=0;i<32;i++)s+=c[Math.floor(Math.random()*16)];return s}
 function getApiKeys(){try{return JSON.parse(localStorage.getItem('aio-api-keys')||'[]')}catch(e){return[]}}
 function saveApiKeys(k){try{localStorage.setItem('aio-api-keys',JSON.stringify(k))}catch(e){}}
-var apiVoice='khmer';
+var apiVoice='khmer',apiExp=30,_apiCreating=false;
 function apiSetVoice(v,el){apiVoice=v;document.querySelectorAll('#apiVoiceChips .ai-chip').forEach(function(c){c.classList.toggle('on',c===el)})}
+function apiSetExp(d,el){apiExp=d;document.querySelectorAll('#apiExpChips .ai-chip').forEach(function(c){c.classList.toggle('on',c===el)})}
+function fmtDate(ts){var d=new Date(ts);return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear()}
+function daysLeft(exp){return Math.ceil((exp-Date.now())/86400000)}
 function createApiKey(){
+  if(_apiCreating)return;
   var nm=document.getElementById('apiKeyName').value.trim()||'My Key';
-  var keys=getApiKeys();
-  keys.push({name:nm,voice:apiVoice,key:genApiKey(),credits:1000});
-  saveApiKeys(keys);document.getElementById('apiKeyName').value='';
-  var m=document.getElementById('apiKeyMsg');m.style.color='#16a34a';m.innerText='✓ បានបង្កើត Key «'+nm+'» — Free 1000 Credit';
-  renderApiKeys();
+  _apiCreating=true;
+  var btn=document.getElementById('apiCreateBtn');btn.disabled=true;btn.innerText='កំពុងបង្កើត…';
+  document.getElementById('apiCreated').style.display='none';
+  document.getElementById('apiConn').style.display='none';
+  document.getElementById('apiKeyMsg').innerText='';
+  document.getElementById('apiCreating').style.display='block';
+  setTimeout(function(){
+    var now=Date.now(),exp=now+apiExp*86400000;
+    var key=genApiKey();
+    var keys=getApiKeys();
+    keys.push({name:nm,voice:apiVoice,key:key,credits:1000,days:apiExp,created:now,expires:exp});
+    saveApiKeys(keys);
+    document.getElementById('apiKeyName').value='';
+    document.getElementById('apiCreating').style.display='none';
+    document.getElementById('apiNewKey').innerText=key;
+    document.getElementById('apiNewExp').innerText='ផុតកំណត់៖ '+fmtDate(exp)+' ('+apiExp+' ថ្ងៃ) · Free 1000 Credit';
+    document.getElementById('apiCreated').style.display='block';
+    btn.disabled=false;btn.innerText='Create API Key';
+    _apiCreating=false;
+    renderApiKeys();
+  },9000);
 }
+function copyNewKey(){var t=document.getElementById('apiNewKey').innerText;if(navigator.clipboard)navigator.clipboard.writeText(t);var b=document.getElementById('apiCopyNewBtn');if(b){b.innerText='✓ ចម្លងរួច';setTimeout(function(){b.innerText='📋 Copy Key'},2000)}}
+function closeCreated(){document.getElementById('apiCreated').style.display='none'}
+function copyText(txt,btn){if(navigator.clipboard)navigator.clipboard.writeText(txt);if(btn){var o=btn.innerText;btn.innerText='✓ ចម្លងរួច';setTimeout(function(){btn.innerText=o},2000)}}
 function renderApiKeys(){
   var list=document.getElementById('apiKeyList');if(!list)return;
   var keys=getApiKeys();
   if(!keys.length){list.innerHTML='';return}
-  list.innerHTML=keys.map(function(k,i){return '<div style="background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-weight:700">'+k.name+' · '+(k.voice==='khmer'?'Khmer Voice':'99 សំឡេង')+'</span><span style="font-size:13px;color:var(--muted)">'+k.credits+' Credit</span><button onclick="copyApiKey('+i+')" style="border:none;background:transparent;font-size:15px;cursor:pointer">📋</button><button onclick="delApiKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div><div style="font-family:monospace;font-size:13px;word-break:break-all;margin-top:6px">'+k.key.slice(0,7)+'…'+k.key.slice(-4)+'</div><div style="margin-top:6px"><button class="btn btn-ghost" style="padding:8px 12px;font-size:13px" onclick="showApiConn('+i+')">តំណភ្ជាប់ · Connection</button></div></div>'}).join('');
+  list.innerHTML=keys.map(function(k,i){
+    var expTxt='';
+    if(k.expires){var dl=daysLeft(k.expires);expTxt=dl>0?'<span style="color:var(--accent-dark)">ផុតកំណត់៖ '+fmtDate(k.expires)+' · នៅសល់ '+dl+' ថ្ងៃ</span>':'<span style="color:#dc2626;font-weight:700">ផុតកំណត់ហើយ</span>'}
+    return '<div style="background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-weight:700">'+k.name+' · '+(k.voice==='khmer'?'Khmer Voice':'99 សំឡេង')+'</span><span style="font-size:13px;color:var(--muted)">'+k.credits+' Credit</span><button onclick="copyApiKey('+i+')" style="border:none;background:transparent;font-size:15px;cursor:pointer">📋</button><button onclick="delApiKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div><div style="font-family:monospace;font-size:13px;word-break:break-all;margin-top:6px">'+k.key.slice(0,7)+'…'+k.key.slice(-4)+'</div>'+(expTxt?'<div style="font-size:13px;margin-top:4px">'+expTxt+'</div>':'')+'<div style="margin-top:6px"><button class="btn btn-ghost" style="padding:8px 12px;font-size:13px" onclick="showApiConn('+i+')">តំណភ្ជាប់ · Connection</button></div></div>'}).join('');
 }
 function copyApiKey(i){var k=getApiKeys()[i];if(!k)return;if(navigator.clipboard)navigator.clipboard.writeText(k.key)}
 function delApiKey(i){var keys=getApiKeys();keys.splice(i,1);saveApiKeys(keys);renderApiKeys();document.getElementById('apiConn').style.display='none'}
@@ -579,6 +645,7 @@ function showApiConn(i){
   var k=getApiKeys()[i];if(!k)return;
   document.getElementById('apiConnKey').innerText=k.key;
   document.getElementById('apiConnVoice').innerText=k.voice==='khmer'?'Khmer Voice':'គ្រប់សំឡេង 99';
+  document.getElementById('apiConnExp').innerText=k.expires?('ផុតកំណត់៖ '+fmtDate(k.expires)):'—';
   document.getElementById('apiConn').style.display='block';
 }
 function openMenu(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')}
