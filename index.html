@@ -165,6 +165,32 @@ footer a{color:var(--accent-dark);font-weight:700}
 .spin{width:36px;height:36px;border:4px solid var(--accent-soft);border-top-color:var(--accent);border-radius:50%;margin:0 auto;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .codebox{background:#0f172a;color:#d1fae5;border-radius:12px;padding:12px;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre;margin:6px 0 0;font-family:monospace}
+.ai-free{border:2px solid var(--accent);background:var(--accent-soft);border-radius:16px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.6;margin-top:14px}
+.ai-proc{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:2px solid var(--accent-soft);border-radius:14px;background:var(--card);margin-top:8px}
+.ai-proc .dot{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;background:var(--accent-soft);color:var(--muted)}
+.ai-proc.work .dot{background:#fef3c7;color:#b45309}
+.ai-proc.done .dot{background:var(--accent);color:#fff}
+.ai-proc.err .dot{background:#fee2e2;color:#dc2626}
+.ai-proc .pt{flex:1;min-width:0}
+.ai-proc .pt b{font-size:15px}
+.ai-proc .pd{font-size:13px;color:var(--muted);font-weight:700;margin-top:2px;line-height:1.5}
+.ai-proc.done .pd{color:var(--accent-dark)}
+.ai-proc.err .pd{color:#dc2626}
+.ai-pct{font-size:16px;font-weight:900;color:var(--accent-dark);text-align:center;margin-top:8px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.pkgcard{border-radius:20px;padding:18px 16px;color:#fff;box-shadow:var(--shadow)}
+.pkgcard-top{display:flex;justify-content:space-between;align-items:center;font-size:17px}
+.pkgcard-badge{background:#fbbf24;color:#111827;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:800}
+.pkgcard-price{font-size:40px;font-weight:900;margin:10px 0 4px;line-height:1}
+.pkgcard-price small{font-size:15px;font-weight:700;opacity:.9}
+.pkgcard-feats{list-style:none;font-size:14px;line-height:1.9;margin-top:8px}
+.pkgcard.p0{background:linear-gradient(135deg,#34d399,#059669)}
+.pkgcard.p0 .pkgcard-badge{background:#fff;color:#065f46}
+.pkgcard.p1{background:linear-gradient(135deg,#16a34a,#059669)}
+.pkgcard.p2{background:linear-gradient(135deg,#2563eb,#1e40af)}
+.pkgcard.p3{background:linear-gradient(135deg,#f97316,#dc2626)}
+.pkgcard.p4{background:linear-gradient(135deg,#7c3aed,#0f172a);border:2px solid #fbbf24}
+.pkgcard.p4 .pkgcard-price{color:#fde68a}
 /* ===== Auto Device — វេបសាយផ្លាស់ប្ដូរទម្រង់តាមឧបករណ៍ដោយស្វ័យប្រវត្តិ (អត់បង្ហាញអ្វីទាំងអស់) ===== */
 @media (min-width:768px){
   .house{max-width:820px}
@@ -248,6 +274,21 @@ footer a{color:var(--accent-dark);font-weight:700}
       <button class="btn btn-green btn-block" onclick="openMenu()">ចាប់ផ្ដើម · Get Started</button>
     </div>
 
+    <div class="card wide" style="margin-top:12px">
+      <h3>🎙️ តេសសំឡេង · AI Translate Voice</h3>
+      <p>ដាក់អក្សរភាសាអ្វីក៏បាន — វានិយាយភាសានោះ (អត់បាច់ជ្រើសរើសភាសាទេ)។ កាត់ 1 Credit / 1 ពាក្យ។</p>
+      <textarea class="input" id="vtText" rows="3" placeholder="ដាក់អក្សរនៅទីនេះ… (ភាសាអ្វីក៏បាន)" style="width:100%;resize:vertical"></textarea>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
+        <button class="btn btn-green" id="vtBtn" onclick="voiceTest()">🔊 AI Translate Voice</button>
+        <span id="vtCredit" style="font-size:13px;color:var(--muted)"></span>
+      </div>
+      <p id="vtMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
+      <div id="vtOut" style="display:none;margin-top:10px">
+        <audio id="vtAudio" controls style="width:100%"></audio>
+        <div class="mt"><a id="vtDl" class="btn btn-ghost btn-block" download="ai-translate-voice.mp3">⬇ Download MP3</a></div>
+      </div>
+    </div>
+
     <h2 class="sec-title">✨ មុខងាររបស់វេបសាយ</h2>
     <div class="funclist">
       <button class="func-row" onclick="go('tools')"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M20 14 L48 32 L20 50 Z" fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round"/><text x="31" y="37" font-size="13" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">AI</text><path d="M50 6 L51.8 11.2 L57 13 L51.8 14.8 L50 20 L48.2 14.8 L43 13 L48.2 11.2 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>AI បកប្រែវីដេអូ</b><small>ស្ដាប់ → បកប្រែ → សម្លេងខ្មែរ គ្រប់ភាសា ទាំង 99 ភាសា</small></span></button>
@@ -272,49 +313,50 @@ footer a{color:var(--accent-dark);font-weight:700}
       <span class="badge green">✓ ដំណើរការបាន</span>
     </div>
     <div class="ai-note" id="aiServerNote" style="display:none">⚠️ មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
+    <div class="ai-free">Free: 3 នាទី / 3 វីដេអូ / 7 ថ្ងៃ · Pro: 6–15 នាទី<br><span id="aiUsageText">នៅសល់ 3 វីដេអូក្នុងសប្ដាហ៍នេះ</span></div>
     <h2 class="sec-title">⚙️ វាដំណើរការយ៉ាងម៉េច</h2>
     <div class="steps">
       <div class="step"><div class="n">1</div><div style="flex:1;min-width:0">
-        <h3>ស្ដាប់ · Listen</h3>
-        <p>ជ្រើសវីដេអូរបស់អ្នក (MP4, អតិបរមា 25 MB) — AI នឹងស្ដាប់សំឡេងនិយាយពីដើមដល់ចប់។</p>
+        <h3>វីដេអូ · Video</h3>
+        <p>ផ្ទុកឡើងវីដេអូ (MP4, អតិបរមា 25 MB, Free វែងបំផុត 3 នាទី · Pro ដល់ 15 នាទី) ឬដាក់ Link វីដេអូ។</p>
         <div style="margin-top:10px">
           <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
           <button class="btn btn-green" id="aiPickBtn" onclick="aiPickFile()" style="padding:11px 18px;font-size:15px">📁 ជ្រើសវីដេអូ</button>
           <div id="aiFileInfo" style="font-size:14px;margin-top:8px;color:var(--muted);word-break:break-word"></div>
         </div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <input class="input" id="aiUrlInput" type="url" placeholder="🔗 https://…mp4 — ដាក់ Link វីដេអូ" style="flex:1;min-width:0">
+          <button class="btn btn-green" id="aiFetchBtn" onclick="aiFetchUrl()" style="padding:11px 16px;font-size:15px;flex:0 0 auto">យកវីដេអូ</button>
+        </div>
         <div class="ai-status ai-st-wait" id="aiStep1Status">រង់ចាំ — មិនទាន់មានវីដេអូទេ</div>
       </div></div>
       <div class="step"><div class="n">2</div><div style="flex:1;min-width:0">
-        <h3>បកប្រែ · Translate <span style="display:inline-block;font-size:12px;font-weight:900;background:var(--accent-soft);color:var(--accent-dark);border-radius:999px;padding:3px 10px;vertical-align:middle">Microsoft</span></h3>
-        <p>បកប្រែអត្ថបទដែលស្ដាប់បាន ទៅជាភាសាខ្មែរ។</p>
-        <div class="ai-status ai-st-wait" id="aiStep2Status">រង់ចាំ</div>
+        <h3>ជ្រើសរើសភាសា · Language</h3>
+        <p>ជ្រើសភាសាដែលចង់បកប្រែទៅ — មាន 99 ភាសា។</p>
+        <select class="input" id="aiLangSelect" style="width:100%;margin-top:10px" onchange="aiSetLang(this.value)"></select>
       </div></div>
       <div class="step"><div class="n">3</div><div style="flex:1;min-width:0">
-        <h3>បង្កើតសំឡេង · Voice</h3>
-        <p>បង្កើតសម្លេងនិយាយជាភាសាខ្មែរ ត្រូវនឹងពេលដែលតួនិយាយ។</p>
+        <h3>សំឡេង · Voice</h3>
+        <p>ស្វ័យប្រវត្តិ — AI នឹងរើសសំឡេងប្រុស/ស្រីដោយខ្លួនឯងតាមជួរនីមួយៗ។</p>
         <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap" id="aiVoiceChips">
-          <button type="button" class="ai-chip on" data-voice="auto" onclick="aiSetVoice('auto',this)">ស្វ័យប្រវត្តិ</button>
-          <button type="button" class="ai-chip" data-voice="male" onclick="aiSetVoice('male',this)">Piseth · ប្រុស</button>
-          <button type="button" class="ai-chip" data-voice="female" onclick="aiSetVoice('female',this)">Sreymom · ស្រី</button>
+          <button type="button" class="ai-chip on" data-voice="auto" onclick="aiSetVoice('auto',this)">ស្វ័យប្រវត្តិ · Auto</button>
+          <button type="button" class="ai-chip" data-voice="male" onclick="aiSetVoice('male',this)">ប្រុស · Male</button>
+          <button type="button" class="ai-chip" data-voice="female" onclick="aiSetVoice('female',this)">ស្រី · Female</button>
         </div>
-        <div class="ai-status ai-st-wait" id="aiStep3Status">រង់ចាំ</div>
-      </div></div>
-      <div class="step"><div class="n">4</div><div style="flex:1;min-width:0">
-        <h3>ទាញយកវីដេអូ · Download</h3>
-        <p>ទទួលបានវីដេអូដែលបកប្រែរួច ព្រមទាំងអត្ថបទ .srt និងអត្ថបទជាភាសាខ្មែរ។</p>
-        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-          <button class="btn btn-green" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:11px 16px;font-size:15px">🎬 វីដេអូ (មានសំឡេងខ្មែរ)</button>
-          <a class="btn btn-ghost" id="aiDlSrt" style="padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5">.SRT</a>
-          <a class="btn btn-ghost" id="aiDlTxt" style="padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5">.TXT</a>
-        </div>
-        <div class="ai-status ai-st-wait" id="aiStep4Status">រង់ចាំ — ដំណើរការចប់សិន</div>
-        <div id="aiDlVideoLink" style="margin-top:10px"></div>
       </div></div>
     </div>
     <div class="mt">
-      <button class="btn btn-green btn-block" id="aiRunBtn" onclick="aiRun()">✦ AI Generate KH</button>
+      <button class="btn btn-green btn-block" id="aiRunBtn" onclick="aiRun()">▶ Generate Translate</button>
       <div class="ai-prog" id="aiProgWrap" style="display:none"><i id="aiProgBar"></i></div>
+      <div class="ai-pct" id="aiPctText" style="display:none">0%</div>
       <p id="aiMsg" style="font-size:14px;font-weight:700;margin-top:10px;min-height:20px;line-height:1.5"></p>
+    </div>
+    <h2 class="sec-title">ដំណើរការ · Progress</h2>
+    <div id="aiProcs">
+      <div class="ai-proc" id="aiProc1"><span class="dot">1</span><div class="pt"><b>ដំណើរការទី 1 · ស្គេនសំឡេងវីដេអូ</b><div class="pd" id="aiProc1Detail">រង់ចាំ</div></div></div>
+      <div class="ai-proc" id="aiProc2"><span class="dot">2</span><div class="pt"><b>ដំណើរការទី 2 · ស្ដាប់</b><div class="pd" id="aiProc2Detail">រង់ចាំ</div></div></div>
+      <div class="ai-proc" id="aiProc3"><span class="dot">3</span><div class="pt"><b>ដំណើរការទី 3 · បកប្រែអក្សរ</b><div class="pd" id="aiProc3Detail">រង់ចាំ</div></div></div>
+      <div class="ai-proc" id="aiProc4"><span class="dot">4</span><div class="pt"><b>ដំណើរការទី 4 · បញ្ជូលសំឡេង AI</b><div class="pd" id="aiProc4Detail">រង់ចាំ</div></div></div>
     </div>
     <div id="aiPlayerWrap" style="display:none">
       <div class="player-box">
@@ -322,6 +364,15 @@ footer a{color:var(--accent-dark);font-weight:700}
         <div class="sub-overlay"><span id="aiSubLine"></span></div>
       </div>
       <div class="seg-list" id="aiSegList"></div>
+    </div>
+    <div class="mt" id="aiDlWrap">
+      <button class="btn btn-green btn-block" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:14px 16px;font-size:17px">⬇ Download Video</button>
+      <div id="aiDlVideoLink" style="margin-top:10px"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <a class="btn btn-ghost" id="aiDlSrt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.SRT</a>
+        <a class="btn btn-ghost" id="aiDlTxt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.TXT</a>
+      </div>
+      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">Download Video គឺជា file វីដេអូពិត (WebM) — ទាញយកចូលទូរសព្ទរបស់អ្នកពិតៗ។</p>
     </div>
     <div class="mt">
       <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank">📩 សួរព័ត៌មានបន្ថែម</a>
@@ -437,36 +488,62 @@ footer a{color:var(--accent-dark);font-weight:700}
   <section class="page" id="page-packages">
     <div class="page-head">
       <h2>កញ្ចប់សេវាកម្ម</h2>
-      <p>សំឡេង Microsoft Edge — ឥតគិតថ្លៃសម្រាប់ម្ចាស់ តែដាក់លក់ជាសេវាកម្ម។ អ្នកចុះឈ្មោះបាន Free 1000 Credit សម្រាប់តេសសំឡេង/បកប្រែ។</p>
+      <p>សំឡេង AI Translate Voice — ឥតគិតថ្លៃសម្រាប់ម្ចាស់ តែដាក់លក់ជាសេវាកម្ម។ អ្នកចុះឈ្មោះបាន Free 1000 Credit សម្រាប់តេសសំឡេង/បកប្រែ។</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="pkg free">
-        <b>Free</b>
-        <p class="pkg-price">1000 Credit</p>
-        <p>សម្រាប់តេសសំឡេង/បកប្រែ · Microsoft Edge</p>
+    <div style="display:grid;gap:12px">
+      <div class="pkgcard p0">
+        <div class="pkgcard-top"><b>Free</b><span class="pkgcard-badge">សម្រាប់តេស</span></div>
+        <p class="pkgcard-price">1000 Credit</p>
+        <ul class="pkgcard-feats">
+          <li>✓ បកប្រែភាសា 99 ភាសា</li>
+          <li>✓ បកប្រែរឿងផ្ទាល់ក្នុង App</li>
+          <li>✓ សំឡេង AI Translate Voice</li>
+          <li>✓ 3 នាទី / វីដេអូ · 3 វីដេអូ / 7 ថ្ងៃ</li>
+        </ul>
       </div>
-      <div class="pkg">
-        <b>កញ្ចប់ 1</b>
-        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-        <p>Credit៖ នឹងកំណត់</p>
+      <div class="pkgcard p1">
+        <div class="pkgcard-top"><b>កញ្ចប់ 1</b></div>
+        <p class="pkgcard-price">$2.99 <small>/ 30 ថ្ងៃ</small></p>
+        <ul class="pkgcard-feats">
+          <li>✓ បកប្រែភាសា 99 ភាសា</li>
+          <li>✓ បកប្រែរឿងផ្ទាល់ក្នុង App</li>
+          <li>✓ សំឡេង AI Translate Voice</li>
+          <li>✓ 5,000 Credit · ~1 ម៉ោង 23 នាទី</li>
+        </ul>
       </div>
-      <div class="pkg">
-        <b>កញ្ចប់ 2</b>
-        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-        <p>Credit៖ នឹងកំណត់</p>
+      <div class="pkgcard p2">
+        <div class="pkgcard-top"><b>កញ្ចប់ 2</b></div>
+        <p class="pkgcard-price">$4.99 <small>/ 30 ថ្ងៃ</small></p>
+        <ul class="pkgcard-feats">
+          <li>✓ បកប្រែភាសា 99 ភាសា</li>
+          <li>✓ បកប្រែរឿងផ្ទាល់ក្នុង App</li>
+          <li>✓ សំឡេង AI Translate Voice</li>
+          <li>✓ 10,000 Credit · ~2 ម៉ោង 46 នាទី</li>
+        </ul>
       </div>
-      <div class="pkg">
-        <b>កញ្ចប់ 3</b>
-        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-        <p>Credit៖ នឹងកំណត់</p>
+      <div class="pkgcard p3">
+        <div class="pkgcard-top"><b>កញ្ចប់ 3</b></div>
+        <p class="pkgcard-price">$9.99 <small>/ 30 ថ្ងៃ</small></p>
+        <ul class="pkgcard-feats">
+          <li>✓ បកប្រែភាសា 99 ភាសា</li>
+          <li>✓ បកប្រែរឿងផ្ទាល់ក្នុង App</li>
+          <li>✓ សំឡេង AI Translate Voice</li>
+          <li>✓ 25,000 Credit · ~6 ម៉ោង 56 នាទី</li>
+        </ul>
       </div>
-      <div class="pkg">
-        <b>កញ្ចប់ 4</b>
-        <p class="pkg-price">តម្លៃ៖ នឹងកំណត់</p>
-        <p>Credit៖ នឹងកំណត់</p>
+      <div class="pkgcard p4">
+        <div class="pkgcard-top"><b>កញ្ចប់ 4</b><span class="pkgcard-badge">👑 Premium</span></div>
+        <p class="pkgcard-price">$24.99 <small>/ 30 ថ្ងៃ</small></p>
+        <ul class="pkgcard-feats">
+          <li>✓ បកប្រែភាសា 99 ភាសា</li>
+          <li>✓ បកប្រែរឿងផ្ទាល់ក្នុង App</li>
+          <li>✓ សំឡេង AI Translate Voice</li>
+          <li>✓ 75,000 Credit · ~20 ម៉ោង 50 នាទី</li>
+        </ul>
       </div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-top:10px">Credit អស់ → Upgrade កញ្ចប់។</p>
+    <p style="font-size:13px;color:var(--muted);margin-top:6px">កញ្ចប់ទាំងអស់រួមបញ្ចូលសំឡេង AI Translate Voice — Groq (ស្ដាប់+បកប្រែ) ជាសេវារបស់ម្ចាស់ មិនរួមបញ្ចូលក្នុងកញ្ចប់ទេ។</p>
   </section>
 
   <!-- ============ API KEY ============ -->
@@ -697,11 +774,14 @@ function sendRequest(){
   if(new URLSearchParams(location.search).get('menu')==='1'){openMenu()}
 })();
 
-/* ================= AI Tools · Khmer-voice video pipeline =================
+/* ================= AI Tools · Translate Video Voice =================
    Keys live in the visitor's own browser (Settings → localStorage
    'aio-groq-keys') and are sent with each run request only. The server
-   never stores them. */
-var ai = { project:null, pollTimer:null, voice:'auto', activeSeg:-1, serverOk:false, exporting:false };
+   never stores them. Free limits: 6 min/video, 3 videos / 7 days
+   (localStorage 'aio-ai-usage'). Language in 'aio-ai-lang', voice in
+   'aio-ai-voice'. */
+var AI_LANGS=[{c:'km',en:"Khmer",km:"ខ្មែរ",f:'🇰🇭'},{c:'en',en:"English",km:"អង់គ្លេស",f:'🇺🇸'},{c:'th',en:"Thai",km:"ថៃ",f:'🇹🇭'},{c:'vi',en:"Vietnamese",km:"វៀតណាម",f:'🇻🇳'},{c:'zh',en:"Chinese (Simplified)",km:"ចិន",f:'🇨🇳'},{c:'ja',en:"Japanese",km:"ជប៉ុន",f:'🇯🇵'},{c:'ko',en:"Korean",km:"កូរ៉េ",f:'🇰🇷'},{c:'lo',en:"Lao",km:"ឡាវ",f:'🇱🇦'},{c:'my',en:"Burmese",km:"ភូមា",f:'🇲🇲'},{c:'id',en:"Indonesian",km:"ឥណ្ឌូនេស៊ី",f:'🇮🇩'},{c:'ms',en:"Malay",km:"ម៉ាឡេ",f:'🇲🇾'},{c:'fil',en:"Filipino",km:"ហ្វីលីពីន",f:'🇵🇭'},{c:'hi',en:"Hindi",km:"ហិណ្ឌី",f:'🇮🇳'},{c:'bn',en:"Bengali",km:"បេងហ្គាល់",f:'🇧🇩'},{c:'ta',en:"Tamil",km:"តាមីល",f:'🇮🇳'},{c:'te',en:"Telugu",km:"តេលូហ្គូ",f:'🇮🇳'},{c:'ur',en:"Urdu",km:"អ៊ូរឌូ",f:'🇵🇰'},{c:'fa',en:"Persian",km:"ពែរ្ស",f:'🇮🇷'},{c:'ar',en:"Arabic",km:"អារ៉ាប់",f:'🇸🇦'},{c:'he',en:"Hebrew",km:"ហេប្រ៊ូ",f:'🇮🇱'},{c:'tr',en:"Turkish",km:"តួកគី",f:'🇹🇷'},{c:'ru',en:"Russian",km:"រុស្ស៊ី",f:'🇷🇺'},{c:'uk',en:"Ukrainian",km:"អ៊ុយក្រែន",f:'🇺🇦'},{c:'fr',en:"French",km:"បារាំង",f:'🇫🇷'},{c:'de',en:"German",km:"អាល្លឺម៉ង់",f:'🇩🇪'},{c:'es',en:"Spanish",km:"អេស្ប៉ាញ",f:'🇪🇸'},{c:'it',en:"Italian",km:"អ៊ីតាលី",f:'🇮🇹'},{c:'pt',en:"Portuguese",km:"ព័រទុយហ្គាល់",f:'🇵🇹'},{c:'nl',en:"Dutch",km:"ហូឡង់",f:'🇳🇱'},{c:'pl',en:"Polish",km:"ប៉ូឡូញ",f:'🇵🇱'},{c:'cs',en:"Czech",km:"ឆែក",f:'🇨🇿'},{c:'sk',en:"Slovak",km:"ស្លូវ៉ាក់",f:'🇸🇰'},{c:'hu',en:"Hungarian",km:"ហុងគ្រី",f:'🇭🇺'},{c:'ro',en:"Romanian",km:"រូម៉ានី",f:'🇷🇴'},{c:'bg',en:"Bulgarian",km:"ប៊ុលហ្គារី",f:'🇧🇬'},{c:'hr',en:"Croatian",km:"ក្រូអាត",f:'🇭🇷'},{c:'el',en:"Greek",km:"ក្រិក",f:'🇬🇷'},{c:'sv',en:"Swedish",km:"ស៊ុយអែត",f:'🇸🇪'},{c:'da',en:"Danish",km:"ដាណឺម៉ាក",f:'🇩🇰'},{c:'fi',en:"Finnish",km:"ហ្វាំងឡង់",f:'🇫🇮'},{c:'nb',en:"Norwegian",km:"ន័រវែស",f:'🇳🇴'},{c:'et',en:"Estonian",km:"អេស្តូនី",f:'🇪🇪'},{c:'lv',en:"Latvian",km:"ឡាតវី",f:'🇱🇻'},{c:'lt',en:"Lithuanian",km:"លីទុយអានី",f:'🇱🇹'},{c:'af',en:"Afrikaans",km:"អាហ្វ្រិកាអានស៍",f:'🇿🇦'},{c:'am',en:"Amharic",km:"អាំហារិក",f:'🇪🇹'},{c:'az',en:"Azerbaijani",km:"អាស៊ែបៃហ្សង់",f:'🇦🇿'},{c:'bs',en:"Bosnian",km:"បូស្ន៊ី",f:'🇧🇦'},{c:'ca',en:"Catalan",km:"កាតាឡាន",f:'🇪🇸'},{c:'cy',en:"Welsh",km:"វែលស៍",f:'🇬🇧'},{c:'eu',en:"Basque",km:"បាស្ក",f:'🇪🇸'},{c:'ga',en:"Irish",km:"អៀរឡង់",f:'🇮🇪'},{c:'gl',en:"Galician",km:"ហ្គាលីស៊ី",f:'🇪🇸'},{c:'hy',en:"Armenian",km:"អាមេនី",f:'🇦🇲'},{c:'is',en:"Icelandic",km:"អ៊ីស្លង់",f:'🇮🇸'},{c:'jv',en:"Javanese",km:"ជ្វា",f:'🇮🇩'},{c:'ka',en:"Georgian",km:"ហ្សកហ្ស៊ី",f:'🇬🇪'},{c:'kk',en:"Kazakh",km:"កាហ្សាក់",f:'🇰🇿'},{c:'kn',en:"Kannada",km:"កាណាដា",f:'🇮🇳'},{c:'ml',en:"Malayalam",km:"ម៉ាឡាយ៉ាឡាំ",f:'🇮🇳'},{c:'mn',en:"Mongolian",km:"ម៉ុងហ្គោលី",f:'🇲🇳'},{c:'mr',en:"Marathi",km:"ម៉ារ៉ាធី",f:'🇮🇳'},{c:'gu',en:"Gujarati",km:"ហ្គូចារ៉ាទី",f:'🇮🇳'},{c:'mt',en:"Maltese",km:"ម៉ាល់តា",f:'🇲🇹'},{c:'ne',en:"Nepali",km:"នេប៉ាល់",f:'🇳🇵'},{c:'ps',en:"Pashto",km:"ប៉ាស្តូ",f:'🇦🇫'},{c:'si',en:"Sinhala",km:"ស៊ីនហាឡា",f:'🇱🇰'},{c:'sl',en:"Slovenian",km:"ស្លូវេនី",f:'🇸🇮'},{c:'so',en:"Somali",km:"សូម៉ាលី",f:'🇸🇴'},{c:'sq',en:"Albanian",km:"អាល់បានី",f:'🇦🇱'},{c:'sr',en:"Serbian",km:"ស៊ែប៊ី",f:'🇷🇸'},{c:'su',en:"Sundanese",km:"ស៊ុនដា",f:'🇮🇩'},{c:'sw',en:"Swahili",km:"ស្វាហ៊ីលី",f:'🇰🇪'},{c:'uz',en:"Uzbek",km:"អ៊ូសបេក",f:'🇺🇿'},{c:'zu',en:"Zulu",km:"ហ្ស៊ូលូ",f:'🇿🇦'},{c:'mk',en:"Macedonian",km:"ម៉ាសេដ្វាន",f:'🇲🇰'},{c:'enGB',en:"English (UK)",km:"អង់គ្លេស · អង់គ្លេស",f:'🇬🇧'},{c:'enCA',en:"English (Canada)",km:"អង់គ្លេស · កាណាដា",f:'🇨🇦'},{c:'enIN',en:"English (India)",km:"អង់គ្លេស · ឥណ្ឌា",f:'🇮🇳'},{c:'enIE',en:"English (Ireland)",km:"អង់គ្លេស · អៀរឡង់",f:'🇮🇪'},{c:'enSG',en:"English (Singapore)",km:"អង់គ្លេស · សិង្ហបុរី",f:'🇸🇬'},{c:'enPH',en:"English (Philippines)",km:"អង់គ្លេស · ហ្វីលីពីន",f:'🇵🇭'},{c:'enNZ',en:"English (New Zealand)",km:"អង់គ្លេស · នូវែលសេឡង់",f:'🇳🇿'},{c:'enZA',en:"English (South Africa)",km:"អង់គ្លេស · អាហ្វ្រិកខាងត្បូង",f:'🇿🇦'},{c:'zhTW',en:"Chinese (Taiwan)",km:"ចិន · តៃវ៉ាន់",f:'🇹🇼'},{c:'zhHK',en:"Chinese (Hong Kong)",km:"ចិន · ហុងកុង",f:'🇭🇰'},{c:'esMX',en:"Spanish (Mexico)",km:"អេស្ប៉ាញ · ម៉ិកស៊ិក",f:'🇲🇽'},{c:'esUS',en:"Spanish (US)",km:"អេស្ប៉ាញ · អាមេរិក",f:'🇺🇸'},{c:'ptBR',en:"Portuguese (Brazil)",km:"ព័រទុយហ្គាល់ · ប្រេស៊ីល",f:'🇧🇷'},{c:'frCA',en:"French (Canada)",km:"បារាំង · កាណាដា",f:'🇨🇦'},{c:'frBE',en:"French (Belgium)",km:"បារាំង · បែលហ្ស៊ិក",f:'🇧🇪'},{c:'deAT',en:"German (Austria)",km:"អាល្លឺម៉ង់ · អូទ្រីស",f:'🇦🇹'},{c:'deCH',en:"German (Switzerland)",km:"អាល្លឺម៉ង់ · ស្វីស",f:'🇨🇭'},{c:'arEG',en:"Arabic (Egypt)",km:"អារ៉ាប់ · អេហ្ស៊ីប",f:'🇪🇬'},{c:'arAE',en:"Arabic (UAE)",km:"អារ៉ាប់ · អេមីរ៉ាត",f:'🇦🇪'},{c:'urIN',en:"Urdu (India)",km:"អ៊ូរឌូ · ឥណ្ឌា",f:'🇮🇳'},{c:'bnIN',en:"Bengali (India)",km:"បេងហ្គាល់ · ឥណ្ឌា",f:'🇮🇳'},{c:'swTZ',en:"Swahili (Tanzania)",km:"ស្វាហ៊ីលី · តង់ហ្សានី",f:'🇹🇿'},{c:'nlBE',en:"Dutch (Belgium)",km:"ហូឡង់ · បែលហ្ស៊ិក",f:'🇧🇪'}];
+var ai = { project:null, pollTimer:null, voice:'auto', lang:'km', duration:0, activeSeg:-1, serverOk:false, exporting:false, counted:false };
 var aiSegAudio = new Audio(); aiSegAudio.preload = 'auto';
 var aiExp = { rec:null, chunks:[], canvas:null, ctx:null, raf:0, actx:null, vGain:null, aSrc:null, vSrc:null, url:null };
 
@@ -715,10 +795,64 @@ function aiMsg(text, ok){
   el.textContent = text || '';
   el.style.color = ok === true ? '#16a34a' : ok === false ? '#dc2626' : 'var(--muted)';
 }
+
+/* ---- language picker (99) ---- */
+function aiInitLang(){
+  var sel = document.getElementById('aiLangSelect'); if(!sel) return;
+  sel.innerHTML = AI_LANGS.map(function(l){ return '<option value="' + l.c + '">' + l.f + ' ' + l.km + ' · ' + l.en + '</option>'; }).join('');
+  var saved = null;
+  try{ saved = localStorage.getItem('aio-ai-lang'); }catch(e){}
+  ai.lang = (saved && AI_LANGS.some(function(l){ return l.c === saved; })) ? saved : 'km';
+  sel.value = ai.lang;
+}
+function aiSetLang(code){
+  ai.lang = code || 'km';
+  try{ localStorage.setItem('aio-ai-lang', ai.lang); }catch(e){}
+}
+function aiLangName(code){
+  var l = AI_LANGS.find(function(x){ return x.c === code; });
+  return l ? l.km : 'ខ្មែរ';
+}
+
+/* ---- voice ---- */
 function aiSetVoice(v, btn){
   ai.voice = v;
+  try{ localStorage.setItem('aio-ai-voice', v); }catch(e){}
   document.querySelectorAll('#aiVoiceChips .ai-chip').forEach(c => c.classList.toggle('on', c === btn));
 }
+function aiInitVoice(){
+  var saved = null;
+  try{ saved = localStorage.getItem('aio-ai-voice'); }catch(e){}
+  if(saved === 'male' || saved === 'female' || saved === 'auto') ai.voice = saved;
+  document.querySelectorAll('#aiVoiceChips .ai-chip').forEach(function(c){
+    c.classList.toggle('on', c.getAttribute('data-voice') === ai.voice);
+  });
+}
+
+/* ---- Free usage: 3 videos / 7 days ---- */
+function aiUsageGet(){
+  var u = { weekStart: Date.now(), count: 0, counted: [] };
+  try{
+    var raw = JSON.parse(localStorage.getItem('aio-ai-usage') || 'null');
+    if(raw && typeof raw.weekStart === 'number') u = raw;
+  }catch(e){}
+  if(!Array.isArray(u.counted)) u.counted = [];
+  if(Date.now() - (u.weekStart || 0) > 7 * 24 * 3600 * 1000){ u = { weekStart: Date.now(), count: 0, counted: [] }; aiUsageSave(u); }
+  return u;
+}
+function aiUsageSave(u){ try{ localStorage.setItem('aio-ai-usage', JSON.stringify(u)); }catch(e){} }
+function aiUsageRemaining(){ return Math.max(0, 3 - aiUsageGet().count); }
+function aiUsageRender(){
+  var el = document.getElementById('aiUsageText');
+  if(el) el.textContent = 'នៅសល់ ' + aiUsageRemaining() + ' វីដេអូក្នុងសប្ដាហ៍នេះ';
+}
+function aiUsageCount(pid){
+  var u = aiUsageGet();
+  if(u.counted.indexOf(pid) >= 0) return;
+  u.counted.push(pid); u.count = Math.min(3, u.count + 1);
+  aiUsageSave(u); aiUsageRender();
+}
+
 async function aiCheckServer(){
   var note = document.getElementById('aiServerNote');
   try{
@@ -735,103 +869,134 @@ async function aiCheckServer(){
 }
 function aiPickFile(){ document.getElementById('aiFile').click(); }
 function aiFmtMB(n){ return (n / 1048576).toFixed(1) + ' MB'; }
+function aiReadDuration(file){
+  return new Promise(function(resolve){
+    var url = URL.createObjectURL(file);
+    var v = document.createElement('video');
+    v.preload = 'metadata';
+    var done = false;
+    var finish = function(d){ if(done) return; done = true; URL.revokeObjectURL(url); resolve(d); };
+    v.onloadedmetadata = function(){ finish(isFinite(v.duration) ? v.duration : 0); };
+    v.onerror = function(){ finish(0); };
+    v.src = url;
+    setTimeout(function(){ finish(0); }, 8000);
+  });
+}
 async function aiFileChosen(ev){
   var f = ev.target.files && ev.target.files[0];
   ev.target.value = '';
   if(!f) return;
   if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
   if(f.size > 25 * 1024 * 1024){ aiMsg('ឯកសារធំពេក — អតិបរមា 25 MB', false); return; }
+  aiMsg('កំពុងពិនិត្យវីដេអូ…');
+  var dur = await aiReadDuration(f);
+  if(dur > 180){ aiMsg('វីដេអូនេះវែងពេក (' + aiFmtTime(dur) + ') — Free អនុញ្ញាតតែ 3 នាទីទេ — Pro ធ្វើបានដល់ 15 នាទី', false); return; }
+  ai.duration = dur;
   aiMsg('កំពុងផ្ទុកឡើង… ' + aiFmtMB(f.size));
-  document.getElementById('aiFileInfo').textContent = f.name + ' · ' + aiFmtMB(f.size);
+  document.getElementById('aiFileInfo').textContent = f.name + ' · ' + aiFmtMB(f.size) + (dur ? ' · ' + aiFmtTime(dur) : '');
   try{
     var r = await fetch('/api/ai/upload?name=' + encodeURIComponent(f.name) + '&title=' + encodeURIComponent(f.name.replace(/\.[^.]+$/, '')), { method:'POST', body:f });
     var j = await r.json().catch(() => ({}));
     if(!r.ok) throw new Error((j.message && j.message.km) || 'ផ្ទុកឡើងមិនបានទេ');
-    aiMsg('✓ បានផ្ទុកឡើងហើយ — ចុច AI Generate KH ដើម្បីចាប់ផ្ដើម', true);
+    aiMsg('✓ បានផ្ទុកឡើងហើយ — ចុច Generate Translate ដើម្បីចាប់ផ្ដើម', true);
     aiOpenProject(j.project, true);
   }catch(e){ aiMsg(e.message || 'ផ្ទុកឡើងមិនបានទេ', false); }
+}
+async function aiFetchUrl(){
+  var input = document.getElementById('aiUrlInput');
+  var url = (input.value || '').trim();
+  if(!url){ aiMsg('សូមដាក់ Link វីដេអូជាមុនសិន', false); return; }
+  if(!/^https?:\/\//i.test(url)){ aiMsg('Link ត្រូវចាប់ផ្ដើមដោយ http:// ឬ https://', false); return; }
+  if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
+  aiMsg('កំពុងយកវីដេអូពី Link…');
+  try{
+    var r = await fetch('/api/ai/from-url', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ url: url }) });
+    var j = await r.json().catch(() => ({}));
+    if(!r.ok) throw new Error((j.message && j.message.km) || 'យកវីដេអូពី Link មិនបានទេ');
+    input.value = '';
+    aiMsg('✓ បានយកវីដេអូពី Link ហើយ — ចុច Generate Translate ដើម្បីចាប់ផ្ដើម', true);
+    aiOpenProject(j.project, true);
+  }catch(e){ aiMsg(e.message || 'យកវីដេអូពី Link មិនបានទេ', false); }
 }
 function aiOpenProject(p, show){
   ai.project = p;
   ai.activeSeg = -1;
+  ai.counted = false;
+  if(p.duration) ai.duration = p.duration;
   var v = document.getElementById('aiPlayer');
-  if(v){ v.src = p.videoUrl; }
+  if(v){
+    v.src = p.videoUrl;
+    v.onloadedmetadata = function(){
+      if(v.duration && isFinite(v.duration)){
+        ai.duration = v.duration;
+        if(ai.project && ai.project.id === p.id) aiRenderProject();
+      }
+    };
+  }
   document.getElementById('aiPlayerWrap').style.display = 'block';
   document.getElementById('aiFileInfo').textContent = p.originalName || p.title;
   aiRenderProject();
   if(p.status === 'running') aiStartPolling();
   if(show) document.getElementById('aiPlayerWrap').scrollIntoView({ behavior:'smooth', block:'start' });
 }
-function aiStepText(p){
-  var total = (p.segments || []).length;
-  var voiced = (p.segments || []).filter(s => s.audio).length;
-  var translated = (p.segments || []).filter(s => s.khmer).length;
-  return { total: total, voiced: voiced, translated: translated };
+function aiProcState(n, state, detail){
+  var row = document.getElementById('aiProc' + n);
+  if(!row) return;
+  row.className = 'ai-proc' + (state === 'working' ? ' work' : state === 'done' ? ' done' : state === 'error' ? ' err' : '');
+  var dot = row.querySelector('.dot');
+  if(dot) dot.textContent = state === 'done' ? '✓' : state === 'error' ? '✕' : state === 'working' ? '…' : String(n);
+  var d = document.getElementById('aiProc' + n + 'Detail');
+  if(d) d.textContent = detail || '';
 }
 function aiRenderProject(){
   var p = ai.project; if(!p) return;
-  var c = aiStepText(p);
-  var prog = p.progress || '';
+  var st = p.stages || { scan:{state:'waiting',seconds:0,total:0}, listen:{state:'waiting',seconds:0,total:0,segments:0}, translate:{state:'waiting',done:0,total:0}, voice:{state:'waiting',done:0,total:0} };
+  var total = (p.segments || []).length;
+  var voiced = (p.segments || []).filter(s => s.audio).length;
+  var translated = (p.segments || []).filter(s => s.khmer).length;
+  var dur = p.duration || ai.duration || 0;
   var running = p.status === 'running';
-  // Step 1 · Listen
-  if(p.status === 'done' || prog === 'step2' || prog.indexOf('step3') === 0 || c.total > 0)
-    aiSetStatus('aiStep1Status', '✓ ស្ដាប់រួច · ' + c.total + ' ជួរ', 'ai-st-done');
-  else if(prog === 'step1')
-    aiSetStatus('aiStep1Status', '⏳ កំពុងស្ដាប់…', 'ai-st-work');
-  else if(p.status === 'error')
-    aiSetStatus('aiStep1Status', '✕ មានបញ្ហា — មើលសារខាងក្រោម', 'ai-st-err');
-  else
-    aiSetStatus('aiStep1Status', p.status === 'idle' ? 'រង់ចាំ — ចុច AI Generate KH' : 'រង់ចាំ', 'ai-st-wait');
-  // Step 2 · Translate
-  if(c.translated > 0 && (p.status === 'done' || prog.indexOf('step3') === 0))
-    aiSetStatus('aiStep2Status', '✓ បកប្រែរួច · ' + c.translated + '/' + c.total + ' ជួរ', 'ai-st-done');
-  else if(prog === 'step2')
-    aiSetStatus('aiStep2Status', '⏳ កំពុងបកប្រែ… ' + c.translated + '/' + c.total + ' ជួរ', 'ai-st-work');
-  else if(p.status === 'error' && (prog === 'step2' || c.total > 0))
-    aiSetStatus('aiStep2Status', '✕ បកប្រែមិនបានទេ — មើលសារខាងក្រោម', 'ai-st-err');
-  else
-    aiSetStatus('aiStep2Status', 'រង់ចាំ', 'ai-st-wait');
-  // Step 3 · Voice
-  if(p.status === 'done')
-    aiSetStatus('aiStep3Status', '✓ បង្កើតសំឡេងរួច · ' + c.voiced + '/' + c.total + ' ជួរ' + (p.voiceFailed ? ' · ' + p.voiceFailed + ' ជួរបង្កើតមិនបាន' : ''), 'ai-st-done');
-  else if(prog.indexOf('step3') === 0)
-    aiSetStatus('aiStep3Status', '⏳ កំពុងបង្កើតសំឡេង… (' + prog.split(':')[1] + ')', 'ai-st-work');
-  else if(p.status === 'error' && prog.indexOf('step3') === 0)
-    aiSetStatus('aiStep3Status', '✕ បង្កើតសំឡេងមិនបានទេ', 'ai-st-err');
-  else
-    aiSetStatus('aiStep3Status', 'រង់ចាំ', 'ai-st-wait');
-  // Step 4 · Download
+  var err = p.status === 'error';
+  var langKm = aiLangName(p.lang || ai.lang);
+  if(st.scan.state === 'done') aiProcState(1, 'done', '✓ ស្គេនរួច · ' + aiFmtTime(st.scan.seconds) + ' / ' + aiFmtTime(st.scan.total || dur));
+  else if(st.scan.state === 'working') aiProcState(1, 'working', '⏳ កំពុងស្គេនសំឡេង… ' + aiFmtTime(st.scan.seconds) + ' / ' + aiFmtTime(st.scan.total || dur));
+  else if(st.scan.state === 'error') aiProcState(1, 'error', '✕ ស្គេនមិនបានទេ');
+  else aiProcState(1, 'waiting', 'រង់ចាំ');
+  if(st.listen.state === 'done') aiProcState(2, 'done', '✓ ស្ដាប់រួច · ' + aiFmtTime(st.listen.seconds) + ' / ' + aiFmtTime(st.listen.total || dur) + ' · ' + (st.listen.segments || total) + ' ជួរ');
+  else if(st.listen.state === 'working') aiProcState(2, 'working', '⏳ កំពុងស្ដាប់… ' + aiFmtTime(st.listen.seconds) + ' / ' + aiFmtTime(st.listen.total || dur));
+  else if(st.listen.state === 'error') aiProcState(2, 'error', '✕ ស្ដាប់មិនបានទេ');
+  else aiProcState(2, 'waiting', 'រង់ចាំ');
+  if(st.translate.state === 'done') aiProcState(3, 'done', '✓ បកប្រែរួច · ' + translated + '/' + total + ' ជួរ · ' + langKm);
+  else if(st.translate.state === 'working') aiProcState(3, 'working', '⏳ កំពុងបកប្រែ… ' + st.translate.done + '/' + st.translate.total + ' ជួរ · ' + langKm);
+  else if(st.translate.state === 'error') aiProcState(3, 'error', '✕ បកប្រែមិនបានទេ');
+  else aiProcState(3, 'waiting', 'រង់ចាំ · បកប្រែទៅ ' + langKm);
+  if(st.voice.state === 'done') aiProcState(4, 'done', '✓ បញ្ចូលសំឡេងរួច · ' + voiced + '/' + total + ' ជួរ' + (p.voiceFailed ? ' · ' + p.voiceFailed + ' ជួរបង្កើតមិនបាន' : '') + (p.langFallback ? ' · (សំឡេងខ្មែរ — ភាសានេះមិនមានសំឡេងទេ)' : ''));
+  else if(st.voice.state === 'working') aiProcState(4, 'working', '⏳ កំពុងបង្កើតសំឡេង… ' + st.voice.done + '/' + st.voice.total + ' ជួរ');
+  else if(st.voice.state === 'error') aiProcState(4, 'error', '✕ បង្កើតសំឡេងមិនបានទេ');
+  else aiProcState(4, 'waiting', 'រង់ចាំ');
+  aiSetStatus('aiStep1Status', p.status === 'idle' ? '✓ មានវីដេអូហើយ — ចុច Generate Translate' : (running ? '⏳ កំពុងដំណើរការ…' : (p.status === 'done' ? '✓ រួចរាល់' : (err ? '✕ មានបញ្ហា' : 'រង់ចាំ'))), p.status === 'done' ? 'ai-st-done' : (running ? 'ai-st-work' : (err ? 'ai-st-err' : 'ai-st-wait')));
+  var pct = (typeof p.pct === 'number') ? p.pct : 0;
+  var wrap = document.getElementById('aiProgWrap'), bar = document.getElementById('aiProgBar'), pctEl = document.getElementById('aiPctText');
+  if(running || p.status === 'done'){ wrap.style.display = 'block'; bar.style.width = pct + '%'; pctEl.style.display = 'block'; pctEl.textContent = pct + '%'; }
+  else { wrap.style.display = 'none'; pctEl.style.display = 'none'; }
   var srt = document.getElementById('aiDlSrt'), txt = document.getElementById('aiDlTxt'), vid = document.getElementById('aiDlVideoBtn');
-  if(p.status === 'done' && c.total > 0){
+  if(p.status === 'done' && total > 0){
     srt.href = '/api/ai/' + p.id + '/subtitles.srt'; srt.style.pointerEvents = 'auto'; srt.style.opacity = '1';
     txt.href = '/api/ai/' + p.id + '/script.txt'; txt.style.pointerEvents = 'auto'; txt.style.opacity = '1';
     vid.disabled = false;
-    aiSetStatus('aiStep4Status', '✓ រួចរាល់ — ទាញយកបានហើយ', 'ai-st-done');
   }else{
     srt.removeAttribute('href'); srt.style.pointerEvents = 'none'; srt.style.opacity = '.5';
     txt.removeAttribute('href'); txt.style.pointerEvents = 'none'; txt.style.opacity = '.5';
     vid.disabled = true;
-    aiSetStatus('aiStep4Status', running ? 'រង់ចាំ — កំពុងដំណើរការ' : 'រង់ចាំ — ដំណើរការចប់សិន', 'ai-st-wait');
   }
-  // Progress bar
-  var wrap = document.getElementById('aiProgWrap'), bar = document.getElementById('aiProgBar');
-  var pct = 0;
-  if(p.status === 'done') pct = 100;
-  else if(prog === 'step1') pct = 15;
-  else if(prog === 'step2') pct = 45;
-  else if(prog.indexOf('step3') === 0){
-    var parts = prog.split(':')[1] ? prog.split(':')[1].split('/') : [];
-    var done = parts[0] ? parseInt(parts[0], 10) : 0, tot = parts[1] ? parseInt(parts[1], 10) : (c.total || 1);
-    pct = 66 + Math.round(34 * (done / Math.max(1, tot)));
-  }
-  if(running || p.status === 'done'){ wrap.style.display = 'block'; bar.style.width = pct + '%'; }
-  else { wrap.style.display = 'none'; }
-  // Run button + error message
   var runBtn = document.getElementById('aiRunBtn');
   runBtn.disabled = running;
-  runBtn.textContent = running ? '⏳ កំពុងដំណើរការ…' : '✦ AI Generate KH';
-  if(p.status === 'error' && p.error) aiMsg(p.error.km || p.error.en || 'មានបញ្ហា', false);
-  else if(p.status === 'done') aiMsg('✓ រួចរាល់ហើយ — ចុចចាក់វីដេអូដើម្បីស្ដាប់សំឡេងខ្មែរ', true);
+  runBtn.textContent = running ? '⏳ កំពុងដំណើរការ…' : '▶ Generate Translate';
+  if(err && p.error) aiMsg(p.error.km || p.error.en || 'មានបញ្ហា', false);
+  else if(p.status === 'done'){
+    if(!ai.counted){ ai.counted = true; aiUsageCount(p.id); }
+    aiMsg('✓ រួចរាល់ហើយ — ចុចចាក់វីដេអូដើម្បីស្ដាប់សំឡេង' + langKm, true);
+  }
   aiRenderSegList();
 }
 function aiFmtTime(sec){
@@ -865,6 +1030,10 @@ function aiRenderSegList(){
 async function aiRun(){
   if(!ai.project){ aiMsg('សូមជ្រើសវីដេអូជាមុនសិន', false); return; }
   if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
+  var v = document.getElementById('aiPlayer');
+  if(v && v.duration && isFinite(v.duration)) ai.duration = v.duration;
+  if(ai.duration > 180){ aiMsg('វីដេអូនេះវែងពេក (' + aiFmtTime(ai.duration) + ') — Free អនុញ្ញាតតែ 3 នាទីទេ — Pro ធ្វើបានដល់ 15 នាទី', false); return; }
+  if(aiUsageRemaining() <= 0){ aiMsg('អ្នកប្រើអស់ 3 វីដេអូក្នុងសប្ដាហ៍នេះហើយ — សូមរង់ចាំសប្ដាហ៍ក្រោយ', false); return; }
   var keys = getGroqKeys();
   if(!keys.length){
     aiMsg('មិនទាន់មាន API Key ទេ — សូមទៅ Settings បន្ថែម Key ជាមុនសិន', false);
@@ -874,11 +1043,13 @@ async function aiRun(){
   try{
     var r = await fetch('/api/ai/' + ai.project.id + '/run', {
       method:'POST', headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({ keys: keys, voice: ai.voice })
+      body: JSON.stringify({ keys: keys, voice: ai.voice, lang: ai.lang, duration: Math.round(ai.duration || 0) })
     });
     var j = await r.json().catch(() => ({}));
     if(!r.ok) throw new Error((j.message && j.message.km) || 'ចាប់ផ្ដើមមិនបានទេ');
     ai.project.status = 'running'; ai.project.progress = 'step1';
+    ai.project.stages = { scan:{state:'working',seconds:0,total:ai.duration||0}, listen:{state:'waiting',seconds:0,total:ai.duration||0,segments:0}, translate:{state:'waiting',done:0,total:0}, voice:{state:'waiting',done:0,total:0} };
+    ai.project.pct = 0;
     aiRenderProject();
     aiStartPolling();
   }catch(e){ aiMsg(e.message || 'ចាប់ផ្ដើមមិនបានទេ', false); }
@@ -965,7 +1136,7 @@ function aiExportStop(){
 }
 function aiExportFinish(){
   var btn = document.getElementById('aiDlVideoBtn');
-  btn.disabled = false; btn.textContent = '🎬 វីដេអូ (មានសំឡេងខ្មែរ)';
+  btn.disabled = false; btn.textContent = '⬇ Download Video';
   if(aiExp.chunks.length){
     var blob = new Blob(aiExp.chunks, { type:'video/webm' });
     var url = URL.createObjectURL(blob);
@@ -1035,11 +1206,67 @@ async function aiExportVideo(){
     await v.play();
   }catch(e){
     ai.exporting = false;
-    document.getElementById('aiDlVideoBtn').textContent = '🎬 វីដេអូ (មានសំឡេងខ្មែរ)';
+    document.getElementById('aiDlVideoBtn').textContent = '⬇ Download Video';
     aiMsg('ថតវីដេអូមិនបានទេ៖ ' + (e && e.message ? e.message : 'មានបញ្ហា'), false);
   }
 }
 
+
+/* ---------- Voice test (Home) ---------- */
+function vtBalance(){ try { const v = JSON.parse(localStorage.getItem('aio-vt-credit') || 'null'); if (v && typeof v.left === 'number') return v.left; } catch {} return 1000; }
+function vtSaveBalance(n){ try { localStorage.setItem('aio-vt-credit', JSON.stringify({ left: n })); } catch {} }
+function vtWords(t){ const s = t.trim(); if (!s) return 0; const parts = s.split(/\s+/); if (parts.length > 1) return parts.length; return s.length; }
+function vtShowBalance(){ const el = document.getElementById('vtCredit'); if (el) el.innerText = 'នៅសល់ ' + vtBalance() + ' Credit (តេស)'; }
+async function voiceTest(){
+  const msg = document.getElementById('vtMsg');
+  const btn = document.getElementById('vtBtn');
+  const out = document.getElementById('vtOut');
+  const text = (document.getElementById('vtText').value || '').trim();
+  if (!text) { msg.style.color = '#dc2626'; msg.innerText = 'សូមដាក់អក្សរជាមុនសិន'; return; }
+  if (text.length > 2000) { msg.style.color = '#dc2626'; msg.innerText = 'អក្សរវែងពេក — អតិបរមា 2000 តួអក្សរ'; return; }
+  const cost = vtWords(text);
+  const left = vtBalance();
+  if (cost > left) { msg.style.color = '#dc2626'; msg.innerText = 'Credit មិនគ្រប់គ្រាន់ — ត្រូវការ ' + cost + ' Credit តែនៅសល់ ' + left + ' Credit ទេ'; return; }
+  btn.disabled = true;
+  msg.style.color = 'var(--muted)';
+  msg.innerText = 'កំពុងបង្កើតសំឡេង… (' + cost + ' Credit)';
+  out.style.display = 'none';
+  try {
+    const r = await fetch('/api/voice/test', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
+    if (!r.ok) {
+      let m = 'បង្កើតសំឡេងមិនបានទេ';
+      try { const j = await r.json(); if (j && j.message && j.message.km) m = j.message.km; } catch {}
+      throw new Error(m);
+    }
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    const audio = document.getElementById('vtAudio');
+    audio.src = url;
+    const dl = document.getElementById('vtDl');
+    dl.href = url;
+    out.style.display = 'block';
+    vtSaveBalance(left - cost);
+    vtShowBalance();
+    msg.style.color = '#16a34a';
+    msg.innerText = '✓ រួចហើយ — កាត់ ' + cost + ' Credit · នៅសល់ ' + (left - cost) + ' Credit';
+    audio.play().catch(() => {});
+  } catch (e) {
+    msg.style.color = '#dc2626';
+    if (e instanceof TypeError) {
+      msg.innerText = 'មុខងារសំឡេងត្រូវការ server — សូមបើកពី Link Render (មុខងារនេះមិនដំណើរការលើ Vercel ទេ)';
+    } else {
+      msg.innerText = (e && e.message) ? e.message : 'បង្កើតសំឡេងមិនបានទេ';
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* AI Tools init (must run after the AI section above defines AI_LANGS/ai) */
+try{aiInitLang()}catch(e){}
+try{aiInitVoice()}catch(e){}
+try{aiUsageRender()}catch(e){}
+try{vtShowBalance()}catch(e){}
 </script>
 </body>
 </html>
