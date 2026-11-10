@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta id="themeColorMeta" name="theme-color" content="#e8f7ee">
 <title>All In One SOKHOEUN 🇰🇭</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700;900&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
@@ -782,11 +783,21 @@ const APPEARANCE_SHADES={
   charcoal:{name:'Charcoal',bg1:'#0f172a',bg2:'#111827',card:'#1e293b',text:'#f1f5f9',muted:'#94a3b8',shadow:'0 6px 24px rgba(0,0,0,.4)'},
   forest:{name:'Forest',bg1:'#0c1f16',bg2:'#10291c',card:'#16382a',text:'#ecfdf5',muted:'#86a89a',shadow:'0 6px 24px rgba(0,0,0,.4)'}
 };
+function syncChromeColor(){
+  var bg1='#e8f7ee', dark=false;
+  try{var v=getComputedStyle(document.body).getPropertyValue('--bg1').trim(); if(v) bg1=v}catch(e){}
+  var h=bg1.replace('#','');
+  if(h.length===3){h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2]}
+  var r=parseInt(h.substr(0,2),16)||0, g=parseInt(h.substr(2,2),16)||0, b=parseInt(h.substr(4,2),16)||0;
+  dark=(r*0.299+g*0.587+b*0.114)<128;
+  var m=document.getElementById('themeColorMeta'); if(m) m.setAttribute('content',bg1);
+  try{document.documentElement.style.colorScheme=dark?'dark':'light'}catch(e){}
+}
 function apClearInline(){['--accent','--accent-dark','--accent-soft','--accent-light','--bg1','--bg2','--card','--text','--muted','--shadow'].forEach(v=>document.body.style.removeProperty(v))}
 function apApplyAccent(id){const a=APPEARANCE_ACCENTS[id];if(!a)return;const b=document.body.style;b.setProperty('--accent',a.a);b.setProperty('--accent-dark',a.d);b.setProperty('--accent-soft',a.s);b.setProperty('--accent-light',a.l)}
 function apApplyShade(id){const s=APPEARANCE_SHADES[id];if(!s)return;const b=document.body.style;b.setProperty('--bg1',s.bg1);b.setProperty('--bg2',s.bg2);b.setProperty('--card',s.card);b.setProperty('--text',s.text);b.setProperty('--muted',s.muted);b.setProperty('--shadow',s.shadow)}
 function setAccent(id,el){document.body.removeAttribute('data-theme');try{localStorage.removeItem('aio-theme')}catch(e){}document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));apApplyAccent(id);try{localStorage.setItem('aio-accent',id)}catch(e){}document.querySelectorAll('.accent-sw').forEach(x=>x.classList.toggle('on',x===el))}
-function setShade(id,el){document.body.removeAttribute('data-theme');try{localStorage.removeItem('aio-theme')}catch(e){}document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));apApplyShade(id);try{localStorage.setItem('aio-bgshade',id)}catch(e){}document.querySelectorAll('.shade-pill').forEach(x=>x.classList.toggle('on',x===el))}
+function setShade(id,el){document.body.removeAttribute('data-theme');try{localStorage.removeItem('aio-theme')}catch(e){}document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));apApplyShade(id);try{localStorage.setItem('aio-bgshade',id)}catch(e){}document.querySelectorAll('.shade-pill').forEach(x=>x.classList.toggle('on',x===el));syncChromeColor()}
 function renderAppearance(){
   const g=document.getElementById('accentGrid');if(!g)return;
   g.innerHTML=Object.keys(APPEARANCE_ACCENTS).map(id=>{const a=APPEARANCE_ACCENTS[id];return '<button type="button" class="accent-sw" data-accent="'+id+'" onclick="setAccent(\''+id+'\',this)"><span class="accent-bar" style="display:block;background:'+a.g+'"></span><span class="accent-dots"><i style="background:'+a.a+'"></i><i style="background:'+a.d+'"></i><i style="background:'+a.l+'"></i></span><span class="accent-name">'+a.name+'</span></button>'}).join('');
@@ -802,6 +813,7 @@ function applyAppearance(){
   document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
   if(a){apApplyAccent(a);document.querySelectorAll('.accent-sw').forEach(x=>x.classList.toggle('on',x.dataset.accent===a))}
   if(sh){apApplyShade(sh);document.querySelectorAll('.shade-pill').forEach(x=>x.classList.toggle('on',x.dataset.shade===sh))}
+  syncChromeColor();
 }
 function setTheme(name,el){
   apClearInline();
@@ -812,6 +824,7 @@ function setTheme(name,el){
   document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
   document.querySelectorAll('.dot.'+(name==='night'?'night':name)).forEach(d=>d.classList.add('active'));
   try{localStorage.setItem('aio-theme',name)}catch(e){}
+  syncChromeColor();
 }
 function copyAddr(){
   var t=document.getElementById('usdtAddr').innerText.trim();
@@ -843,6 +856,7 @@ function sendRequest(){
   try{var b=localStorage.getItem('aio-balance');if(b){document.getElementById('acctBal').innerText='$'+parseFloat(b).toFixed(2)}}catch(e){}
   try{var s=localStorage.getItem('aio-theme');if(s){document.body.dataset.theme=s;document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));document.querySelectorAll('.dot.'+(s==='night'?'night':s)).forEach(d=>d.classList.add('active'))}}catch(e){}
   try{renderAppearance()}catch(e){}
+  try{syncChromeColor()}catch(e){}
   var h=(location.hash||'').replace('#','');
   if(['home','tools','web2app','payments'].indexOf(h)>=0&&h!=='home'){go(h)}
   if(new URLSearchParams(location.search).get('menu')==='1'){openMenu()}
