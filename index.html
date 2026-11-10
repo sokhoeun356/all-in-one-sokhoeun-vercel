@@ -611,7 +611,7 @@ body{padding-bottom:96px}
         <div class="kiri-upload" onclick="hpPickFile()">
           <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
           <b>Click to Upload Video</b>
-          <small>or drag &amp; drop here · អតិបរមា 25 MB · Free 3 នាទី / វីដេអូ</small>
+          <small>or drag &amp; drop here · Free 3 នាទី / វីដេអូ</small>
         </div>
         <div class="kiri-or">— OR —</div>
         <div class="kiri-linkrow">
@@ -824,7 +824,7 @@ body{padding-bottom:96px}
       <div class="kiri-upload" onclick="aiPickFile()">
         <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
         <b>Click to Upload Video</b>
-        <small>or drag &amp; drop here · អតិបរមា 25 MB · Free 3 នាទី / វីដេអូ</small>
+        <small>or drag &amp; drop here · Free 3 នាទី / វីដេអូ</small>
       </div>
       <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
       <div class="kiri-or">— OR —</div>
@@ -1574,7 +1574,7 @@ function w2Build(){
    (localStorage 'aio-ai-usage'). Language in 'aio-ai-lang', voice in
    'aio-ai-voice'. */
 var AI_LANGS=[{c:'km',en:"Khmer",km:"ខ្មែរ",f:'🇰🇭'},{c:'en',en:"English",km:"អង់គ្លេស",f:'🇺🇸'},{c:'th',en:"Thai",km:"ថៃ",f:'🇹🇭'},{c:'vi',en:"Vietnamese",km:"វៀតណាម",f:'🇻🇳'},{c:'zh',en:"Chinese (Simplified)",km:"ចិន",f:'🇨🇳'},{c:'ja',en:"Japanese",km:"ជប៉ុន",f:'🇯🇵'},{c:'ko',en:"Korean",km:"កូរ៉េ",f:'🇰🇷'},{c:'lo',en:"Lao",km:"ឡាវ",f:'🇱🇦'},{c:'my',en:"Burmese",km:"ភូមា",f:'🇲🇲'},{c:'id',en:"Indonesian",km:"ឥណ្ឌូនេស៊ី",f:'🇮🇩'},{c:'ms',en:"Malay",km:"ម៉ាឡេ",f:'🇲🇾'},{c:'fil',en:"Filipino",km:"ហ្វីលីពីន",f:'🇵🇭'},{c:'hi',en:"Hindi",km:"ហិណ្ឌី",f:'🇮🇳'},{c:'bn',en:"Bengali",km:"បេងហ្គាល់",f:'🇧🇩'},{c:'ta',en:"Tamil",km:"តាមីល",f:'🇮🇳'},{c:'te',en:"Telugu",km:"តេលូហ្គូ",f:'🇮🇳'},{c:'ur',en:"Urdu",km:"អ៊ូរឌូ",f:'🇵🇰'},{c:'fa',en:"Persian",km:"ពែរ្ស",f:'🇮🇷'},{c:'ar',en:"Arabic",km:"អារ៉ាប់",f:'🇸🇦'},{c:'he',en:"Hebrew",km:"ហេប្រ៊ូ",f:'🇮🇱'},{c:'tr',en:"Turkish",km:"តួកគី",f:'🇹🇷'},{c:'ru',en:"Russian",km:"រុស្ស៊ី",f:'🇷🇺'},{c:'uk',en:"Ukrainian",km:"អ៊ុយក្រែន",f:'🇺🇦'},{c:'fr',en:"French",km:"បារាំង",f:'🇫🇷'},{c:'de',en:"German",km:"អាល្លឺម៉ង់",f:'🇩🇪'},{c:'es',en:"Spanish",km:"អេស្ប៉ាញ",f:'🇪🇸'},{c:'it',en:"Italian",km:"អ៊ីតាលី",f:'🇮🇹'},{c:'pt',en:"Portuguese",km:"ព័រទុយហ្គាល់",f:'🇵🇹'},{c:'nl',en:"Dutch",km:"ហូឡង់",f:'🇳🇱'},{c:'pl',en:"Polish",km:"ប៉ូឡូញ",f:'🇵🇱'},{c:'cs',en:"Czech",km:"ឆែក",f:'🇨🇿'},{c:'sk',en:"Slovak",km:"ស្លូវ៉ាក់",f:'🇸🇰'},{c:'hu',en:"Hungarian",km:"ហុងគ្រី",f:'🇭🇺'},{c:'ro',en:"Romanian",km:"រូម៉ានី",f:'🇷🇴'},{c:'bg',en:"Bulgarian",km:"ប៊ុលហ្គារី",f:'🇧🇬'},{c:'hr',en:"Croatian",km:"ក្រូអាត",f:'🇭🇷'},{c:'el',en:"Greek",km:"ក្រិក",f:'🇬🇷'},{c:'sv',en:"Swedish",km:"ស៊ុយអែត",f:'🇸🇪'},{c:'da',en:"Danish",km:"ដាណឺម៉ាក",f:'🇩🇰'},{c:'fi',en:"Finnish",km:"ហ្វាំងឡង់",f:'🇫🇮'},{c:'nb',en:"Norwegian",km:"ន័រវែស",f:'🇳🇴'},{c:'et',en:"Estonian",km:"អេស្តូនី",f:'🇪🇪'},{c:'lv',en:"Latvian",km:"ឡាតវី",f:'🇱🇻'},{c:'lt',en:"Lithuanian",km:"លីទុយអានី",f:'🇱🇹'},{c:'af',en:"Afrikaans",km:"អាហ្វ្រិកាអានស៍",f:'🇿🇦'},{c:'am',en:"Amharic",km:"អាំហារិក",f:'🇪🇹'},{c:'az',en:"Azerbaijani",km:"អាស៊ែបៃហ្សង់",f:'🇦🇿'},{c:'bs',en:"Bosnian",km:"បូស្ន៊ី",f:'🇧🇦'},{c:'ca',en:"Catalan",km:"កាតាឡាន",f:'🇪🇸'},{c:'cy',en:"Welsh",km:"វែលស៍",f:'🇬🇧'},{c:'eu',en:"Basque",km:"បាស្ក",f:'🇪🇸'},{c:'ga',en:"Irish",km:"អៀរឡង់",f:'🇮🇪'},{c:'gl',en:"Galician",km:"ហ្គាលីស៊ី",f:'🇪🇸'},{c:'hy',en:"Armenian",km:"អាមេនី",f:'🇦🇲'},{c:'is',en:"Icelandic",km:"អ៊ីស្លង់",f:'🇮🇸'},{c:'jv',en:"Javanese",km:"ជ្វា",f:'🇮🇩'},{c:'ka',en:"Georgian",km:"ហ្សកហ្ស៊ី",f:'🇬🇪'},{c:'kk',en:"Kazakh",km:"កាហ្សាក់",f:'🇰🇿'},{c:'kn',en:"Kannada",km:"កាណាដា",f:'🇮🇳'},{c:'ml',en:"Malayalam",km:"ម៉ាឡាយ៉ាឡាំ",f:'🇮🇳'},{c:'mn',en:"Mongolian",km:"ម៉ុងហ្គោលី",f:'🇲🇳'},{c:'mr',en:"Marathi",km:"ម៉ារ៉ាធី",f:'🇮🇳'},{c:'gu',en:"Gujarati",km:"ហ្គូចារ៉ាទី",f:'🇮🇳'},{c:'mt',en:"Maltese",km:"ម៉ាល់តា",f:'🇲🇹'},{c:'ne',en:"Nepali",km:"នេប៉ាល់",f:'🇳🇵'},{c:'ps',en:"Pashto",km:"ប៉ាស្តូ",f:'🇦🇫'},{c:'si',en:"Sinhala",km:"ស៊ីនហាឡា",f:'🇱🇰'},{c:'sl',en:"Slovenian",km:"ស្លូវេនី",f:'🇸🇮'},{c:'so',en:"Somali",km:"សូម៉ាលី",f:'🇸🇴'},{c:'sq',en:"Albanian",km:"អាល់បានី",f:'🇦🇱'},{c:'sr',en:"Serbian",km:"ស៊ែប៊ី",f:'🇷🇸'},{c:'su',en:"Sundanese",km:"ស៊ុនដា",f:'🇮🇩'},{c:'sw',en:"Swahili",km:"ស្វាហ៊ីលី",f:'🇰🇪'},{c:'uz',en:"Uzbek",km:"អ៊ូសបេក",f:'🇺🇿'},{c:'zu',en:"Zulu",km:"ហ្ស៊ូលូ",f:'🇿🇦'},{c:'mk',en:"Macedonian",km:"ម៉ាសេដ្វាន",f:'🇲🇰'},{c:'enGB',en:"English (UK)",km:"អង់គ្លេស · អង់គ្លេស",f:'🇬🇧'},{c:'enCA',en:"English (Canada)",km:"អង់គ្លេស · កាណាដា",f:'🇨🇦'},{c:'enIN',en:"English (India)",km:"អង់គ្លេស · ឥណ្ឌា",f:'🇮🇳'},{c:'enIE',en:"English (Ireland)",km:"អង់គ្លេស · អៀរឡង់",f:'🇮🇪'},{c:'enSG',en:"English (Singapore)",km:"អង់គ្លេស · សិង្ហបុរី",f:'🇸🇬'},{c:'enPH',en:"English (Philippines)",km:"អង់គ្លេស · ហ្វីលីពីន",f:'🇵🇭'},{c:'enNZ',en:"English (New Zealand)",km:"អង់គ្លេស · នូវែលសេឡង់",f:'🇳🇿'},{c:'enZA',en:"English (South Africa)",km:"អង់គ្លេស · អាហ្វ្រិកខាងត្បូង",f:'🇿🇦'},{c:'zhTW',en:"Chinese (Taiwan)",km:"ចិន · តៃវ៉ាន់",f:'🇹🇼'},{c:'zhHK',en:"Chinese (Hong Kong)",km:"ចិន · ហុងកុង",f:'🇭🇰'},{c:'esMX',en:"Spanish (Mexico)",km:"អេស្ប៉ាញ · ម៉ិកស៊ិក",f:'🇲🇽'},{c:'esUS',en:"Spanish (US)",km:"អេស្ប៉ាញ · អាមេរិក",f:'🇺🇸'},{c:'ptBR',en:"Portuguese (Brazil)",km:"ព័រទុយហ្គាល់ · ប្រេស៊ីល",f:'🇧🇷'},{c:'frCA',en:"French (Canada)",km:"បារាំង · កាណាដា",f:'🇨🇦'},{c:'frBE',en:"French (Belgium)",km:"បារាំង · បែលហ្ស៊ិក",f:'🇧🇪'},{c:'deAT',en:"German (Austria)",km:"អាល្លឺម៉ង់ · អូទ្រីស",f:'🇦🇹'},{c:'deCH',en:"German (Switzerland)",km:"អាល្លឺម៉ង់ · ស្វីស",f:'🇨🇭'},{c:'arEG',en:"Arabic (Egypt)",km:"អារ៉ាប់ · អេហ្ស៊ីប",f:'🇪🇬'},{c:'arAE',en:"Arabic (UAE)",km:"អារ៉ាប់ · អេមីរ៉ាត",f:'🇦🇪'},{c:'urIN',en:"Urdu (India)",km:"អ៊ូរឌូ · ឥណ្ឌា",f:'🇮🇳'},{c:'bnIN',en:"Bengali (India)",km:"បេងហ្គាល់ · ឥណ្ឌា",f:'🇮🇳'},{c:'swTZ',en:"Swahili (Tanzania)",km:"ស្វាហ៊ីលី · តង់ហ្សានី",f:'🇹🇿'},{c:'nlBE',en:"Dutch (Belgium)",km:"ហូឡង់ · បែលហ្ស៊ិក",f:'🇧🇪'}];
-var ai = { project:null, pollTimer:null, voice:'auto', lang:'km', duration:0, activeSeg:-1, serverOk:false, exporting:false, counted:false };
+var ai = { project:null, pollTimer:null, voice:'auto', lang:'km', duration:0, trimSec:0, activeSeg:-1, serverOk:false, exporting:false, counted:false };
 var aiSegAudio = new Audio(); aiSegAudio.preload = 'auto';
 var aiExp = { rec:null, chunks:[], canvas:null, ctx:null, raf:0, actx:null, vGain:null, aSrc:null, vSrc:null, url:null };
 
@@ -1733,10 +1733,10 @@ async function aiFileChosen(ev){
   ev.target.value = '';
   if(!f) return;
   if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
-  if(f.size > 25 * 1024 * 1024){ aiMsg('ឯកសារធំពេក — អតិបរមា 25 MB', false); return; }
   aiMsg('កំពុងពិនិត្យវីដេអូ…');
   var dur = await aiReadDuration(f);
-  if(dur > 180){ aiMsg('វីដេអូនេះវែងពេក (' + aiFmtTime(dur) + ') — Free អនុញ្ញាតតែ 3 នាទីទេ — Pro ធ្វើបានដល់ 15 នាទី', false); return; }
+  ai.trimSec = 0;
+  if(dur > 180){ ai.trimSec = 180; aiMsg('វីដេអូនេះវែងជាង 3 នាទី (' + aiFmtTime(dur) + ') — Free នឹងយកតែ 3 នាទីដំបូងទេ'); }
   ai.duration = dur;
   aiMsg('កំពុងផ្ទុកឡើង… ' + aiFmtMB(f.size));
   document.getElementById('aiFileInfo').textContent = f.name + ' · ' + aiFmtMB(f.size) + (dur ? ' · ' + aiFmtTime(dur) : '');
@@ -1878,7 +1878,7 @@ async function aiRun(){
   if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
   var v = document.getElementById('aiPlayer');
   if(v && v.duration && isFinite(v.duration)) ai.duration = v.duration;
-  if(ai.duration > 180){ aiMsg('វីដេអូនេះវែងពេក (' + aiFmtTime(ai.duration) + ') — Free អនុញ្ញាតតែ 3 នាទីទេ — Pro ធ្វើបានដល់ 15 នាទី', false); return; }
+  if(ai.duration > 180){ ai.trimSec = 180; aiMsg('វីដេអូនេះវែងជាង 3 នាទី — Free នឹងយកតែ 3 នាទីដំបូងទេ'); }
   if(aiUsageRemaining() <= 0){ aiMsg('អ្នកប្រើអស់ 3 វីដេអូក្នុងសប្ដាហ៍នេះហើយ — សូមរង់ចាំសប្ដាហ៍ក្រោយ', false); return; }
   var keys = getGroqKeys();
   if(!keys.length){
@@ -1889,7 +1889,7 @@ async function aiRun(){
   try{
     var r = await fetch('/api/ai/' + ai.project.id + '/run', {
       method:'POST', headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({ keys: keys, voice: ai.voice, lang: ai.lang, duration: Math.round(ai.duration || 0) })
+      body: JSON.stringify({ keys: keys, voice: ai.voice, lang: ai.lang, duration: Math.round(ai.duration || 0), trimSec: ai.trimSec || 0 })
     });
     var j = await r.json().catch(() => ({}));
     if(!r.ok) throw new Error((j.message && j.message.km) || 'ចាប់ផ្ដើមមិនបានទេ');
@@ -2090,6 +2090,7 @@ async function voiceTest(){
     const url = URL.createObjectURL(blob);
     const audio = document.getElementById('vtAudio');
     audio.src = url;
+    audio.playbackRate = (vtVoice === 'male') ? 0.8 : 1;
     const dl = document.getElementById('vtDl');
     dl.href = url;
     out.style.display = 'block';
