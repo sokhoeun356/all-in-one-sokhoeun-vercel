@@ -293,8 +293,27 @@ body{background:#f4f6f5}
 .w2-logo-name{font-family:ui-monospace,monospace;font-size:14px;font-weight:700;color:var(--accent-dark)}
 .w2-logo-note p{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.6}
 </style>
+
+<style id="v6-img">
+/* v6: the generated images ARE the page design; code is only the skeleton */
+.imgpage{position:relative;line-height:0;background:#fff}
+.imgpage>img{width:100%;display:block}
+.hot{position:absolute;background:transparent;border:0;padding:0;margin:0;cursor:pointer;z-index:2;line-height:0}
+.hot.on{outline:3px solid #22c55e;outline-offset:-3px;border-radius:10px}
+.hotinput{position:absolute;background:transparent;border:0;padding:0 12px;margin:0;z-index:2;font-size:15px;color:#1e293b;outline:none}
+.hotinput:focus{outline:3px solid #22c55e;outline-offset:-3px;border-radius:10px}
+.hotinput::placeholder{color:#94a3b8}
+select.hotinput{appearance:none;-webkit-appearance:none}
+body.v6-img-on>header{display:none}
+.imgpage .ai-chip,.imgpage .ai-chip.on{background:transparent !important;border-color:transparent !important;color:transparent !important;padding:0 !important}
+.hotinput.wbg{background:#fff;border-radius:10px}
+.imgbelow{padding:14px 14px 0}
+.v6-hist{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid #e4e4e7;border-radius:12px;padding:12px 14px;margin-top:8px;cursor:pointer}
+.v6-hist b{display:block;font-size:15px}
+.v6-hist small{color:var(--muted);font-size:13px}
+</style>
 </head>
-<body data-theme="green">
+<body data-theme="green" class="v6-img-on">
 <input type="file" id="logoInput" accept="image/*" hidden onchange="logoPicked(event)">
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
@@ -339,163 +358,130 @@ body{background:#f4f6f5}
 
   <!-- ============ HOME ============ -->
   <section class="page active" id="page-home">
-    <div class="wall">
-      <h1>All In One SOKHOEUN 🇰🇭</h1>
-      <p class="tag">សូមស្វាគមន៍ — អ្វីៗទាំងអស់ នៅទីនេះតែមួយកន្លែង</p>
-
-      <div class="acct">
-        <div class="acct-top">
-          <span class="acct-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c1-4 4.5-6 8-6s7 2 8 6z" fill="currentColor"/></svg></span>
-          <span class="acct-tx"><b>គណនីរបស់ខ្ញុំ</b><small>សមតុល្យ · Balance</small></span>
-          <span class="acct-bal" id="acctBal">$0.00</span>
+    <div class="imgpage">
+      <img src="assets/page-home.jpg" alt="All In One SOKHOEUN">
+      <button class="hot" style="left:7%;top:2.5%;width:9.8%;height:5.5%" onclick="openMenu()" aria-label="Menu"></button>
+      <button class="hot" style="left:84.3%;top:2.5%;width:9.1%;height:5.5%" onclick="go('settings')" aria-label="Profile"></button>
+      <button class="hot" style="left:53%;top:56%;width:37.3%;height:4.5%" onclick="go('tools')" aria-label="Start Translate"></button>
+      <button class="hot" style="left:50.5%;top:85.7%;width:39.5%;height:4.3%" onclick="go('web2app')" aria-label="Build Your App"></button>
+      <button class="hot" style="left:4.4%;top:92.7%;width:23.6%;height:7.1%" onclick="go('home')" aria-label="Home"></button>
+      <button class="hot" style="left:28.2%;top:93%;width:21.6%;height:6.7%" onclick="go('history')" aria-label="History"></button>
+      <button class="hot" style="left:50%;top:93%;width:21.9%;height:6.7%" onclick="go('packages')" aria-label="Upgrade"></button>
+      <button class="hot" style="left:72.2%;top:93%;width:23%;height:6.7%" onclick="go('settings')" aria-label="Settings"></button>
+    </div>
+    <div class="imgbelow">
+      <div class="card wide">
+        <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg> តេសសំឡេង · AI Translate Voice</h3>
+        <p>ដាក់អក្សរភាសាអ្វីក៏បាន — វានិយាយភាសានោះ (អត់បាច់ជ្រើសរើសភាសាទេ)។ កាត់ 1 Credit / 1 ពាក្យ។</p>
+        <textarea class="input" id="vtText" rows="3" placeholder="ដាក់អក្សរនៅទីនេះ… (ភាសាអ្វីក៏បាន)" style="width:100%;resize:vertical"></textarea>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
+          <button class="btn btn-green" id="vtBtn" onclick="voiceTest()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/><path d="M15.5 9.5a4 4 0 0 1 0 5M18 7a8 8 0 0 1 0 10"/></svg> AI Translate Voice</button>
+          <span id="vtCredit" style="font-size:13px;color:var(--muted)"></span>
         </div>
-        <button class="acct-add" onclick="go('payments')">+ បញ្ចូលលុយ · Add Money</button>
+        <p id="vtMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
+        <div id="vtOut" style="display:none;margin-top:10px">
+          <audio id="vtAudio" controls style="width:100%"></audio>
+          <div class="mt"><a id="vtDl" class="btn btn-ghost btn-block" download="ai-translate-voice.mp3"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download MP3</a></div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="mt">
-      <button class="btn btn-green btn-block" onclick="openMenu()">ចាប់ផ្ដើម · Get Started</button>
+  <!-- ============ HISTORY ============ -->
+  <section class="page" id="page-history">
+    <div class="page-head">
+      <h2>History · ប្រវត្តិ</h2>
+      <p>វីដេអូដែលអ្នកបានបកប្រែ — ចុចលើវីដេអូមួយដើម្បីបើកវា។</p>
     </div>
-
-    <div class="card wide" style="margin-top:12px">
-      <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg> តេសសំឡេង · AI Translate Voice</h3>
-      <p>ដាក់អក្សរភាសាអ្វីក៏បាន — វានិយាយភាសានោះ (អត់បាច់ជ្រើសរើសភាសាទេ)។ កាត់ 1 Credit / 1 ពាក្យ។</p>
-      <textarea class="input" id="vtText" rows="3" placeholder="ដាក់អក្សរនៅទីនេះ… (ភាសាអ្វីក៏បាន)" style="width:100%;resize:vertical"></textarea>
-      <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
-        <button class="btn btn-green" id="vtBtn" onclick="voiceTest()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/><path d="M15.5 9.5a4 4 0 0 1 0 5M18 7a8 8 0 0 1 0 10"/></svg> AI Translate Voice</button>
-        <span id="vtCredit" style="font-size:13px;color:var(--muted)"></span>
-      </div>
-      <p id="vtMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
-      <div id="vtOut" style="display:none;margin-top:10px">
-        <audio id="vtAudio" controls style="width:100%"></audio>
-        <div class="mt"><a id="vtDl" class="btn btn-ghost btn-block" download="ai-translate-voice.mp3"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download MP3</a></div>
-      </div>
-    </div>
-
-    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg> មុខងាររបស់វេបសាយ</h2>
-    <div class="funclist">
-      <button class="func-row" onclick="go('tools')"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M20 14 L48 32 L20 50 Z" fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round"/><text x="31" y="37" font-size="13" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">AI</text><path d="M50 6 L51.8 11.2 L57 13 L51.8 14.8 L50 20 L48.2 14.8 L43 13 L48.2 11.2 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>AI បកប្រែវីដេអូ</b><small>ស្ដាប់ → បកប្រែ → សម្លេងខ្មែរ គ្រប់ភាសា ទាំង 99 ភាសា</small></span></button>
-      <button class="func-row" onclick="go('web2app')"><span class="func-tile"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="36" rx="6" fill="none" stroke="#16a34a" stroke-width="3"/><line x1="10" y1="24" x2="54" y2="24" stroke="#16a34a" stroke-width="3"/><circle cx="16" cy="19" r="1.8" fill="#16a34a"/><circle cx="22" cy="19" r="1.8" fill="#16a34a"/><rect x="16" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="28" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="16" y="42" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><path d="M48 40 v10 M43 45 h10" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/></svg></span><span class="func-tx"><b>Web2App Builder</b><small>បម្លែងវេបសាយរបស់អ្នក ទៅជា App APK ដំឡើងលើទូរសព្ទបាន</small></span></button>
-      <button class="func-row" onclick="go('payments')"><span class="func-tile"><svg viewBox="0 0 64 64"><rect x="18" y="12" width="34" height="24" rx="5" fill="none" stroke="#16a34a" stroke-width="3"/><line x1="24" y1="20" x2="46" y2="20" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><rect x="10" y="28" width="34" height="24" rx="5" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/><text x="27" y="45" font-size="17" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">$</text></svg></span><span class="func-tx"><b>បង់ប្រាក់ 2 ប្រភេទ</b><small>KHQR សម្រាប់អ្នកខ្មែរ · USDT សម្រាប់អ្នកបរទេស</small></span></button>
-      <div class="func-row" style="cursor:default"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M32 8 L38 26 L56 32 L38 38 L32 56 L26 38 L8 32 L26 26 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>ទៅកន្លែងតែមួយ</b><small>អ្វីៗផ្សេងៗទៀត នឹងមកបន្ថែមនៅទីនេះជាបន្តបន្ទាប់</small></span></div>
-    </div>
-
+    <div class="ai-note" id="aiHistNote" style="display:none">ប្រវត្តិត្រូវការ server — សូមបើកវេបសាយពី Link Render។</div>
+    <div id="aiHistList" style="margin-top:12px"></div>
   </section>
 
   <!-- ============ AI TOOLS ============ -->
   <section class="page" id="page-tools">
-    <div class="v3-topbar">
-      <div class="v3-topbar-l">
-        <h2>AI Tools · Translate Video Voice</h2>
-        <span class="badge green">✓ ដំណើរការបាន</span>
+    <div class="imgpage">
+      <img src="assets/page-tools.jpg" alt="AI Translate Video Voice">
+      <button class="hot" style="left:4.8%;top:20.3%;width:90.4%;height:12.7%" onclick="aiPickFile()" aria-label="Upload Video"></button>
+      <input class="hotinput wbg" id="aiUrlInput" type="url" placeholder="Paste Video Link Here..." style="left:14%;top:34.7%;width:55.7%;height:4.5%">
+      <button class="hot" style="left:71%;top:34.5%;width:24.6%;height:5%" onclick="aiFetchUrl()" aria-label="Load Video"></button>
+      <select class="hotinput wbg" id="aiLangSelect" style="left:18%;top:45.4%;width:70%;height:5%" onchange="aiSetLang(this.value)"></select>
+      <div id="aiVoiceChips" style="position:absolute;left:3.8%;top:55.9%;width:92.9%;height:8.1%;z-index:2">
+        <button type="button" class="hot ai-chip on" data-voice="auto" style="left:0%;top:0%;width:34.8%;height:100%" onclick="aiSetVoice('auto',this)" aria-label="Auto Voice"></button>
+        <button type="button" class="hot ai-chip" data-voice="male" style="left:35.5%;top:0%;width:32.1%;height:100%" onclick="aiSetVoice('male',this)" aria-label="Male Voice"></button>
+        <button type="button" class="hot ai-chip" data-voice="female" style="left:68.1%;top:0%;width:31.9%;height:100%" onclick="aiSetVoice('female',this)" aria-label="Female Voice"></button>
       </div>
-      <button class="v3-export" onclick="document.getElementById('aiDlVideo').click()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Export</button>
+      <button type="button" class="hot ai-size on" data-size="16:9" style="left:4.6%;top:69.1%;width:24.1%;height:10%" onclick="aiSetSize('16:9',this)" aria-label="16:9 Landscape"></button>
+      <button type="button" class="hot ai-size" data-size="9:16" style="left:29.8%;top:69.1%;width:20.9%;height:9.9%" onclick="aiSetSize('9:16',this)" aria-label="9:16 Vertical"></button>
+      <button type="button" class="hot ai-size" data-size="4:6" style="left:52%;top:69.1%;width:21%;height:9.9%" onclick="aiSetSize('4:6',this)" aria-label="4:6 Portrait"></button>
+      <button type="button" class="hot ai-size" data-size="6:4" style="left:74.3%;top:69.1%;width:21.1%;height:9.9%" onclick="aiSetSize('6:4',this)" aria-label="6:4 Wide"></button>
+      <button class="hot" style="left:6%;top:81.5%;width:88.1%;height:8%" onclick="aiRun()" aria-label="Start Translate"></button>
     </div>
-
-    <div class="v3-stage">
-      <div class="v3-screen">
-        <div class="v3-play"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <p class="v3-screen-tx">ដាក់វីដេអូនៅទីនេះ</p>
-        <p class="v3-screen-sub">MP4 · ≤25 MB · Free 3 នាទី</p>
-      </div>
-      <div class="v3-time"><span>00:00</span><span>05:19</span></div>
-      <div class="v3-timeline"><i style="width:0%"></i></div>
-      <div class="v3-steps">
-        <span>1 · ស្គេន</span><span>2 · ស្ដាប់</span><span>3 · បកប្រែ</span><span>4 · សំឡេង AI</span>
-      </div>
-    </div>
-
-    <div class="v3-toolbar">
-      <button class="v3-tool" onclick="document.getElementById('aiFile').click()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Upload</button>
-      <button class="v3-tool" onclick="document.getElementById('aiLang').focus()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>ភាសា</button>
-      <button class="v3-tool" onclick="document.querySelector('.vchip').focus()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>សំឡេង</button>
-      <button class="v3-tool" onclick="aiRun()"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Generate</button>
-      <button class="v3-tool" onclick="document.getElementById('aiDlVideo').click()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Download</button>
-    </div>
-    <div class="ai-note" id="aiServerNote" style="display:none">មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
-    <div class="ai-free">Free: 3 នាទី / 3 វីដេអូ / 7 ថ្ងៃ · Pro: 6–15 នាទី<br><span id="aiUsageText">នៅសល់ 3 វីដេអូក្នុងសប្ដាហ៍នេះ</span></div>
-    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg> វាដំណើរការយ៉ាងម៉េច</h2>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><div style="flex:1;min-width:0">
-        <h3>វីដេអូ · Video</h3>
-        <p>ផ្ទុកឡើងវីដេអូ (MP4, អតិបរមា 25 MB, Free វែងបំផុត 3 នាទី · Pro ដល់ 15 នាទី) ឬដាក់ Link វីដេអូ។</p>
-        <div style="margin-top:10px">
-          <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
-          <button class="btn btn-green" id="aiPickBtn" onclick="aiPickFile()" style="padding:11px 18px;font-size:15px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> ជ្រើសវីដេអូ</button>
-          <div id="aiFileInfo" style="font-size:14px;margin-top:8px;color:var(--muted);word-break:break-word"></div>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:10px">
-          <input class="input" id="aiUrlInput" type="url" placeholder="https://…mp4 — ដាក់ Link វីដេអូ" style="flex:1;min-width:0">
-          <button class="btn btn-green" id="aiFetchBtn" onclick="aiFetchUrl()" style="padding:11px 16px;font-size:15px;flex:0 0 auto">យកវីដេអូ</button>
-        </div>
-        <div class="ai-status ai-st-wait" id="aiStep1Status">រង់ចាំ — មិនទាន់មានវីដេអូទេ</div>
-      </div></div>
-      <div class="step"><div class="n">2</div><div style="flex:1;min-width:0">
-        <h3>ជ្រើសរើសភាសា · Language</h3>
-        <p>ជ្រើសភាសាដែលចង់បកប្រែទៅ — មាន 99 ភាសា។</p>
-        <select class="input" id="aiLangSelect" style="width:100%;margin-top:10px" onchange="aiSetLang(this.value)"></select>
-      </div></div>
-      <div class="step"><div class="n">3</div><div style="flex:1;min-width:0">
-        <h3>សំឡេង · Voice</h3>
-        <p>ស្វ័យប្រវត្តិ — AI នឹងរើសសំឡេងប្រុស/ស្រីដោយខ្លួនឯងតាមជួរនីមួយៗ។</p>
-        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap" id="aiVoiceChips">
-          <button type="button" class="ai-chip on" data-voice="auto" onclick="aiSetVoice('auto',this)">ស្វ័យប្រវត្តិ · Auto</button>
-          <button type="button" class="ai-chip" data-voice="male" onclick="aiSetVoice('male',this)">ប្រុស · Male</button>
-          <button type="button" class="ai-chip" data-voice="female" onclick="aiSetVoice('female',this)">ស្រី · Female</button>
-        </div>
-      </div></div>
-    </div>
-    <div class="mt">
-      <button class="btn btn-green btn-block" id="aiRunBtn" onclick="aiRun()">▶ Generate Translate</button>
+    <div class="imgbelow">
+      <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
+      <div class="ai-note" id="aiServerNote" style="display:none">មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
+      <div class="ai-free">Free: 3 នាទី / 3 វីដេអូ / 7 ថ្ងៃ · Pro: 6–15 នាទី<br><span id="aiUsageText">នៅសល់ 3 វីដេអូក្នុងសប្ដាហ៍នេះ</span></div>
+      <div id="aiFileInfo" style="font-size:14px;margin-top:8px;color:var(--muted);word-break:break-word"></div>
+      <div class="ai-status ai-st-wait" id="aiStep1Status">រង់ចាំ — មិនទាន់មានវីដេអូទេ</div>
       <div class="ai-prog" id="aiProgWrap" style="display:none"><i id="aiProgBar"></i></div>
       <div class="ai-pct" id="aiPctText" style="display:none">0%</div>
       <p id="aiMsg" style="font-size:14px;font-weight:700;margin-top:10px;min-height:20px;line-height:1.5"></p>
-    </div>
-    <h2 class="sec-title">ដំណើរការ · Progress</h2>
-    <div id="aiProcs">
-      <div class="ai-proc" id="aiProc1"><span class="dot">1</span><div class="pt"><b>ដំណើរការទី 1 · ស្គេនសំឡេងវីដេអូ</b><div class="pd" id="aiProc1Detail">រង់ចាំ</div></div></div>
-      <div class="ai-proc" id="aiProc2"><span class="dot">2</span><div class="pt"><b>ដំណើរការទី 2 · ស្ដាប់</b><div class="pd" id="aiProc2Detail">រង់ចាំ</div></div></div>
-      <div class="ai-proc" id="aiProc3"><span class="dot">3</span><div class="pt"><b>ដំណើរការទី 3 · បកប្រែអក្សរ</b><div class="pd" id="aiProc3Detail">រង់ចាំ</div></div></div>
-      <div class="ai-proc" id="aiProc4"><span class="dot">4</span><div class="pt"><b>ដំណើរការទី 4 · បញ្ជូលសំឡេង AI</b><div class="pd" id="aiProc4Detail">រង់ចាំ</div></div></div>
-    </div>
-    <div id="aiPlayerWrap" style="display:none">
-      <div class="player-box">
-        <video id="aiPlayer" controls playsinline></video>
-        <div class="sub-overlay"><span id="aiSubLine"></span></div>
+      <h2 class="sec-title">ដំណើរការ · Progress</h2>
+      <div id="aiProcs">
+        <div class="ai-proc" id="aiProc1"><span class="dot">1</span><div class="pt"><b>ដំណើរការទី 1 · ស្គេនសំឡេងវីដេអូ</b><div class="pd" id="aiProc1Detail">រង់ចាំ</div></div></div>
+        <div class="ai-proc" id="aiProc2"><span class="dot">2</span><div class="pt"><b>ដំណើរការទី 2 · ស្ដាប់</b><div class="pd" id="aiProc2Detail">រង់ចាំ</div></div></div>
+        <div class="ai-proc" id="aiProc3"><span class="dot">3</span><div class="pt"><b>ដំណើរការទី 3 · បកប្រែអក្សរ</b><div class="pd" id="aiProc3Detail">រង់ចាំ</div></div></div>
+        <div class="ai-proc" id="aiProc4"><span class="dot">4</span><div class="pt"><b>ដំណើរការទី 4 · បញ្ជូលសំឡេង AI</b><div class="pd" id="aiProc4Detail">រង់ចាំ</div></div></div>
       </div>
-      <div class="seg-list" id="aiSegList"></div>
-    </div>
-    <div class="mt" id="aiDlWrap">
-      <button class="btn btn-green btn-block" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:14px 16px;font-size:17px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download Video</button>
-      <div id="aiDlVideoLink" style="margin-top:10px"></div>
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <a class="btn btn-ghost" id="aiDlSrt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.SRT</a>
-        <a class="btn btn-ghost" id="aiDlTxt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.TXT</a>
+      <div id="aiPlayerWrap" style="display:none">
+        <div class="player-box">
+          <video id="aiPlayer" controls playsinline></video>
+          <div class="sub-overlay"><span id="aiSubLine"></span></div>
+        </div>
+        <div class="seg-list" id="aiSegList"></div>
       </div>
-      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">Download Video គឺជា file វីដេអូពិត (WebM) — ទាញយកចូលទូរសព្ទរបស់អ្នកពិតៗ។</p>
-    </div>
-    <div class="mt">
-      <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> សួរព័ត៌មានបន្ថែម</a>
+      <div class="mt" id="aiDlWrap">
+        <button class="btn btn-green btn-block" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:14px 16px;font-size:17px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download Video</button>
+        <div id="aiDlVideoLink" style="margin-top:10px"></div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <a class="btn btn-ghost" id="aiDlSrt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.SRT</a>
+          <a class="btn btn-ghost" id="aiDlTxt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.TXT</a>
+        </div>
+        <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">Download Video គឺជា file វីដេអូពិត (WebM) — ទាញយកចូលទូរសព្ទរបស់អ្នកពិតៗ។</p>
+      </div>
+      <div class="mt">
+        <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> សួរព័ត៌មានបន្ថែម</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ WEB2APP ============ -->
   <section class="page" id="page-web2app">
-    <div class="page-head">
-      <h2>Website Web2App Builder APK</h2>
-      <p>អ្នកមានវេបសាយហើយ ចង់ឱ្យវាក្លាយជា App APK ដំឡើងលើទូរសព្ទបានមែនទេ? ដាក់ Link វេបសាយរបស់អ្នកមកទីនេះ។</p>
+    <div class="imgpage">
+      <img src="assets/page-web2app.jpg" alt="Web2App Builder APK">
+      <input class="hotinput wbg" id="w2Url" type="url" placeholder="https://yourwebsite.com" style="left:22%;top:21.1%;width:74.8%;height:4.4%">
+      <input class="hotinput wbg" id="w2AppName" type="text" placeholder="App Name" style="left:23%;top:30.9%;width:18%;height:4.2%">
+      <input class="hotinput wbg" id="w2Pkg" type="text" placeholder="com.yourname.app" style="left:50%;top:30.9%;width:25.7%;height:4.2%">
+      <input class="hotinput wbg" id="w2Ver" type="text" placeholder="1.0.0" value="1.0.0" style="left:82%;top:30.9%;width:14.8%;height:4.2%">
+      <button class="hot" style="left:14.9%;top:40.9%;width:18.2%;height:10.4%" onclick="document.getElementById('w2Icon').click()" aria-label="Upload Logo"></button>
+      <button class="hot" style="left:34.4%;top:40.9%;width:19.4%;height:10.4%" onclick="document.getElementById('w2Splash').click()" aria-label="Upload Splash"></button>
+      <input type="color" id="w2Color" value="#16a34a" class="hot" style="left:57.1%;top:45.6%;width:5.1%;height:3.3%;opacity:0" onchange="this.classList.add('on')">
+      <button class="hot" style="left:75.1%;top:42.7%;width:21.7%;height:4.2%" onclick="this.classList.toggle('on')" aria-label="Camera"></button>
+      <button class="hot" style="left:75.1%;top:47.3%;width:21.7%;height:4%" onclick="this.classList.toggle('on')" aria-label="Browse"></button>
+      <button class="hot" style="left:16.4%;top:58.8%;width:44.9%;height:5.2%" onclick="w2KeystoreNote()" aria-label="Upload Keystore File"></button>
+      <button class="hot" id="w2BuildBtn" style="left:17.3%;top:71.3%;width:75.4%;height:7.9%" onclick="w2Build()" aria-label="Build APK"></button>
+      <button class="hot" disabled style="left:17.4%;top:85.7%;width:75.5%;height:7.3%;opacity:.55" aria-label="Download APK"></button>
     </div>
-    <div class="ai-free">Free: 2 ដង — នៅសល់ 2 ដង<br><a href="#" onclick="go('packages');return false" style="color:var(--accent-dark);font-weight:900">មើលកញ្ចប់សេវាកម្ម Web2App →</a></div>
-    <h2 class="sec-title">ជំហានបង្កើត APK</h2>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><div><h3>Website URL · ដាក់ Link វេបសាយ</h3><p>ត្រូវជាវេបសាយពិត ដែលបើកបាន តាម HTTPS។</p><div class="mt"><input class="input" id="w2Url" type="url" placeholder="https://example.com"></div></div></div>
-      <div class="step"><div class="n">2</div><div><h3>App identity · ឈ្មោះ និង Package</h3><p>ឈ្មោះ App, Package name និង Version — Package name មិនអាចប្តូរបានទេបន្ទាប់ពី publish។</p><div class="mt"><input class="input" id="w2AppName" type="text" placeholder="ឈ្មោះ App (ឧ. My App)"></div><div class="mt"><input class="input" id="w2Pkg" type="text" placeholder="Package name (ឧ. com.example.myapp)"></div><div class="mt"><input class="input" id="w2Ver" type="text" placeholder="Version (1.0.0)" value="1.0.0"></div></div></div>
-      <div class="step"><div class="n">3</div><div><h3>Branding · Logo និងពណ៌</h3><p>Logo / Icon (512×512), Splash screen, ពណ៌ App និងការកំណត់។</p><div class="mt"><label class="w2-lab">Logo / Icon (512×512)</label><input class="input" id="w2Icon" type="file" accept="image/*"></div><div class="mt"><label class="w2-lab">Splash screen</label><input class="input" id="w2Splash" type="file" accept="image/*"></div><div class="mt"><label class="w2-lab">ពណ៌ App</label><input type="color" id="w2Color" value="#16a34a" style="width:56px;height:40px;border:1px solid #e4e4e7;border-radius:8px;background:#fff;padding:2px"></div><div class="mt w2-tog"><label><input type="checkbox" checked> ប៊ូតុង Back</label><label><input type="checkbox" checked> Upload file</label><label><input type="checkbox"> Camera</label></div></div></div>
-      <div class="step"><div class="n">4</div><div><h3>Signing · Keystore</h3><p>Keystore ត្រូវបានគ្រប់គ្រងដោយម្ចាស់វេបសាយ — បង្កើតស្វ័យប្រវត្តិសម្រាប់ build នីមួយៗ ហើយម្ចាស់រក្សាទុក key ដោយខ្លួនឯង។ អ្នកមិនបាច់ធ្វើអ្វីទេ។</p></div></div>
-      <div class="step"><div class="n">5</div><div><h3>Build · បង្កើត APK</h3><p>ចុច Build ដើម្បីចាប់ផ្តើមបង្កើត APK ពីវេបសាយរបស់អ្នក។</p><div class="mt"><button class="btn btn-green btn-block" id="w2BuildBtn" onclick="w2Build()">▶ Build APK</button></div><div class="ai-prog" id="w2ProgWrap" style="display:none"><i id="w2ProgBar"></i></div><p id="w2BuildMsg" style="font-size:13px;color:var(--muted);margin-top:8px"></p><p id="w2BuildNote" style="display:none;font-size:13px;color:#92400e;background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:10px 12px;margin-top:8px;line-height:1.6">⚠️ Build ពិតដំណើរការលើ GitHub របស់ម្ចាស់ — មិនទាន់ភ្ជាប់ទេ។ ទំព័រនេះបង្ហាញតែការរចនា។</p></div></div>
-      <div class="step"><div class="n">6</div><div><h3>Download · ទាញយក APK</h3><p>APK សម្រាប់ដំឡើងលើទូរសព្ទផ្ទាល់។ សម្រាប់ Google Play ប្រើ AAB (មិនមែន APK)។</p><div class="mt"><button class="btn btn-green btn-block" disabled style="opacity:.55">⬇ Download APK</button></div><p style="font-size:13px;color:var(--muted);margin-top:8px">APK ពិតនឹងមកពី GitHub build — មិនទាន់មានទេ។</p></div></div>
+    <div class="imgbelow">
+      <input class="input" id="w2Icon" type="file" accept="image/*" hidden onchange="w2FileChosen('w2Icon')">
+      <input class="input" id="w2Splash" type="file" accept="image/*" hidden onchange="w2FileChosen('w2Splash')">
+      <div class="ai-free">Free: 2 ដង — នៅសល់ 2 ដង<br><a href="#" onclick="go('packages');return false" style="color:var(--accent-dark);font-weight:900">មើលកញ្ចប់សេវាកម្ម Web2App →</a></div>
+      <p id="w2FileInfo" style="font-size:13px;color:var(--muted);margin-top:8px"></p>
+      <div class="ai-prog" id="w2ProgWrap" style="display:none"><i id="w2ProgBar"></i></div>
+      <p id="w2BuildMsg" style="font-size:13px;color:var(--muted);margin-top:8px"></p>
+      <p id="w2BuildNote" style="display:none;font-size:13px;color:#92400e;background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:10px 12px;margin-top:8px;line-height:1.6">⚠️ Build ពិតដំណើរការលើ GitHub របស់ម្ចាស់ — មិនទាន់ភ្ជាប់ទេ។ ទំព័រនេះបង្ហាញតែការរចនា។</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">APK ពិតនឹងមកពី GitHub build — មិនទាន់មានទេ។</p>
+      <div class="w2-logo-note"><span class="w2-logo-name">website.sk.edith.com</span><p>Free៖ APK មានឈ្មោះនេះជាប់នៅខាងក្រោម — ចុចលើវានាំចូល website ធំវិញ។ ទិញកញ្ចប់សេវាកម្ម៖ អត់មាន logo ជាប់ទេ។</p></div>
     </div>
-    <div class="w2-logo-note"><span class="w2-logo-name">website.sk.edith.com</span><p>Free៖ APK មានឈ្មោះនេះជាប់នៅខាងក្រោម — ចុចលើវានាំចូល website ធំវិញ។ ទិញកញ្ចប់សេវាកម្ម៖ អត់មាន logo ជាប់ទេ។</p></div>
   </section>
 
   <!-- ============ PAYMENTS ============ -->
@@ -840,11 +826,13 @@ function showApiConn(i){
 function openMenu(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')}
 function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')}
 function go(page){
+  document.body.classList.toggle('v6-img-on', ['home','tools','web2app'].indexOf(page) !== -1);
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
   document.querySelectorAll('.menu-item').forEach(m=>m.classList.toggle('active',m.dataset.page===page));
   location.hash=page; closeMenu(); window.scrollTo({top:0,behavior:'smooth'});
   if(page==='tools'&&typeof aiCheckServer==='function'){aiCheckServer()}
+  if(page==='history'&&typeof aiHistoryRender==='function'){aiHistoryRender()}
 }
 /* ---------- Appearance (accent + background shade) ---------- */
 const APPEARANCE_ACCENTS={
@@ -971,6 +959,59 @@ function aiMsg(text, ok){
 }
 
 /* ---- language picker (99) ---- */
+/* ---- v6: size choice + history + web2app helpers ---- */
+function aiSetSize(sz, btn){
+  try{ localStorage.setItem('aio-ai-size', sz); }catch(e){}
+  document.querySelectorAll('.ai-size').forEach(function(c){ c.classList.toggle('on', c === btn); });
+}
+function aiInitSize(){
+  var saved = null;
+  try{ saved = localStorage.getItem('aio-ai-size'); }catch(e){}
+  if(!saved) saved = '16:9';
+  document.querySelectorAll('.ai-size').forEach(function(c){
+    c.classList.toggle('on', c.getAttribute('data-size') === saved);
+  });
+}
+function v6Esc(t){ return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+async function aiHistoryRender(){
+  var list = document.getElementById('aiHistList');
+  var note = document.getElementById('aiHistNote');
+  if(!list) return;
+  try{
+    var r = await fetch('/api/ai/projects');
+    if(!r.ok) throw new Error('no-server');
+    var j = await r.json();
+    if(note) note.style.display = 'none';
+    var ps = (j.projects || []);
+    ai._histProjects = ps;
+    if(!ps.length){ list.innerHTML = '<p style="font-size:14px;color:var(--muted)">មិនទាន់មានវីដេអូទេ — ចាប់ផ្ដើមបកប្រែវីដេអូដំបូងរបស់អ្នក។</p>'; return; }
+    list.innerHTML = ps.map(function(p, i){
+      var st = p.status === 'done' ? '✓ រួចរាល់' : p.status === 'running' ? '⏳ កំពុងដំណើរការ' : p.status === 'error' ? '✕ មានបញ្ហា' : 'រង់ចាំ';
+      return '<button type="button" class="v6-hist" onclick="aiHistOpen(' + i + ')"><span><b>' + v6Esc(p.title || p.originalName || 'វីដេអូ') + '</b><small>' + st + ' · ' + ((p.segments || []).length) + ' ជួរ</small></span><span>›</span></button>';
+    }).join('');
+  }catch(e){
+    if(note) note.style.display = 'block';
+    list.innerHTML = '';
+  }
+}
+function aiHistOpen(i){
+  var ps = ai._histProjects || [];
+  var p = ps[i]; if(!p) return;
+  go('tools');
+  if(typeof aiOpenProject === 'function') aiOpenProject(p, false);
+}
+function w2FileChosen(id){
+  var el = document.getElementById(id);
+  var info = document.getElementById('w2FileInfo');
+  if(el && el.files && el.files[0] && info){
+    info.textContent = '✓ ' + (id === 'w2Icon' ? 'Logo' : 'Splash') + ': ' + el.files[0].name;
+  }
+}
+function w2KeystoreNote(){
+  var m = document.getElementById('w2BuildMsg');
+  if(m) m.textContent = 'Keystore ត្រូវបានគ្រប់គ្រងដោយម្ចាស់វេបសាយ — បង្កើតស្វ័យប្រវត្តិសម្រាប់ build នីមួយៗ ហើយម្ចាស់រក្សាទុក key ដោយខ្លួនឯង។ អ្នកមិនបាច់ធ្វើអ្វីទេ។';
+}
+
 function aiInitLang(){
   var sel = document.getElementById('aiLangSelect'); if(!sel) return;
   sel.innerHTML = AI_LANGS.map(function(l){ return '<option value="' + l.c + '">' + l.f + ' ' + l.km + ' · ' + l.en + '</option>'; }).join('');
@@ -1439,6 +1480,7 @@ async function voiceTest(){
 /* AI Tools init (must run after the AI section above defines AI_LANGS/ai) */
 try{aiInitLang()}catch(e){}
 try{aiInitVoice()}catch(e){}
+try{aiInitSize()}catch(e){}
 try{aiUsageRender()}catch(e){}
 try{vtShowBalance()}catch(e){}
 </script>
