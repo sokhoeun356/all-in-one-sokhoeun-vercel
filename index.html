@@ -1592,7 +1592,7 @@ function w2Build(){
    (localStorage 'aio-ai-usage'). Language in 'aio-ai-lang', voice in
    'aio-ai-voice'. */
 var AI_LANGS=[{c:'km',en:"Khmer",km:"ខ្មែរ",f:'🇰🇭'},{c:'en',en:"English",km:"អង់គ្លេស",f:'🇺🇸'},{c:'th',en:"Thai",km:"ថៃ",f:'🇹🇭'},{c:'vi',en:"Vietnamese",km:"វៀតណាម",f:'🇻🇳'},{c:'zh',en:"Chinese (Simplified)",km:"ចិន",f:'🇨🇳'},{c:'ja',en:"Japanese",km:"ជប៉ុន",f:'🇯🇵'},{c:'ko',en:"Korean",km:"កូរ៉េ",f:'🇰🇷'},{c:'lo',en:"Lao",km:"ឡាវ",f:'🇱🇦'},{c:'my',en:"Burmese",km:"ភូមា",f:'🇲🇲'},{c:'id',en:"Indonesian",km:"ឥណ្ឌូនេស៊ី",f:'🇮🇩'},{c:'ms',en:"Malay",km:"ម៉ាឡេ",f:'🇲🇾'},{c:'fil',en:"Filipino",km:"ហ្វីលីពីន",f:'🇵🇭'},{c:'hi',en:"Hindi",km:"ហិណ្ឌី",f:'🇮🇳'},{c:'bn',en:"Bengali",km:"បេងហ្គាល់",f:'🇧🇩'},{c:'ta',en:"Tamil",km:"តាមីល",f:'🇮🇳'},{c:'te',en:"Telugu",km:"តេលូហ្គូ",f:'🇮🇳'},{c:'ur',en:"Urdu",km:"អ៊ូរឌូ",f:'🇵🇰'},{c:'fa',en:"Persian",km:"ពែរ្ស",f:'🇮🇷'},{c:'ar',en:"Arabic",km:"អារ៉ាប់",f:'🇸🇦'},{c:'he',en:"Hebrew",km:"ហេប្រ៊ូ",f:'🇮🇱'},{c:'tr',en:"Turkish",km:"តួកគី",f:'🇹🇷'},{c:'ru',en:"Russian",km:"រុស្ស៊ី",f:'🇷🇺'},{c:'uk',en:"Ukrainian",km:"អ៊ុយក្រែន",f:'🇺🇦'},{c:'fr',en:"French",km:"បារាំង",f:'🇫🇷'},{c:'de',en:"German",km:"អាល្លឺម៉ង់",f:'🇩🇪'},{c:'es',en:"Spanish",km:"អេស្ប៉ាញ",f:'🇪🇸'},{c:'it',en:"Italian",km:"អ៊ីតាលី",f:'🇮🇹'},{c:'pt',en:"Portuguese",km:"ព័រទុយហ្គាល់",f:'🇵🇹'},{c:'nl',en:"Dutch",km:"ហូឡង់",f:'🇳🇱'},{c:'pl',en:"Polish",km:"ប៉ូឡូញ",f:'🇵🇱'},{c:'cs',en:"Czech",km:"ឆែក",f:'🇨🇿'},{c:'sk',en:"Slovak",km:"ស្លូវ៉ាក់",f:'🇸🇰'},{c:'hu',en:"Hungarian",km:"ហុងគ្រី",f:'🇭🇺'},{c:'ro',en:"Romanian",km:"រូម៉ានី",f:'🇷🇴'},{c:'bg',en:"Bulgarian",km:"ប៊ុលហ្គារី",f:'🇧🇬'},{c:'hr',en:"Croatian",km:"ក្រូអាត",f:'🇭🇷'},{c:'el',en:"Greek",km:"ក្រិក",f:'🇬🇷'},{c:'sv',en:"Swedish",km:"ស៊ុយអែត",f:'🇸🇪'},{c:'da',en:"Danish",km:"ដាណឺម៉ាក",f:'🇩🇰'},{c:'fi',en:"Finnish",km:"ហ្វាំងឡង់",f:'🇫🇮'},{c:'nb',en:"Norwegian",km:"ន័រវែស",f:'🇳🇴'},{c:'et',en:"Estonian",km:"អេស្តូនី",f:'🇪🇪'},{c:'lv',en:"Latvian",km:"ឡាតវី",f:'🇱🇻'},{c:'lt',en:"Lithuanian",km:"លីទុយអានី",f:'🇱🇹'},{c:'af',en:"Afrikaans",km:"អាហ្វ្រិកាអានស៍",f:'🇿🇦'},{c:'am',en:"Amharic",km:"អាំហារិក",f:'🇪🇹'},{c:'az',en:"Azerbaijani",km:"អាស៊ែបៃហ្សង់",f:'🇦🇿'},{c:'bs',en:"Bosnian",km:"បូស្ន៊ី",f:'🇧🇦'},{c:'ca',en:"Catalan",km:"កាតាឡាន",f:'🇪🇸'},{c:'cy',en:"Welsh",km:"វែលស៍",f:'🇬🇧'},{c:'eu',en:"Basque",km:"បាស្ក",f:'🇪🇸'},{c:'ga',en:"Irish",km:"អៀរឡង់",f:'🇮🇪'},{c:'gl',en:"Galician",km:"ហ្គាលីស៊ី",f:'🇪🇸'},{c:'hy',en:"Armenian",km:"អាមេនី",f:'🇦🇲'},{c:'is',en:"Icelandic",km:"អ៊ីស្លង់",f:'🇮🇸'},{c:'jv',en:"Javanese",km:"ជ្វា",f:'🇮🇩'},{c:'ka',en:"Georgian",km:"ហ្សកហ្ស៊ី",f:'🇬🇪'},{c:'kk',en:"Kazakh",km:"កាហ្សាក់",f:'🇰🇿'},{c:'kn',en:"Kannada",km:"កាណាដា",f:'🇮🇳'},{c:'ml',en:"Malayalam",km:"ម៉ាឡាយ៉ាឡាំ",f:'🇮🇳'},{c:'mn',en:"Mongolian",km:"ម៉ុងហ្គោលី",f:'🇲🇳'},{c:'mr',en:"Marathi",km:"ម៉ារ៉ាធី",f:'🇮🇳'},{c:'gu',en:"Gujarati",km:"ហ្គូចារ៉ាទី",f:'🇮🇳'},{c:'mt',en:"Maltese",km:"ម៉ាល់តា",f:'🇲🇹'},{c:'ne',en:"Nepali",km:"នេប៉ាល់",f:'🇳🇵'},{c:'ps',en:"Pashto",km:"ប៉ាស្តូ",f:'🇦🇫'},{c:'si',en:"Sinhala",km:"ស៊ីនហាឡា",f:'🇱🇰'},{c:'sl',en:"Slovenian",km:"ស្លូវេនី",f:'🇸🇮'},{c:'so',en:"Somali",km:"សូម៉ាលី",f:'🇸🇴'},{c:'sq',en:"Albanian",km:"អាល់បានី",f:'🇦🇱'},{c:'sr',en:"Serbian",km:"ស៊ែប៊ី",f:'🇷🇸'},{c:'su',en:"Sundanese",km:"ស៊ុនដា",f:'🇮🇩'},{c:'sw',en:"Swahili",km:"ស្វាហ៊ីលី",f:'🇰🇪'},{c:'uz',en:"Uzbek",km:"អ៊ូសបេក",f:'🇺🇿'},{c:'zu',en:"Zulu",km:"ហ្ស៊ូលូ",f:'🇿🇦'},{c:'mk',en:"Macedonian",km:"ម៉ាសេដ្វាន",f:'🇲🇰'},{c:'enGB',en:"English (UK)",km:"អង់គ្លេស · អង់គ្លេស",f:'🇬🇧'},{c:'enCA',en:"English (Canada)",km:"អង់គ្លេស · កាណាដា",f:'🇨🇦'},{c:'enIN',en:"English (India)",km:"អង់គ្លេស · ឥណ្ឌា",f:'🇮🇳'},{c:'enIE',en:"English (Ireland)",km:"អង់គ្លេស · អៀរឡង់",f:'🇮🇪'},{c:'enSG',en:"English (Singapore)",km:"អង់គ្លេស · សិង្ហបុរី",f:'🇸🇬'},{c:'enPH',en:"English (Philippines)",km:"អង់គ្លេស · ហ្វីលីពីន",f:'🇵🇭'},{c:'enNZ',en:"English (New Zealand)",km:"អង់គ្លេស · នូវែលសេឡង់",f:'🇳🇿'},{c:'enZA',en:"English (South Africa)",km:"អង់គ្លេស · អាហ្វ្រិកខាងត្បូង",f:'🇿🇦'},{c:'zhTW',en:"Chinese (Taiwan)",km:"ចិន · តៃវ៉ាន់",f:'🇹🇼'},{c:'zhHK',en:"Chinese (Hong Kong)",km:"ចិន · ហុងកុង",f:'🇭🇰'},{c:'esMX',en:"Spanish (Mexico)",km:"អេស្ប៉ាញ · ម៉ិកស៊ិក",f:'🇲🇽'},{c:'esUS',en:"Spanish (US)",km:"អេស្ប៉ាញ · អាមេរិក",f:'🇺🇸'},{c:'ptBR',en:"Portuguese (Brazil)",km:"ព័រទុយហ្គាល់ · ប្រេស៊ីល",f:'🇧🇷'},{c:'frCA',en:"French (Canada)",km:"បារាំង · កាណាដា",f:'🇨🇦'},{c:'frBE',en:"French (Belgium)",km:"បារាំង · បែលហ្ស៊ិក",f:'🇧🇪'},{c:'deAT',en:"German (Austria)",km:"អាល្លឺម៉ង់ · អូទ្រីស",f:'🇦🇹'},{c:'deCH',en:"German (Switzerland)",km:"អាល្លឺម៉ង់ · ស្វីស",f:'🇨🇭'},{c:'arEG',en:"Arabic (Egypt)",km:"អារ៉ាប់ · អេហ្ស៊ីប",f:'🇪🇬'},{c:'arAE',en:"Arabic (UAE)",km:"អារ៉ាប់ · អេមីរ៉ាត",f:'🇦🇪'},{c:'urIN',en:"Urdu (India)",km:"អ៊ូរឌូ · ឥណ្ឌា",f:'🇮🇳'},{c:'bnIN',en:"Bengali (India)",km:"បេងហ្គាល់ · ឥណ្ឌា",f:'🇮🇳'},{c:'swTZ',en:"Swahili (Tanzania)",km:"ស្វាហ៊ីលី · តង់ហ្សានី",f:'🇹🇿'},{c:'nlBE',en:"Dutch (Belgium)",km:"ហូឡង់ · បែលហ្ស៊ិក",f:'🇧🇪'}];
-var ai = { project:null, pollTimer:null, voice:'auto', lang:'km', duration:0, trimSec:0, activeSeg:-1, serverOk:false, exporting:false, counted:false };
+var ai = { project:null, pollTimer:null, voice:'auto', lang:'km', duration:0, trimSec:0, activeSeg:-1, serverOk:false, exporting:false, counted:false, localVideoUrl:null, localVideoFile:null };
 var aiSegAudio = new Audio(); aiSegAudio.preload = 'auto';
 var aiExp = { rec:null, chunks:[], canvas:null, ctx:null, raf:0, actx:null, vGain:null, aSrc:null, vSrc:null, url:null };
 
@@ -1758,34 +1758,92 @@ function aiReadDuration(file){
     setTimeout(function(){ finish(0); }, 8000);
   });
 }
+function aiEncodeWav(audioBuf, targetRate, maxSec){
+  var rate = audioBuf.sampleRate;
+  var total = audioBuf.length;
+  if (maxSec > 0) total = Math.min(total, Math.floor(maxSec * rate));
+  var ratio = rate / targetRate;
+  var outLen = Math.floor(total / ratio);
+  var ch0 = audioBuf.getChannelData(0);
+  var ch1 = audioBuf.numberOfChannels > 1 ? audioBuf.getChannelData(1) : null;
+  var samples = new Int16Array(outLen);
+  for (var i = 0; i < outLen; i++){
+    var idx = Math.floor(i * ratio);
+    var v = ch0[idx] + (ch1 ? ch1[idx] : 0);
+    v = v / (ch1 ? 2 : 1);
+    v = Math.max(-1, Math.min(1, v));
+    samples[i] = v < 0 ? v * 0x8000 : v * 0x7FFF;
+  }
+  var buf = new ArrayBuffer(44 + samples.length * 2);
+  var view = new DataView(buf);
+  function ws(off, str){ for (var i = 0; i < str.length; i++) view.setUint8(off + i, str.charCodeAt(i)); }
+  ws(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true); ws(8, 'WAVE');
+  ws(12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+  view.setUint32(24, targetRate, true); view.setUint32(28, targetRate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+  ws(36, 'data'); view.setUint32(40, samples.length * 2, true);
+  var bytes = new Uint8Array(buf);
+  bytes.set(new Uint8Array(samples.buffer), 44);
+  return new Blob([buf], { type: 'audio/wav' });
+}
+async function aiExtractAudio(file, trimSec){
+  var ab = await file.arrayBuffer();
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) throw new Error('no-audio');
+  var ctx = new AC();
+  var audioBuf;
+  try { audioBuf = await ctx.decodeAudioData(ab); }
+  finally { try { ctx.close(); } catch(e){} }
+  if (!audioBuf || !audioBuf.duration) throw new Error('no-audio');
+  var wav = aiEncodeWav(audioBuf, 16000, trimSec);
+  return { blob: wav, duration: audioBuf.duration };
+}
 async function aiFileChosen(ev){
   var f = ev.target.files && ev.target.files[0];
   ev.target.value = '';
   if(!f) return;
-  if(!ai.serverOk){ aiMsg('\u1798\u17bb\u1781\u17c4\u1784\u17b6\u179a\u178f\u17d2\u179c\u178f\u17b6\u179a\u1780\u17c1\u179a\u1780\u17be server \u2014 \u179f\u17bc\u1798\u1794\u17be\u1780\u179c\u17c1\u179c\u17c1\u179c\u17c2\u1780\u17b6\u179b\u1780\u1798\u17b7\u1796\u17b8 Link Render\u17d7', false); return; }
+  if(!ai.serverOk){ aiMsg('\u1798\u17bb\u1781\u17c4\u1784\u17b6\u179a\u178f\u17d2\u179c\u178f\u17b6\u179a\u1780\u17c1\u179a\u1780\u17be server \u2014 \u179f\u17bc\u1798\u1794\u17be\u1780\u179c\u17c1\u179c\u17c2\u1780\u17b6\u179b\u1780\u1798\u17b7\u1796\u17b8 Link Render\u17d7', false); return; }
   aiMsg('\u1780\u17c6\u17c2\u1784\u1796\u17b7\u178e\u17b7\u178f\u17d2\u1799\u179c\u17b8\u178a\u17c1\u17a2\u2026');
   var dur = await aiReadDuration(f);
   ai.trimSec = 0;
-  if(dur > 180){ ai.trimSec = 180; aiMsg('\u179c\u17b8\u178a\u17c1\u17a2\u1793\u17c1\u17c7\u178a\u17c2\u1784\u17d2\u1784\u17b7\u1784 3 \u1793\u17b6\u178f\u17b8 (' + aiFmtTime(dur) + ') \u2014 Free \u1793\u17b9\u1784\u1799\u1780\u178f\u17be 3 \u1793\u17b6\u178f\u17b8\u178a\u17c1\u1798\u1794\u17c4\u178f\u17c1'); }
+  if(dur > 180){ ai.trimSec = 180; aiMsg('\u179c\u17b8\u178a\u17c1\u17a2\u1793\u17c1\u17c7\u178a\u17c2\u1784\u17d2\u1784\u17b7\u1784 3 \u1793\u17b6\u178f\u17b8 (' + aiFmtTime(dur) + ') \u2014 Free \u1793\u17b9\u17d2\u1784\u1799\u1780\u178f\u17be 3 \u1793\u17b6\u178f\u17b8\u178a\u17c6\u1794\u17bc\u1784\u178f\u17c1'); }
   ai.duration = dur;
   var meta = aiFmtMB(f.size) + (dur ? ' \u00b7 ' + aiFmtTime(dur) : '');
   document.getElementById('aiFileInfo').textContent = f.name + ' \u00b7 ' + meta;
   var nm = document.getElementById('aiUploadName'), mm = document.getElementById('aiUploadMeta');
   if(nm) nm.textContent = f.name;
   if(mm) mm.textContent = meta;
-  aiUploadView('prog'); aiUploadSetPct(0, '\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026');
-  aiMsg('\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026 ' + aiFmtMB(f.size));
+  aiUploadView('prog'); aiUploadSetPct(0, '\u1780\u17c6\u17c2\u1784\u1799\u1780\u179f\u17b6\u1784\u2026');
+  // Cut the video to the first 3 min (Free) and shrink it: extract only the audio
+  // (a few MB) and upload that instead of the whole video file, so the upload is
+  // fast and the transcription service accepts it. The video itself stays on the
+  // phone and plays from there.
+  var upFile = f, upName = f.name;
+  try{
+    aiUploadSetPct(2, '\u1780\u17c6\u17c2\u1784\u1799\u1780\u179f\u17b6\u1784\u2026');
+    var ex = await aiExtractAudio(f, ai.trimSec);
+    var wavName = f.name.replace(/\.[^.]+$/, '') + '.wav';
+    upFile = ex.blob; upName = wavName;
+    if(ai.localVideoUrl) URL.revokeObjectURL(ai.localVideoUrl);
+    ai.localVideoUrl = URL.createObjectURL(f);
+    ai.localVideoFile = f;
+    if(mm) mm.textContent = meta + ' \u00b7 \u179f\u17c6\u17c2\u1794\u17d2\u179a\u179f\u17c6\u17c2 ' + aiFmtMB(ex.blob.size);
+  }catch(e){
+    // Audio extraction failed (unsupported codec / no audio track) — fall back to
+    // uploading the original video file.
+    ai.localVideoUrl = null; ai.localVideoFile = null;
+  }
+  aiMsg('\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026 ' + aiFmtMB(upFile.size));
   try{
     var j = await new Promise(function(resolve, reject){
       var x = new XMLHttpRequest();
-      x.open('POST', '/api/ai/upload?name=' + encodeURIComponent(f.name) + '&title=' + encodeURIComponent(f.name.replace(/\.[^.]+$/, '')));
+      x.open('POST', '/api/ai/upload?name=' + encodeURIComponent(upName) + '&title=' + encodeURIComponent(upName.replace(/\.[^.]+$/, '')));
       x.upload.onprogress = function(e){ if(e.lengthComputable){ aiUploadSetPct(e.loaded / e.total * 100, '\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026'); } };
       x.onload = function(){
         var jj = {}; try{ jj = JSON.parse(x.responseText || '{}'); }catch(e){}
         if(x.status >= 200 && x.status < 300) resolve(jj); else reject(new Error((jj.message && jj.message.km) || '\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u1798\u17b7\u1793\u1798\u17b6\u1793\u178f\u17c1'));
       };
       x.onerror = function(){ reject(new Error('\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u1798\u17b7\u1793\u1798\u17b6\u1793\u178f\u17c1')); };
-      x.send(f);
+      x.send(upFile);
     });
     aiUploadSetPct(100, '\u2713 \u1794\u17b6\u1793\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u179a\u17bd\u1785');
     aiMsg('\u2713 \u1794\u17b6\u1793\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u179a\u17bd\u1785 \u2014 \u1785\u17bb\u1785 Generate Translate \u178a\u17c1\u179b\u17c4\u1794\u17d2\u1794\u17c4\u1785', true);
@@ -1815,7 +1873,7 @@ function aiOpenProject(p, show){
   if(p.duration) ai.duration = p.duration;
   var v = document.getElementById('aiPlayer');
   if(v){
-    v.src = p.videoUrl;
+    v.src = (ai.localVideoUrl && ai.localVideoFile) ? ai.localVideoUrl : p.videoUrl;
     v.onloadedmetadata = function(){
       if(v.duration && isFinite(v.duration)){
         ai.duration = v.duration;
@@ -1826,7 +1884,7 @@ function aiOpenProject(p, show){
   document.getElementById('aiPlayerWrap').style.display = 'block';
   document.getElementById('aiFileInfo').textContent = p.originalName || p.title;
   var pv = document.getElementById('aiUploadPrev'), dn = document.getElementById('aiUploadDoneName');
-  if(pv && p.videoUrl){ pv.src = p.videoUrl; }
+  if(pv){ pv.src = (ai.localVideoUrl && ai.localVideoFile) ? ai.localVideoUrl : (p.videoUrl || ''); }
   if(dn) dn.textContent = p.originalName || p.title;
   aiUploadView('done');
   aiRenderProject();
@@ -1974,6 +2032,12 @@ function aiCurrentSeg(time){
   var v = document.getElementById('aiPlayer');
   if(!v) return;
   v.addEventListener('timeupdate', function(){
+    if(ai.trimSec > 0 && v.currentTime >= ai.trimSec){
+      if(ai.exporting) aiExportStop();
+      v.pause();
+      aiMsg('វីដេអូនេះវែងជាង 3 នាទី — Free នឹងយកតែ 3 នាទីដំបូងទេ', false);
+      return;
+    }
     var idx = aiCurrentSeg(v.currentTime);
     if(idx === ai.activeSeg){
       if(ai.exporting && aiExp.vGain){ aiExp.vGain.gain.value = (idx >= 0 && ai.project.segments[idx].audio) ? 0 : 1; }
