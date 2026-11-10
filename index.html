@@ -390,6 +390,10 @@ header{position:sticky;top:12px;z-index:40;display:flex;align-items:center;gap:1
 .kiri-upload{margin-top:20px;border:2px dashed #e4e4e7;border-radius:20px;padding:36px 16px;text-align:center;cursor:pointer;background:#fff}
 .kiri-upload:hover{border-color:#0a0a0a}
 .kiri-upload svg{color:#0a0a0a}
+.ai-upbar{height:10px;background:#e4e4e7;border-radius:999px;overflow:hidden;margin:12px auto 6px;max-width:320px}
+.ai-upbar div{height:100%;width:0%;background:#16a34a;border-radius:999px;transition:width .2s}
+#aiUploadProg b,#aiUploadDone b{display:block;font-size:15px;font-weight:700;margin-top:8px}
+#aiUploadProg small,#aiUploadDone small{display:block;font-size:13px;color:#71717a;margin-top:4px;line-height:1.5}
 .kiri-upload b{display:block;font-size:17px;font-weight:700;margin-top:10px}
 .kiri-upload small{display:block;font-size:13px;color:#71717a;margin-top:6px;line-height:1.5}
 .kiri-or{text-align:center;color:#71717a;font-size:13px;font-weight:700;margin:16px 0}
@@ -821,10 +825,24 @@ body{padding-bottom:96px}
       <p>Translate • Dub • Voice in Any Language</p>
     </div>
     <div class="kiri-play">
-      <div class="kiri-upload" onclick="aiPickFile()">
-        <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
-        <b>Click to Upload Video</b>
-        <small>or drag &amp; drop here · Free 3 នាទី / វីដេអូ</small>
+      <div class="kiri-upload" id="aiUploadBox" onclick="aiPickFile()">
+        <div id="aiUploadDefault">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <b>Click to Upload Video</b>
+          <small>or drag &amp; drop here · Free 3 នាតី / វីដេអ</small>
+        </div>
+        <div id="aiUploadProg" style="display:none">
+          <b id="aiUploadName"></b>
+          <small id="aiUploadMeta"></small>
+          <div class="ai-upbar"><div id="aiUploadFill"></div></div>
+          <b id="aiUploadPct" style="font-size:22px">0%</b>
+          <small id="aiUploadState">កំែងផតុកខេង…</small>
+        </div>
+        <div id="aiUploadDone" style="display:none">
+          <video id="aiUploadPrev" controls playsinline preload="metadata" onclick="event.stopPropagation()" style="width:100%;border-radius:12px;max-height:220px;background:#000"></video>
+          <b id="aiUploadDoneName"></b>
+          <small>✓ បានផុកខេងរួចោយ — ចុចតីនេះដេលោប្ប្វីដេអ</small>
+        </div>
       </div>
       <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
       <div class="kiri-or">— OR —</div>
@@ -1714,6 +1732,18 @@ async function aiCheckServer(){
   }
 }
 function aiPickFile(){ document.getElementById('aiFile').click(); }
+function aiUploadView(which){
+  var d = document.getElementById('aiUploadDefault'), p = document.getElementById('aiUploadProg'), n = document.getElementById('aiUploadDone');
+  if(d) d.style.display = which === 'default' ? 'block' : 'none';
+  if(p) p.style.display = which === 'prog' ? 'block' : 'none';
+  if(n) n.style.display = which === 'done' ? 'block' : 'none';
+}
+function aiUploadSetPct(pct, state){
+  var f = document.getElementById('aiUploadFill'), t = document.getElementById('aiUploadPct'), st = document.getElementById('aiUploadState');
+  if(f) f.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  if(t) t.textContent = Math.round(pct) + '%';
+  if(st && state) st.textContent = state;
+}
 function aiFmtMB(n){ return (n / 1048576).toFixed(1) + ' MB'; }
 function aiReadDuration(file){
   return new Promise(function(resolve){
@@ -1732,21 +1762,35 @@ async function aiFileChosen(ev){
   var f = ev.target.files && ev.target.files[0];
   ev.target.value = '';
   if(!f) return;
-  if(!ai.serverOk){ aiMsg('មុខងារនេះត្រូវការ server — សូមបើកវេបសាយពី Link Render។', false); return; }
-  aiMsg('កំពុងពិនិត្យវីដេអូ…');
+  if(!ai.serverOk){ aiMsg('\u1798\u17bb\u1781\u17c4\u1784\u17b6\u179a\u178f\u17d2\u179c\u178f\u17b6\u179a\u1780\u17c1\u179a\u1780\u17be server \u2014 \u179f\u17bc\u1798\u1794\u17be\u1780\u179c\u17c1\u179c\u17c1\u179c\u17c2\u1780\u17b6\u179b\u1780\u1798\u17b7\u1796\u17b8 Link Render\u17d7', false); return; }
+  aiMsg('\u1780\u17c6\u17c2\u1784\u1796\u17b7\u178e\u17b7\u178f\u17d2\u1799\u179c\u17b8\u178a\u17c1\u17a2\u2026');
   var dur = await aiReadDuration(f);
   ai.trimSec = 0;
-  if(dur > 180){ ai.trimSec = 180; aiMsg('វីដេអូនេះវែងជាង 3 នាទី (' + aiFmtTime(dur) + ') — Free នឹងយកតែ 3 នាទីដំបូងទេ'); }
+  if(dur > 180){ ai.trimSec = 180; aiMsg('\u179c\u17b8\u178a\u17c1\u17a2\u1793\u17c1\u17c7\u178a\u17c2\u1784\u17d2\u1784\u17b7\u1784 3 \u1793\u17b6\u178f\u17b8 (' + aiFmtTime(dur) + ') \u2014 Free \u1793\u17b9\u1784\u1799\u1780\u178f\u17be 3 \u1793\u17b6\u178f\u17b8\u178a\u17c1\u1798\u1794\u17c4\u178f\u17c1'); }
   ai.duration = dur;
-  aiMsg('កំពុងផ្ទុកឡើង… ' + aiFmtMB(f.size));
-  document.getElementById('aiFileInfo').textContent = f.name + ' · ' + aiFmtMB(f.size) + (dur ? ' · ' + aiFmtTime(dur) : '');
+  var meta = aiFmtMB(f.size) + (dur ? ' \u00b7 ' + aiFmtTime(dur) : '');
+  document.getElementById('aiFileInfo').textContent = f.name + ' \u00b7 ' + meta;
+  var nm = document.getElementById('aiUploadName'), mm = document.getElementById('aiUploadMeta');
+  if(nm) nm.textContent = f.name;
+  if(mm) mm.textContent = meta;
+  aiUploadView('prog'); aiUploadSetPct(0, '\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026');
+  aiMsg('\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026 ' + aiFmtMB(f.size));
   try{
-    var r = await fetch('/api/ai/upload?name=' + encodeURIComponent(f.name) + '&title=' + encodeURIComponent(f.name.replace(/\.[^.]+$/, '')), { method:'POST', body:f });
-    var j = await r.json().catch(() => ({}));
-    if(!r.ok) throw new Error((j.message && j.message.km) || 'ផ្ទុកឡើងមិនបានទេ');
-    aiMsg('✓ បានផ្ទុកឡើងហើយ — ចុច Generate Translate ដើម្បីចាប់ផ្ដើម', true);
+    var j = await new Promise(function(resolve, reject){
+      var x = new XMLHttpRequest();
+      x.open('POST', '/api/ai/upload?name=' + encodeURIComponent(f.name) + '&title=' + encodeURIComponent(f.name.replace(/\.[^.]+$/, '')));
+      x.upload.onprogress = function(e){ if(e.lengthComputable){ aiUploadSetPct(e.loaded / e.total * 100, '\u1780\u17c6\u17c2\u1784\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u2026'); } };
+      x.onload = function(){
+        var jj = {}; try{ jj = JSON.parse(x.responseText || '{}'); }catch(e){}
+        if(x.status >= 200 && x.status < 300) resolve(jj); else reject(new Error((jj.message && jj.message.km) || '\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u1798\u17b7\u1793\u1798\u17b6\u1793\u178f\u17c1'));
+      };
+      x.onerror = function(){ reject(new Error('\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u1798\u17b7\u1793\u1798\u17b6\u1793\u178f\u17c1')); };
+      x.send(f);
+    });
+    aiUploadSetPct(100, '\u2713 \u1794\u17b6\u1793\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u179a\u17bd\u1785');
+    aiMsg('\u2713 \u1794\u17b6\u1793\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u179a\u17bd\u1785 \u2014 \u1785\u17bb\u1785 Generate Translate \u178a\u17c1\u179b\u17c4\u1794\u17d2\u1794\u17c4\u1785', true);
     aiOpenProject(j.project, true);
-  }catch(e){ aiMsg(e.message || 'ផ្ទុកឡើងមិនបានទេ', false); }
+  }catch(e){ aiUploadView('default'); aiMsg(e.message || '\u1795\u178f\u17bb\u1780\u1781\u17c1\u1784\u1798\u17b7\u1793\u1798\u17b6\u1793\u178f\u17c1', false); }
 }
 async function aiFetchUrl(){
   var input = document.getElementById('aiUrlInput');
@@ -1781,6 +1825,10 @@ function aiOpenProject(p, show){
   }
   document.getElementById('aiPlayerWrap').style.display = 'block';
   document.getElementById('aiFileInfo').textContent = p.originalName || p.title;
+  var pv = document.getElementById('aiUploadPrev'), dn = document.getElementById('aiUploadDoneName');
+  if(pv && p.videoUrl){ pv.src = p.videoUrl; }
+  if(dn) dn.textContent = p.originalName || p.title;
+  aiUploadView('done');
   aiRenderProject();
   if(p.status === 'running') aiStartPolling();
   if(show) document.getElementById('aiPlayerWrap').scrollIntoView({ behavior:'smooth', block:'start' });
