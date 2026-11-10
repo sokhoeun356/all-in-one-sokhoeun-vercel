@@ -284,6 +284,15 @@ body{background:#f4f6f5}
 .v3-tool{border:1px solid #e4e4e7;border-radius:10px;background:#fff;padding:10px 4px;font-size:12px;font-weight:700;color:#111827;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:4px}
 .v3-tool svg{color:#16a34a}
 </style>
+
+<style id="mockup-web2app">
+.w2-lab{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}
+.w2-tog{display:flex;flex-wrap:wrap;gap:14px}
+.w2-tog label{font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px}
+.w2-logo-note{margin-top:14px;border:1px solid #e4e4e7;border-radius:10px;background:#fff;padding:14px 16px}
+.w2-logo-name{font-family:ui-monospace,monospace;font-size:14px;font-weight:700;color:var(--accent-dark)}
+.w2-logo-note p{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.6}
+</style>
 </head>
 <body data-theme="green">
 <input type="file" id="logoInput" accept="image/*" hidden onchange="logoPicked(event)">
@@ -475,22 +484,18 @@ body{background:#f4f6f5}
     <div class="page-head">
       <h2>Website Web2App Builder APK</h2>
       <p>អ្នកមានវេបសាយហើយ ចង់ឱ្យវាក្លាយជា App APK ដំឡើងលើទូរសព្ទបានមែនទេ? ដាក់ Link វេបសាយរបស់អ្នកមកទីនេះ។</p>
-      <span class="badge">កំពុងរៀបចំ · មកដល់ឆាប់ៗ</span>
     </div>
-    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg> វាដំណើរការយ៉ាងម៉េច</h2>
+    <div class="ai-free">Free: 2 ដង — នៅសល់ 2 ដង<br><a href="#" onclick="go('packages');return false" style="color:var(--accent-dark);font-weight:900">មើលកញ្ចប់សេវាកម្ម Web2App →</a></div>
+    <h2 class="sec-title">ជំហានបង្កើត APK</h2>
     <div class="steps">
-      <div class="step"><div class="n">1</div><div><h3>ដាក់ Link វេបសាយ</h3><p>ចម្លង Link វេបសាយរបស់អ្នក មកដាក់ក្នុងប្រអប់ខាងក្រោម។</p></div></div>
-      <div class="step"><div class="n">2</div><div><h3>ដាក់ឈ្មោះ និង Logo App</h3><p>ជ្រើសឈ្មោះ App និងរូប Logo ដែលអ្នកចង់ឱ្យបង្ហាញលើទូរសព្ទ។</p></div></div>
-      <div class="step"><div class="n">3</div><div><h3>បង្កើត APK</h3><p>ប្រព័ន្ធបម្លែងវេបសាយរបស់អ្នក ទៅជា File APK សម្រាប់ Android។</p></div></div>
-      <div class="step"><div class="n">4</div><div><h3>ទាញយក និងដំឡើង</h3><p>ទាញយក File APK ហើយដំឡើងលើទូរសព្ទរបស់អ្នក — វេបសាយរបស់អ្នកក្លាយជា App ហើយ។</p></div></div>
+      <div class="step"><div class="n">1</div><div><h3>Website URL · ដាក់ Link វេបសាយ</h3><p>ត្រូវជាវេបសាយពិត ដែលបើកបាន តាម HTTPS។</p><div class="mt"><input class="input" id="w2Url" type="url" placeholder="https://example.com"></div></div></div>
+      <div class="step"><div class="n">2</div><div><h3>App identity · ឈ្មោះ និង Package</h3><p>ឈ្មោះ App, Package name និង Version — Package name មិនអាចប្តូរបានទេបន្ទាប់ពី publish។</p><div class="mt"><input class="input" id="w2AppName" type="text" placeholder="ឈ្មោះ App (ឧ. My App)"></div><div class="mt"><input class="input" id="w2Pkg" type="text" placeholder="Package name (ឧ. com.example.myapp)"></div><div class="mt"><input class="input" id="w2Ver" type="text" placeholder="Version (1.0.0)" value="1.0.0"></div></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Branding · Logo និងពណ៌</h3><p>Logo / Icon (512×512), Splash screen, ពណ៌ App និងការកំណត់។</p><div class="mt"><label class="w2-lab">Logo / Icon (512×512)</label><input class="input" id="w2Icon" type="file" accept="image/*"></div><div class="mt"><label class="w2-lab">Splash screen</label><input class="input" id="w2Splash" type="file" accept="image/*"></div><div class="mt"><label class="w2-lab">ពណ៌ App</label><input type="color" id="w2Color" value="#16a34a" style="width:56px;height:40px;border:1px solid #e4e4e7;border-radius:8px;background:#fff;padding:2px"></div><div class="mt w2-tog"><label><input type="checkbox" checked> ប៊ូតុង Back</label><label><input type="checkbox" checked> Upload file</label><label><input type="checkbox"> Camera</label></div></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Signing · Keystore</h3><p>Keystore ត្រូវបានគ្រប់គ្រងដោយម្ចាស់វេបសាយ — បង្កើតស្វ័យប្រវត្តិសម្រាប់ build នីមួយៗ ហើយម្ចាស់រក្សាទុក key ដោយខ្លួនឯង។ អ្នកមិនបាច់ធ្វើអ្វីទេ។</p></div></div>
+      <div class="step"><div class="n">5</div><div><h3>Build · បង្កើត APK</h3><p>ចុច Build ដើម្បីចាប់ផ្តើមបង្កើត APK ពីវេបសាយរបស់អ្នក។</p><div class="mt"><button class="btn btn-green btn-block" id="w2BuildBtn" onclick="w2Build()">▶ Build APK</button></div><div class="ai-prog" id="w2ProgWrap" style="display:none"><i id="w2ProgBar"></i></div><p id="w2BuildMsg" style="font-size:13px;color:var(--muted);margin-top:8px"></p><p id="w2BuildNote" style="display:none;font-size:13px;color:#92400e;background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:10px 12px;margin-top:8px;line-height:1.6">⚠️ Build ពិតដំណើរការលើ GitHub របស់ម្ចាស់ — មិនទាន់ភ្ជាប់ទេ។ ទំព័រនេះបង្ហាញតែការរចនា។</p></div></div>
+      <div class="step"><div class="n">6</div><div><h3>Download · ទាញយក APK</h3><p>APK សម្រាប់ដំឡើងលើទូរសព្ទផ្ទាល់។ សម្រាប់ Google Play ប្រើ AAB (មិនមែន APK)។</p><div class="mt"><button class="btn btn-green btn-block" disabled style="opacity:.55">⬇ Download APK</button></div><p style="font-size:13px;color:var(--muted);margin-top:8px">APK ពិតនឹងមកពី GitHub build — មិនទាន់មានទេ។</p></div></div>
     </div>
-    <div class="mt">
-      <input class="input" id="siteUrl" type="url" placeholder="https://example.com — ដាក់ Link វេបសាយរបស់អ្នក">
-    </div>
-    <div class="mt">
-      <button class="btn btn-green btn-block" onclick="sendRequest()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> ផ្ញើសំណើបម្លែងទៅជា APK</button>
-      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:10px">សំណើរបស់អ្នកនឹងផ្ញើទៅ Telegram របស់ម្ចាស់វេបសាយដោយផ្ទាល់</p>
-    </div>
+    <div class="w2-logo-note"><span class="w2-logo-name">website.sk.edith.com</span><p>Free៖ APK មានឈ្មោះនេះជាប់នៅខាងក្រោម — ចុចលើវានាំចូល website ធំវិញ។ ទិញកញ្ចប់សេវាកម្ម៖ អត់មាន logo ជាប់ទេ។</p></div>
   </section>
 
   <!-- ============ PAYMENTS ============ -->
@@ -924,10 +929,11 @@ function showPayQR(m){
   document.getElementById('payModal').classList.add('open');
 }
 function closePayQR(){document.getElementById('payModal').classList.remove('open')}
-function sendRequest(){
-  var u=document.getElementById('siteUrl').value.trim();
-  var msg=u?('ខ្ញុំចង់បម្លែងវេបសាយទៅជា App APK៖ '+u):'ខ្ញុំចង់បម្លែងវេបសាយទៅជា App APK';
-  window.open('https://t.me/yemsokhoeun_9999?text='+encodeURIComponent(msg),'_blank');
+function w2Build(){
+  var w=document.getElementById('w2ProgWrap'); if(w) w.style.display='block';
+  var b=document.getElementById('w2ProgBar'); if(b) b.style.width='12%';
+  var m=document.getElementById('w2BuildMsg'); if(m) m.innerText='ជំហាន ១ · កំពុងរៀបចំ…';
+  var n=document.getElementById('w2BuildNote'); if(n) n.style.display='block';
 }
 (function(){
   try{_origHead=document.getElementById('logoHead').innerHTML;_origDrawer=document.getElementById('logoDrawer').innerHTML;var L=localStorage.getItem('aio-logo');if(L)applyLogo(L)}catch(e){}
