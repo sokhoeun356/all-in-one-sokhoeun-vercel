@@ -2202,6 +2202,7 @@ async function voiceTest(){
     const url = URL.createObjectURL(blob);
     const audio = document.getElementById('vtAudio');
     audio.src = url;
+    audio.preservesPitch = (vtVoice !== 'male');
     audio.playbackRate = (vtVoice === 'male') ? 0.8 : 1;
     const dl = document.getElementById('vtDl');
     dl.href = url;
@@ -2271,6 +2272,8 @@ function hpRun(){
 }
 function kiriSelectVoice(v, row){
   document.querySelectorAll('#kiriVoiceList .kiri-voice-row').forEach(function(r){ r.classList.toggle('on', r === row); });
+  var vtBtn = document.querySelector('#vtVoiceChips .ai-chip[data-voice="' + v + '"]');
+  if(vtBtn) vtSetVoice(v, vtBtn);
   var toolBtn = document.querySelector('#aiVoiceChips .ai-chip[data-voice="' + v + '"]');
   if(toolBtn) aiSetVoice(v, toolBtn);
   var hpBtn = document.querySelector('#hpVoiceChips .ai-chip[data-voice="' + v + '"]');
