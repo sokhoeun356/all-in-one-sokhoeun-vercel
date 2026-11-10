@@ -221,6 +221,69 @@ footer a{color:var(--accent-dark);font-weight:700}
   footer{max-width:1040px;margin:0 auto}
 }
 </style>
+<style id="mockup-override">
+/* ===== MOCKUP OVERRIDE — professional redesign (visual mockup only) ===== */
+:root{--accent:#16a34a}
+body{background:#f4f6f5}
+.wall{background:#16a34a;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.acct{border-radius:10px}
+.acct-add{border-radius:8px;box-shadow:none}
+.btn{border-radius:8px}
+.btn-green{background:#16a34a;color:#fff;box-shadow:none}
+.wall .btn-green{background:#fff;color:#16a34a;box-shadow:none}
+.btn-ghost{background:#fff;color:#16a34a;border:1px solid #16a34a;box-shadow:none}
+#vtBtn,#aiPickBtn,#aiFetchBtn,#aiDlVideoBtn,#apiCopyNewBtn,#page-tools a.btn-green{background:#fff;color:#16a34a;border:1px solid #16a34a;box-shadow:none}
+.card,.func-row,.step{border:1px solid #e4e4e7;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.func-tile{border-radius:10px}
+.card .ic{background:#16a34a;border-radius:10px;box-shadow:none}
+.step .n{border-radius:10px}
+.sec-title::after{background:#16a34a}
+.page-head{background:#16a34a;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.input{border:1px solid #e4e4e7;border-radius:8px}
+.input:focus{border-color:#16a34a}
+.ai-chip{border:1px solid #e4e4e7}
+.ai-chip.on{background:#16a34a;border-color:#16a34a}
+.ai-prog i{background:#16a34a}
+.ai-proc,.seg{border:1px solid #e4e4e7;border-radius:10px}
+.seg.active{border-color:#16a34a}
+.seg .copy-btn{border-radius:8px}
+.pay-choice{border:1px solid #e4e4e7;border-radius:10px}
+.qr-box{border:1px solid #e4e4e7;border-radius:10px}
+.khqr-ph{border:1px dashed #16a34a;border-radius:10px}
+.pkg{border:1px solid #e4e4e7;border-radius:10px}
+.ai-free{border:1px solid #16a34a;border-radius:10px}
+.ai-note{border:1px solid #f59e0b;border-radius:10px}
+.pkgcard{border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.player-box{border-radius:10px;box-shadow:none}
+.pay-modal-card{border-radius:10px}
+.burger{border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.menu-item{border-radius:8px}
+.accent-sw{border-radius:10px}
+.codebox{border-radius:10px}
+.badge.green{background:#16a34a}
+.btn svg,.card h3 svg,.sec-title svg,.menu-item svg,footer svg,.pkgcard-badge svg{vertical-align:-3px}
+</style>
+
+<style id="mockup-v3">
+/* v3: CapCut-style video workspace — background FOLLOWS the app theme (not fixed black) */
+.v3-topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.v3-topbar-l h2{font-size:19px;margin:0}
+.v3-topbar-l .badge{margin-top:6px;display:inline-block}
+.v3-export{border:none;border-radius:10px;padding:11px 18px;font-size:16px;font-weight:800;background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.18);display:flex;align-items:center;gap:6px}
+.v3-stage{margin-top:12px;border-radius:14px;padding:16px 14px 14px;background:color-mix(in srgb, var(--accent-dark) 62%, #0b1220);color:#fff}
+.v3-screen{position:relative;border-radius:10px;background:rgba(0,0,0,.35);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.v3-play{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;padding-left:3px}
+.v3-screen-tx{margin:8px 0 0;font-size:16px;font-weight:800}
+.v3-screen-sub{margin:0;font-size:12px;color:rgba(255,255,255,.75)}
+.v3-time{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.8);margin-top:12px;font-variant-numeric:tabular-nums}
+.v3-timeline{height:6px;border-radius:6px;background:rgba(255,255,255,.25);margin-top:6px;overflow:hidden}
+.v3-timeline i{display:block;height:100%;background:var(--accent);border-radius:6px}
+.v3-steps{display:flex;justify-content:space-between;gap:6px;margin-top:10px}
+.v3-steps span{font-size:11px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.12);border-radius:999px;padding:4px 8px;white-space:nowrap}
+.v3-toolbar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.v3-tool{border:1px solid #e4e4e7;border-radius:10px;background:#fff;padding:10px 4px;font-size:12px;font-weight:700;color:#111827;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:4px}
+.v3-tool svg{color:#16a34a}
+</style>
 </head>
 <body data-theme="green">
 <input type="file" id="logoInput" accept="image/*" hidden onchange="logoPicked(event)">
@@ -235,7 +298,7 @@ footer a{color:var(--accent-dark);font-weight:700}
     <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;align-items:center"><button onclick="pickLogo()" style="border:1px solid var(--line);background:#fff;color:var(--ink);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;border-radius:999px;padding:6px 12px">ដូរ Logo</button><button onclick="resetLogo()" style="border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:700;font-family:inherit;cursor:pointer">↺ Logo ដើម</button></div>
   </div>
   <nav>
-    <button class="menu-item active" data-page="home" onclick="go('home')">✨ <span>ទំព័រដើម</span></button>
+    <button class="menu-item active" data-page="home" onclick="go('home')"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg> <span>ទំព័រដើម</span></button>
     <button class="menu-item" data-page="tools" onclick="go('tools')"><span>AI Tools · បកប្រែវីដេអូ</span></button>
     <button class="menu-item" data-page="web2app" onclick="go('web2app')"><span>Web2App Builder · APK</span></button>
     <button class="menu-item" data-page="payments" onclick="go('payments')"><span>របៀបបង់ប្រាក់</span></button>
@@ -286,21 +349,21 @@ footer a{color:var(--accent-dark);font-weight:700}
     </div>
 
     <div class="card wide" style="margin-top:12px">
-      <h3>🎙️ តេសសំឡេង · AI Translate Voice</h3>
+      <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg> តេសសំឡេង · AI Translate Voice</h3>
       <p>ដាក់អក្សរភាសាអ្វីក៏បាន — វានិយាយភាសានោះ (អត់បាច់ជ្រើសរើសភាសាទេ)។ កាត់ 1 Credit / 1 ពាក្យ។</p>
       <textarea class="input" id="vtText" rows="3" placeholder="ដាក់អក្សរនៅទីនេះ… (ភាសាអ្វីក៏បាន)" style="width:100%;resize:vertical"></textarea>
       <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
-        <button class="btn btn-green" id="vtBtn" onclick="voiceTest()">🔊 AI Translate Voice</button>
+        <button class="btn btn-green" id="vtBtn" onclick="voiceTest()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/><path d="M15.5 9.5a4 4 0 0 1 0 5M18 7a8 8 0 0 1 0 10"/></svg> AI Translate Voice</button>
         <span id="vtCredit" style="font-size:13px;color:var(--muted)"></span>
       </div>
       <p id="vtMsg" style="font-size:13px;margin-top:8px;min-height:18px"></p>
       <div id="vtOut" style="display:none;margin-top:10px">
         <audio id="vtAudio" controls style="width:100%"></audio>
-        <div class="mt"><a id="vtDl" class="btn btn-ghost btn-block" download="ai-translate-voice.mp3">⬇ Download MP3</a></div>
+        <div class="mt"><a id="vtDl" class="btn btn-ghost btn-block" download="ai-translate-voice.mp3"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download MP3</a></div>
       </div>
     </div>
 
-    <h2 class="sec-title">✨ មុខងាររបស់វេបសាយ</h2>
+    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg> មុខងាររបស់វេបសាយ</h2>
     <div class="funclist">
       <button class="func-row" onclick="go('tools')"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M20 14 L48 32 L20 50 Z" fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round"/><text x="31" y="37" font-size="13" font-weight="900" fill="#16a34a" text-anchor="middle" font-family="Nunito,sans-serif">AI</text><path d="M50 6 L51.8 11.2 L57 13 L51.8 14.8 L50 20 L48.2 14.8 L43 13 L48.2 11.2 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>AI បកប្រែវីដេអូ</b><small>ស្ដាប់ → បកប្រែ → សម្លេងខ្មែរ គ្រប់ភាសា ទាំង 99 ភាសា</small></span></button>
       <button class="func-row" onclick="go('web2app')"><span class="func-tile"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="36" rx="6" fill="none" stroke="#16a34a" stroke-width="3"/><line x1="10" y1="24" x2="54" y2="24" stroke="#16a34a" stroke-width="3"/><circle cx="16" cy="19" r="1.8" fill="#16a34a"/><circle cx="22" cy="19" r="1.8" fill="#16a34a"/><rect x="16" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="28" y="30" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><rect x="16" y="42" width="8" height="8" rx="1.5" fill="none" stroke="#16a34a" stroke-width="2.5"/><path d="M48 40 v10 M43 45 h10" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/></svg></span><span class="func-tx"><b>Web2App Builder</b><small>បម្លែងវេបសាយរបស់អ្នក ទៅជា App APK ដំឡើងលើទូរសព្ទបាន</small></span></button>
@@ -308,35 +371,52 @@ footer a{color:var(--accent-dark);font-weight:700}
       <div class="func-row" style="cursor:default"><span class="func-tile"><svg viewBox="0 0 64 64"><path d="M32 8 L38 26 L56 32 L38 38 L32 56 L26 38 L8 32 L26 26 Z" fill="#16a34a"/></svg></span><span class="func-tx"><b>ទៅកន្លែងតែមួយ</b><small>អ្វីៗផ្សេងៗទៀត នឹងមកបន្ថែមនៅទីនេះជាបន្តបន្ទាប់</small></span></div>
     </div>
 
-    <h2 class="sec-title">✨ វេបសាយនេះអាចធ្វើអ្វីបាន</h2>
-    <div class="cando">
-      <p>• បកប្រែវីដេអូទៅជាភាសាណាក៏បាន</p>
-      <p>• បម្លែងវេបសាយណាក៏បានទៅជា App APK</p>
-      <p>• បង់ប្រាក់ងាយៗដោយ KHQR ឬ USDT</p>
-    </div>
   </section>
 
   <!-- ============ AI TOOLS ============ -->
   <section class="page" id="page-tools">
-    <div class="page-head">
-      <h2>AI Tools · Translate Video Voice</h2>
-      <p>បកប្រែវីដេអូ និងបង្កើតសម្លេង គ្រប់ភាសា — ភាពយន្តបរទេស និយាយជាភាសារបស់អ្នក។</p>
-      <span class="badge green">✓ ដំណើរការបាន</span>
+    <div class="v3-topbar">
+      <div class="v3-topbar-l">
+        <h2>AI Tools · Translate Video Voice</h2>
+        <span class="badge green">✓ ដំណើរការបាន</span>
+      </div>
+      <button class="v3-export" onclick="document.getElementById('aiDlVideo').click()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Export</button>
     </div>
-    <div class="ai-note" id="aiServerNote" style="display:none">⚠️ មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
+
+    <div class="v3-stage">
+      <div class="v3-screen">
+        <div class="v3-play"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <p class="v3-screen-tx">ដាក់វីដេអូនៅទីនេះ</p>
+        <p class="v3-screen-sub">MP4 · ≤25 MB · Free 3 នាទី</p>
+      </div>
+      <div class="v3-time"><span>00:00</span><span>05:19</span></div>
+      <div class="v3-timeline"><i style="width:0%"></i></div>
+      <div class="v3-steps">
+        <span>1 · ស្គេន</span><span>2 · ស្ដាប់</span><span>3 · បកប្រែ</span><span>4 · សំឡេង AI</span>
+      </div>
+    </div>
+
+    <div class="v3-toolbar">
+      <button class="v3-tool" onclick="document.getElementById('aiFile').click()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Upload</button>
+      <button class="v3-tool" onclick="document.getElementById('aiLang').focus()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>ភាសា</button>
+      <button class="v3-tool" onclick="document.querySelector('.vchip').focus()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>សំឡេង</button>
+      <button class="v3-tool" onclick="aiRun()"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Generate</button>
+      <button class="v3-tool" onclick="document.getElementById('aiDlVideo').click()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Download</button>
+    </div>
+    <div class="ai-note" id="aiServerNote" style="display:none">មុខងារនេះត្រូវការ server — នៅលើវេបសាយឋិតិវន្ត វាមិនដំណើរការទេ។ សូមបើកវេបសាយពី Link Render (node server.js)។</div>
     <div class="ai-free">Free: 3 នាទី / 3 វីដេអូ / 7 ថ្ងៃ · Pro: 6–15 នាទី<br><span id="aiUsageText">នៅសល់ 3 វីដេអូក្នុងសប្ដាហ៍នេះ</span></div>
-    <h2 class="sec-title">⚙️ វាដំណើរការយ៉ាងម៉េច</h2>
+    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg> វាដំណើរការយ៉ាងម៉េច</h2>
     <div class="steps">
       <div class="step"><div class="n">1</div><div style="flex:1;min-width:0">
         <h3>វីដេអូ · Video</h3>
         <p>ផ្ទុកឡើងវីដេអូ (MP4, អតិបរមា 25 MB, Free វែងបំផុត 3 នាទី · Pro ដល់ 15 នាទី) ឬដាក់ Link វីដេអូ។</p>
         <div style="margin-top:10px">
           <input type="file" id="aiFile" accept="video/*" hidden onchange="aiFileChosen(event)">
-          <button class="btn btn-green" id="aiPickBtn" onclick="aiPickFile()" style="padding:11px 18px;font-size:15px">📁 ជ្រើសវីដេអូ</button>
+          <button class="btn btn-green" id="aiPickBtn" onclick="aiPickFile()" style="padding:11px 18px;font-size:15px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> ជ្រើសវីដេអូ</button>
           <div id="aiFileInfo" style="font-size:14px;margin-top:8px;color:var(--muted);word-break:break-word"></div>
         </div>
         <div style="display:flex;gap:8px;margin-top:10px">
-          <input class="input" id="aiUrlInput" type="url" placeholder="🔗 https://…mp4 — ដាក់ Link វីដេអូ" style="flex:1;min-width:0">
+          <input class="input" id="aiUrlInput" type="url" placeholder="https://…mp4 — ដាក់ Link វីដេអូ" style="flex:1;min-width:0">
           <button class="btn btn-green" id="aiFetchBtn" onclick="aiFetchUrl()" style="padding:11px 16px;font-size:15px;flex:0 0 auto">យកវីដេអូ</button>
         </div>
         <div class="ai-status ai-st-wait" id="aiStep1Status">រង់ចាំ — មិនទាន់មានវីដេអូទេ</div>
@@ -377,7 +457,7 @@ footer a{color:var(--accent-dark);font-weight:700}
       <div class="seg-list" id="aiSegList"></div>
     </div>
     <div class="mt" id="aiDlWrap">
-      <button class="btn btn-green btn-block" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:14px 16px;font-size:17px">⬇ Download Video</button>
+      <button class="btn btn-green btn-block" id="aiDlVideoBtn" onclick="aiExportVideo()" disabled style="padding:14px 16px;font-size:17px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download Video</button>
       <div id="aiDlVideoLink" style="margin-top:10px"></div>
       <div style="display:flex;gap:8px;margin-top:10px">
         <a class="btn btn-ghost" id="aiDlSrt" style="flex:1;padding:11px 16px;font-size:15px;pointer-events:none;opacity:.5;text-align:center">.SRT</a>
@@ -386,7 +466,7 @@ footer a{color:var(--accent-dark);font-weight:700}
       <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">Download Video គឺជា file វីដេអូពិត (WebM) — ទាញយកចូលទូរសព្ទរបស់អ្នកពិតៗ។</p>
     </div>
     <div class="mt">
-      <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank">📩 សួរព័ត៌មានបន្ថែម</a>
+      <a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> សួរព័ត៌មានបន្ថែម</a>
     </div>
   </section>
 
@@ -397,7 +477,7 @@ footer a{color:var(--accent-dark);font-weight:700}
       <p>អ្នកមានវេបសាយហើយ ចង់ឱ្យវាក្លាយជា App APK ដំឡើងលើទូរសព្ទបានមែនទេ? ដាក់ Link វេបសាយរបស់អ្នកមកទីនេះ។</p>
       <span class="badge">កំពុងរៀបចំ · មកដល់ឆាប់ៗ</span>
     </div>
-    <h2 class="sec-title">⚙️ វាដំណើរការយ៉ាងម៉េច</h2>
+    <h2 class="sec-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg> វាដំណើរការយ៉ាងម៉េច</h2>
     <div class="steps">
       <div class="step"><div class="n">1</div><div><h3>ដាក់ Link វេបសាយ</h3><p>ចម្លង Link វេបសាយរបស់អ្នក មកដាក់ក្នុងប្រអប់ខាងក្រោម។</p></div></div>
       <div class="step"><div class="n">2</div><div><h3>ដាក់ឈ្មោះ និង Logo App</h3><p>ជ្រើសឈ្មោះ App និងរូប Logo ដែលអ្នកចង់ឱ្យបង្ហាញលើទូរសព្ទ។</p></div></div>
@@ -408,7 +488,7 @@ footer a{color:var(--accent-dark);font-weight:700}
       <input class="input" id="siteUrl" type="url" placeholder="https://example.com — ដាក់ Link វេបសាយរបស់អ្នក">
     </div>
     <div class="mt">
-      <button class="btn btn-green btn-block" onclick="sendRequest()">📩 ផ្ញើសំណើបម្លែងទៅជា APK</button>
+      <button class="btn btn-green btn-block" onclick="sendRequest()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> ផ្ញើសំណើបម្លែងទៅជា APK</button>
       <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:10px">សំណើរបស់អ្នកនឹងផ្ញើទៅ Telegram របស់ម្ចាស់វេបសាយដោយផ្ទាល់</p>
     </div>
   </section>
@@ -464,11 +544,11 @@ footer a{color:var(--accent-dark);font-weight:700}
         <div id="payUsdt" style="display:none">
           <div class="qr-box"><img src="assets/usdt-qr.png" alt="USDT QR Code"></div>
           <div class="addr">TPHu2Z45PZ9xUB7AzqMehWKv72HysE9Vzd</div>
-          <div class="mt"><button class="btn btn-ghost btn-block" onclick="copyAddr()">📋 ចម្លងអាសយដ្ឋាន USDT</button></div>
+          <div class="mt"><button class="btn btn-ghost btn-block" onclick="copyAddr()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 11h6M9 15h4"/></svg> ចម្លងអាសយដ្ឋាន USDT</button></div>
           <p style="font-size:14px;line-height:1.6;margin-top:12px">បង់តាម <b>USDT (TRC20)</b></p>
         </div>
         <p style="font-size:14px;line-height:1.6;margin-top:12px">បន្ទាប់ពីបង់ហើយ ផ្ញើរូបបញ្ជាក់មក Telegram — ម្ចាស់នឹងបញ្ចូលលុយទៅក្នុងគណនីរបស់អ្នក។</p>
-        <div class="mt"><a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank">📩 ផ្ញើបញ្ជាក់ការបង់ប្រាក់</a></div>
+        <div class="mt"><a class="btn btn-green btn-block" href="https://t.me/yemsokhoeun_9999" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg> ផ្ញើបញ្ជាក់ការបង់ប្រាក់</a></div>
       </div>
     </div>
   </section>
@@ -542,7 +622,7 @@ footer a{color:var(--accent-dark);font-weight:700}
         </ul>
       </div>
       <div class="pkgcard p4">
-        <div class="pkgcard-top"><b>កញ្ចប់ 4</b><span class="pkgcard-badge">👑 Premium</span></div>
+        <div class="pkgcard-top"><b>កញ្ចប់ 4</b><span class="pkgcard-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="#111827" style="vertical-align:-1px"><path d="M3 8.5l4 3 5-6.5 5 6.5 4-3L19.5 18h-15z"/></svg> Premium</span></div>
         <p class="pkgcard-price">$24.99 <small>/ 30 ថ្ងៃ</small></p>
         <ul class="pkgcard-feats">
           <li>✓ បកប្រែភាសា 99 ភាសា</li>
@@ -589,7 +669,7 @@ footer a{color:var(--accent-dark);font-weight:700}
         <code id="apiNewKey" style="display:block;word-break:break-all;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px;font-size:14px"></code>
         <p id="apiNewExp" style="font-size:13px;margin-top:8px"></p>
         <div style="display:flex;gap:8px;margin-top:10px">
-          <button class="btn btn-green" id="apiCopyNewBtn" style="flex:1" onclick="copyNewKey()">📋 Copy Key</button>
+          <button class="btn btn-green" id="apiCopyNewBtn" style="flex:1" onclick="copyNewKey()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 11h6M9 15h4"/></svg> Copy Key</button>
           <button class="btn btn-ghost" style="flex:1" onclick="closeCreated()">Done</button>
         </div>
       </div>
@@ -605,13 +685,13 @@ footer a{color:var(--accent-dark);font-weight:700}
     </div>
     <div class="card wide" style="margin-top:14px">
       <h3 style="font-size:17px">របៀបប្រើ API Key · How to use</h3>
-      <p style="font-size:14px;line-height:1.9;margin-top:6px">1. ចម្លង Key របស់អ្នកពីខាងលើ (ប៊ូតុង 📋 Copy Key)។<br>2. យក Key នេះទៅដាក់ក្នុង Website / កម្មវិធីរបស់អ្នក — ក្នុងកន្លែង API Key របស់វា។<br>3. ដាក់ Endpoint ខាងក្រោមក្នុង Website របស់អ្នកដែរ — ដើម្បីឱ្យ Website របស់អ្នកហៅមក server របស់ All In One SOKHOEUN។<br>4. ជ្រើសរើសសំឡេងដែលអ្នកចង់បាន៖ Khmer Voice ឬគ្រប់សំឡេង 99។<br>5. ពេលដាក់រួច Website របស់អ្នកនឹងបង្កើតសំឡេងបានភ្លាម។</p>
+      <p style="font-size:14px;line-height:1.9;margin-top:6px">1. ចម្លង Key របស់អ្នកពីខាងលើ (ប៊ូតុង Copy Key)។<br>2. យក Key នេះទៅដាក់ក្នុង Website / កម្មវិធីរបស់អ្នក — ក្នុងកន្លែង API Key របស់វា។<br>3. ដាក់ Endpoint ខាងក្រោមក្នុង Website របស់អ្នកដែរ — ដើម្បីឱ្យ Website របស់អ្នកហៅមក server របស់ All In One SOKHOEUN។<br>4. ជ្រើសរើសសំឡេងដែលអ្នកចង់បាន៖ Khmer Voice ឬគ្រប់សំឡេង 99។<br>5. ពេលដាក់រួច Website របស់អ្នកនឹងបង្កើតសំឡេងបានភ្លាម។</p>
       <p style="font-size:14px;font-weight:700;margin-top:12px">Endpoint — អាសយដ្ឋាន server</p>
       <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
         <code style="flex:1;word-break:break-all;background:var(--accent-soft);border-radius:8px;padding:10px;font-size:13px">https://all-in-one-sokhoeun.onrender.com/api/voice</code>
-        <button class="btn btn-ghost" style="padding:10px 14px;font-size:13px;flex:0 0 auto" onclick="copyText('https://all-in-one-sokhoeun.onrender.com/api/voice',this)">📋 Copy</button>
+        <button class="btn btn-ghost" style="padding:10px 14px;font-size:13px;flex:0 0 auto" onclick="copyText('https://all-in-one-sokhoeun.onrender.com/api/voice',this)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 11h6M9 15h4"/></svg> Copy</button>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6">⚠️ Server នឹងដំណើរការពេល deploy លើ Render — បើមិនទាន់ deploy, API នឹងហៅអត់បានទេ។</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6">Server នឹងដំណើរការពេល deploy លើ Render — បើមិនទាន់ deploy, API នឹងហៅអត់បានទេ។</p>
     </div>
   </section>
 
@@ -635,7 +715,7 @@ footer a{color:var(--accent-dark);font-weight:700}
 </main>
 
 <footer>
-  ✨ All In One SOKHOEUN 🇰🇭<br>
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" style="vertical-align:-2px"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg> All In One SOKHOEUN 🇰🇭<br>
   ទំនាក់ទំនង៖ <a href="https://t.me/yemsokhoeun_9999" target="_blank">Telegram @yemsokhoeun_9999</a><br>
   © 2026 All In One SOKHOEUN
 </footer>
@@ -731,7 +811,7 @@ function createApiKey(){
     renderApiKeys();
   },9000);
 }
-function copyNewKey(){var t=document.getElementById('apiNewKey').innerText;if(navigator.clipboard)navigator.clipboard.writeText(t);var b=document.getElementById('apiCopyNewBtn');if(b){b.innerText='✓ ចម្លងរួច';setTimeout(function(){b.innerText='📋 Copy Key'},2000)}}
+function copyNewKey(){var t=document.getElementById('apiNewKey').innerText;if(navigator.clipboard)navigator.clipboard.writeText(t);var b=document.getElementById('apiCopyNewBtn');if(b){b.innerText='✓ ចម្លងរួច';setTimeout(function(){b.innerText='Copy Key'},2000)}}
 function closeCreated(){document.getElementById('apiCreated').style.display='none'}
 function copyText(txt,btn){if(navigator.clipboard)navigator.clipboard.writeText(txt);if(btn){var o=btn.innerText;btn.innerText='✓ ចម្លងរួច';setTimeout(function(){btn.innerText=o},2000)}}
 function renderApiKeys(){
@@ -741,7 +821,7 @@ function renderApiKeys(){
   list.innerHTML=keys.map(function(k,i){
     var expTxt='';
     if(k.expires){var dl=daysLeft(k.expires);expTxt=dl>0?'<span style="color:var(--accent-dark)">ផុតកំណត់៖ '+fmtDate(k.expires)+' · នៅសល់ '+dl+' ថ្ងៃ</span>':'<span style="color:#dc2626;font-weight:700">ផុតកំណត់ហើយ</span>'}
-    return '<div style="background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-weight:700">'+k.name+' · '+(k.voice==='khmer'?'Khmer Voice':'99 សំឡេង')+'</span><span style="font-size:13px;color:var(--muted)">'+k.credits+' Credit</span><button onclick="copyApiKey('+i+')" style="border:none;background:transparent;font-size:15px;cursor:pointer">📋</button><button onclick="delApiKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div><div style="font-family:monospace;font-size:13px;word-break:break-all;margin-top:6px">'+k.key.slice(0,7)+'…'+k.key.slice(-4)+'</div>'+(expTxt?'<div style="font-size:13px;margin-top:4px">'+expTxt+'</div>':'')+'<div style="margin-top:6px"><button class="btn btn-ghost" style="padding:8px 12px;font-size:13px" onclick="showApiConn('+i+')">តំណភ្ជាប់ · Connection</button></div></div>'}).join('');
+    return '<div style="background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin-top:8px"><div style="display:flex;align-items:center;gap:8px"><span style="flex:1;font-weight:700">'+k.name+' · '+(k.voice==='khmer'?'Khmer Voice':'99 សំឡេង')+'</span><span style="font-size:13px;color:var(--muted)">'+k.credits+' Credit</span><button onclick="copyApiKey('+i+')" style="border:none;background:transparent;font-size:15px;cursor:pointer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4a3 3 0 0 1 6 0M9 11h6M9 15h4"/></svg></button><button onclick="delApiKey('+i+')" style="border:none;background:transparent;color:#dc2626;font-size:16px;font-weight:900;cursor:pointer">✕</button></div><div style="font-family:monospace;font-size:13px;word-break:break-all;margin-top:6px">'+k.key.slice(0,7)+'…'+k.key.slice(-4)+'</div>'+(expTxt?'<div style="font-size:13px;margin-top:4px">'+expTxt+'</div>':'')+'<div style="margin-top:6px"><button class="btn btn-ghost" style="padding:8px 12px;font-size:13px" onclick="showApiConn('+i+')">តំណភ្ជាប់ · Connection</button></div></div>'}).join('');
 }
 function copyApiKey(i){var k=getApiKeys()[i];if(!k)return;if(navigator.clipboard)navigator.clipboard.writeText(k.key)}
 function delApiKey(i){var keys=getApiKeys();keys.splice(i,1);saveApiKeys(keys);renderApiKeys();document.getElementById('apiConn').style.display='none'}
@@ -828,7 +908,7 @@ function setTheme(name,el){
 }
 function copyAddr(){
   var t=document.getElementById('usdtAddr').innerText.trim();
-  function done(btn){btn.innerText='✓ បានចម្លងហើយ';setTimeout(()=>btn.innerText='📋 ចម្លងអាសយដ្ឋាន USDT',2000)}
+  function done(btn){btn.innerText='✓ បានចម្លងហើយ';setTimeout(()=>btn.innerText='ចម្លងអាសយដ្ឋាន USDT',2000)}
   var btn=event.currentTarget;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>done(btn)).catch(()=>{fallback()})}else{fallback()}
   function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done(btn)}catch(e){}document.body.removeChild(ta)}
@@ -1194,7 +1274,7 @@ function aiCurrentSeg(time){
     }
     if(ai.exporting){
       var dur = v.duration || 0;
-      if(dur) aiMsg('🎬 កំពុងថតវីដេអូ… ' + aiFmtTime(v.currentTime) + ' / ' + aiFmtTime(dur));
+      if(dur) aiMsg('កំពុងថតវីដេអូ… ' + aiFmtTime(v.currentTime) + ' / ' + aiFmtTime(dur));
     }
   });
   v.addEventListener('pause', function(){ aiSegAudio.pause(); });
@@ -1224,7 +1304,7 @@ function aiExportStop(){
 }
 function aiExportFinish(){
   var btn = document.getElementById('aiDlVideoBtn');
-  btn.disabled = false; btn.textContent = '⬇ Download Video';
+  btn.disabled = false; btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download Video';
   if(aiExp.chunks.length){
     var blob = new Blob(aiExp.chunks, { type:'video/webm' });
     var url = URL.createObjectURL(blob);
@@ -1232,7 +1312,7 @@ function aiExportFinish(){
     var a = document.createElement('a');
     a.href = url; a.download = (ai.project.title || 'sokhoeun') + ' - SOKHOEUN.webm';
     a.className = 'btn btn-green btn-block'; a.style.marginTop = '8px';
-    a.textContent = '⬇ ទាញយកវីដេអូដែលបានថត (' + (blob.size / 1048576).toFixed(1) + ' MB)';
+    a.textContent = 'ទាញយកវីដេអូដែលបានថត (' + (blob.size / 1048576).toFixed(1) + ' MB)';
     box.innerHTML = ''; box.appendChild(a);
     aiMsg('✓ ថតវីដេអូរួចហើយ — ចុចប៊ូតុងខាងលើដើម្បីទាញយក', true);
   } else {
@@ -1281,7 +1361,7 @@ async function aiExportVideo(){
     var btn = document.getElementById('aiDlVideoBtn');
     btn.textContent = '■ បញ្ឈប់ការថត';
     document.getElementById('aiDlVideoLink').innerHTML = '';
-    aiMsg('🎬 កំពុងថតវីដេអូ… សូមកុំបិទទំព័រនេះ');
+    aiMsg('កំពុងថតវីដេអូ… សូមកុំបិទទំព័រនេះ');
     v.currentTime = 0;
     ai.activeSeg = -2;
     rec.start(500);
@@ -1294,7 +1374,7 @@ async function aiExportVideo(){
     await v.play();
   }catch(e){
     ai.exporting = false;
-    document.getElementById('aiDlVideoBtn').textContent = '⬇ Download Video';
+    document.getElementById('aiDlVideoBtn').innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg> Download Video';
     aiMsg('ថតវីដេអូមិនបានទេ៖ ' + (e && e.message ? e.message : 'មានបញ្ហា'), false);
   }
 }
